@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "npx nx run-many --target=build,test,lint --fix"
+    "build": "npx nx run-many --target=build,test,lint --fix",
+    "emulators:start": "firebase emulators:start",
+    "preemulators:start": "npm run build"
   },
   "private": true,
   "devDependencies": {
