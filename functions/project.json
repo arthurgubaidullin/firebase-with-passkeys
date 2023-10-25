@@ -1,0 +1,36 @@
+{
+  "name": "functions",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "functions/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/functions",
+        "main": "functions/src/index.ts",
+        "tsConfig": "functions/tsconfig.lib.json",
+        "assets": ["functions/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["functions/**/*.ts", "functions/package.json"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../coverage/functions"
+      }
+    }
+  },
+  "tags": []
+}
