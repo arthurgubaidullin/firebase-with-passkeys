@@ -36,6 +36,13 @@
     "sharedGlobals": []
   },
   "generators": {
+    "@nx/js": {
+      "library": {
+        "minimal": true,
+        "unitTestRunner": "vitest",
+        "simpleName": true
+      }
+    },
     "@nx/react": {
       "application": {
         "style": "css",
