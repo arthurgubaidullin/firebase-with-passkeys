@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "demo-firebase-with-passkeys"
-  }
+    "default": "fb-with-passkeys"
+  },
+  "targets": {},
+  "etags": {}
 }
