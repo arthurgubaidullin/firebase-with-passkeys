@@ -1,7 +1,11 @@
 {
   "recommendations": [
-    
+    "EditorConfig.EditorConfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
     "nrwl.angular-console",
-    "esbenp.prettier-vscode"
+    "ms-azuretools.vscode-docker",
+    "toba.vsfire",
+    "eamodio.gitlens"
   ]
 }
