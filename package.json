@@ -2,7 +2,9 @@
   "name": "@firebase-with-passkeys/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "npx nx run-many --target=build,test,lint --fix"
+  },
   "private": true,
   "devDependencies": {
     "@nx/cypress": "17.0.1",
