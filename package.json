@@ -6,6 +6,7 @@
   "private": true,
   "devDependencies": {
     "@nx/esbuild": "^17.0.1",
+    "@nx/eslint": "^17.0.1",
     "@nx/js": "^17.0.1",
     "@nx/workspace": "17.0.1",
     "nx": "17.0.1"
