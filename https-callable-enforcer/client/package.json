@@ -2,7 +2,10 @@
   "name": "@firebase-with-passkeys/https-callable-client-enforcer",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "io-ts": "^2.2.20",
+    "firebase": "^10.5.0",
+    "fp-ts": "^2.16.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",
