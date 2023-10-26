@@ -1,0 +1,37 @@
+{
+  "name": "authentication-response-json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/authentication-response-json/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/authentication-response-json",
+        "main": "passkeys/authentication-response-json/src/index.ts",
+        "tsConfig": "passkeys/authentication-response-json/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/authentication-response-json/**/*.ts",
+          "passkeys/authentication-response-json/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/passkeys/authentication-response-json"
+      }
+    }
+  },
+  "tags": []
+}
