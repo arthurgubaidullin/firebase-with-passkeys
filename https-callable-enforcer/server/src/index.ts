@@ -1,1 +1,1 @@
-export * from './lib/https-callable-server-enforcer';
+export * from './lib/enforce-handler';
