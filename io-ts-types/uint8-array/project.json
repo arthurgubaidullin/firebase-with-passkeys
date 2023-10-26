@@ -1,0 +1,37 @@
+{
+  "name": "uint8-array",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "io-ts-types/uint8-array/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/io-ts-types/uint8-array",
+        "main": "io-ts-types/uint8-array/src/index.ts",
+        "tsConfig": "io-ts-types/uint8-array/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "io-ts-types/uint8-array/**/*.ts",
+          "io-ts-types/uint8-array/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/io-ts-types/uint8-array"
+      }
+    }
+  },
+  "tags": []
+}
