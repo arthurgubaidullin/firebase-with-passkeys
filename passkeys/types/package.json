@@ -1,5 +1,5 @@
 {
-  "name": "@firebase-with-passkeys/authentication-response-json",
+  "name": "@firebase-with-passkeys/passkeys-types",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",
