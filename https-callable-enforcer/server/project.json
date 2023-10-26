@@ -1,0 +1,37 @@
+{
+  "name": "https-callable-server-enforcer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "https-callable-enforcer/server/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/https-callable-enforcer/server",
+        "main": "https-callable-enforcer/server/src/index.ts",
+        "tsConfig": "https-callable-enforcer/server/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "https-callable-enforcer/server/**/*.ts",
+          "https-callable-enforcer/server/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/https-callable-enforcer/server"
+      }
+    }
+  },
+  "tags": []
+}
