@@ -1,1 +1,1 @@
-export * from './lib/codec';
+export * from './lib/authentication-response-json';
