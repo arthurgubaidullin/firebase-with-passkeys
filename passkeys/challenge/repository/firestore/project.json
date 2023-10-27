@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-challenge-repository-firestore",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/challenge/repository/firestore/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/challenge/repository/firestore",
+        "main": "passkeys/challenge/repository/firestore/src/index.ts",
+        "tsConfig": "passkeys/challenge/repository/firestore/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/challenge/repository/firestore/**/*.ts",
+          "passkeys/challenge/repository/firestore/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../../coverage/passkeys/challenge/repository/firestore"
+      }
+    }
+  },
+  "tags": []
+}

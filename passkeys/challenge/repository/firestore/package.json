@@ -1,5 +1,5 @@
 {
-  "name": "@firebase-with-passkeys/passkeys-challenge-repository",
+  "name": "@firebase-with-passkeys/passkeys-challenge-repository-firestore",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",

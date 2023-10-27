@@ -50,8 +50,8 @@
       "@firebase-with-passkeys/passkeys-challenge-get-document": [
         "passkeys/challenge/get-document/src/index.ts"
       ],
-      "@firebase-with-passkeys/passkeys-challenge-repository": [
-        "passkeys/challenge/repository/src/index.ts"
+      "@firebase-with-passkeys/passkeys-challenge-repository-firestore": [
+        "passkeys/challenge/repository/firestore/src/index.ts"
       ],
       "@firebase-with-passkeys/passkeys-challenge-set-document": [
         "passkeys/challenge/set-document/src/index.ts"
