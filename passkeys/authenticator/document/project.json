@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-authenticator-document",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/authenticator/document/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/authenticator/document",
+        "main": "passkeys/authenticator/document/src/index.ts",
+        "tsConfig": "passkeys/authenticator/document/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/authenticator/document/**/*.ts",
+          "passkeys/authenticator/document/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/passkeys/authenticator/document"
+      }
+    }
+  },
+  "tags": []
+}
