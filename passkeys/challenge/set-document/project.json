@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-challenge-set-document",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/challenge/set-document/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/challenge/set-document",
+        "main": "passkeys/challenge/set-document/src/index.ts",
+        "tsConfig": "passkeys/challenge/set-document/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/challenge/set-document/**/*.ts",
+          "passkeys/challenge/set-document/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/passkeys/challenge/set-document"
+      }
+    }
+  },
+  "tags": []
+}

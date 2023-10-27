@@ -38,6 +38,9 @@
       "@firebase-with-passkeys/passkeys-challenge-repository": [
         "passkeys/challenge/repository/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-challenge-set-document": [
+        "passkeys/challenge/set-document/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-types": ["passkeys/types/src/index.ts"],
       "@firebase-with-passkeys/uint8-array": [
         "io-ts-types/uint8-array/src/index.ts"
