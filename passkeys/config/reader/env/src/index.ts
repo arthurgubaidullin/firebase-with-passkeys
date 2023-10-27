@@ -1,1 +1,1 @@
-export * from './lib/passkeys-config-reader-env';
+export * from './lib/config-reader';
