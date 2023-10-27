@@ -8,7 +8,7 @@ interface GetUserApi {
   readonly getUser: (userId: string) => Promise<O.Option<UserRecord>>;
 }
 
-export const get = (): GetUserApi => {
+export const getUserApi = (): GetUserApi => {
   const P = {
     ...AuthRepository.get(),
     ...functions.logger,
