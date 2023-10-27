@@ -35,6 +35,9 @@
       "@firebase-with-passkeys/passkeys-challenge-document": [
         "passkeys/challenge/document/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-challenge-get-document": [
+        "passkeys/challenge/get-document/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-challenge-repository": [
         "passkeys/challenge/repository/src/index.ts"
       ],
