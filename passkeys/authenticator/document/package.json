@@ -2,7 +2,9 @@
   "name": "@firebase-with-passkeys/passkeys-authenticator-document",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "io-ts": "^2.2.20",
+    "@firebase-with-passkeys/uint8-array": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
