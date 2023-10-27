@@ -16,6 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@firebase-with-passkeys/auth-get-user-api": [
+        "auth/get-user-api/src/index.ts"
+      ],
       "@firebase-with-passkeys/functions": ["functions/src/index.ts"],
       "@firebase-with-passkeys/https-callable-client-enforcer": [
         "https-callable-enforcer/client/src/index.ts"

@@ -1,0 +1,37 @@
+{
+  "name": "auth-get-user-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "auth/get-user-api/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/auth/get-user-api",
+        "main": "auth/get-user-api/src/index.ts",
+        "tsConfig": "auth/get-user-api/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "auth/get-user-api/**/*.ts",
+          "auth/get-user-api/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/auth/get-user-api"
+      }
+    }
+  },
+  "tags": []
+}
