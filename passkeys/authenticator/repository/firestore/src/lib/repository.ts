@@ -8,7 +8,7 @@ import { flow, pipe } from 'fp-ts/function';
 const getRef = (db: Firestore) => (userId: string) =>
   db.collection('users').doc(userId).collection('authenticators');
 
-export const get = (): AuthenticatorRepository => {
+export const getAuthenticatorRepository = (): AuthenticatorRepository => {
   const db = getFirestore();
   const _getRef = getRef(db);
   return {
