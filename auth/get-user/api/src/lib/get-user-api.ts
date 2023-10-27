@@ -1,6 +1,6 @@
 import { UserRecord } from 'firebase-admin/auth';
 import * as O from 'fp-ts/Option';
-import * as AuthRepository from '@firebase-with-passkeys/auth-user-repository';
+import * as AuthRepository from '@firebase-with-passkeys/auth-service-firebase';
 import * as functions from 'firebase-functions/v1';
 import { getUser } from '@firebase-with-passkeys/auth-get-user';
 
