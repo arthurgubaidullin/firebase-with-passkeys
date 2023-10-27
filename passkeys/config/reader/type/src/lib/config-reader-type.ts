@@ -1,7 +1,7 @@
 import { UnsafeConfigStruct } from '@firebase-with-passkeys/passkeys-config-struct';
 
-export interface ReadConfig {
+export interface GetConfig {
   readonly getConfig: () => UnsafeConfigStruct;
 }
 
-export type ConfigReader = ReadConfig;
+export type ConfigReader = GetConfig;
