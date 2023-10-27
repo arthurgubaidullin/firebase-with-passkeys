@@ -32,6 +32,9 @@
       "@firebase-with-passkeys/https-callable-server-enforcer": [
         "https-callable-enforcer/server/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-challenge-document": [
+        "passkeys/challenge/document/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-types": ["passkeys/types/src/index.ts"],
       "@firebase-with-passkeys/uint8-array": [
         "io-ts-types/uint8-array/src/index.ts"
