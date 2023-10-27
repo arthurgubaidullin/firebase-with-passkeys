@@ -22,6 +22,9 @@
       "@firebase-with-passkeys/auth-get-user-api": [
         "auth/get-user/api/src/index.ts"
       ],
+      "@firebase-with-passkeys/auth-service-type": [
+        "auth/service/type/src/index.ts"
+      ],
       "@firebase-with-passkeys/auth-user-repository": [
         "auth/user-repository/src/index.ts"
       ],

@@ -1,0 +1,37 @@
+{
+  "name": "auth-service-type",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "auth/service/type/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/auth/service/type",
+        "main": "auth/service/type/src/index.ts",
+        "tsConfig": "auth/service/type/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "auth/service/type/**/*.ts",
+          "auth/service/type/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/auth/service/type"
+      }
+    }
+  },
+  "tags": []
+}
