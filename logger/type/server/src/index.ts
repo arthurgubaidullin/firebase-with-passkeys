@@ -1,1 +1,1 @@
-export * from './lib/logger-type-server';
+export * from './lib/log-error-type';
