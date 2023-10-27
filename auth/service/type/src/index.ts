@@ -1,1 +1,2 @@
-export * from './lib/auth-service-type';
+export * from './lib/get-user-type';
+export * from './lib/service-type';
