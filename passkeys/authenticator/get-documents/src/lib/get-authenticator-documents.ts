@@ -3,11 +3,12 @@ import { GetAuthenticators } from '@firebase-with-passkeys/passkeys-authenticato
 import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import * as E from 'fp-ts/Either';
 import * as TE from 'fp-ts/TaskEither';
-import * as TO from 'fp-ts/TaskOption';
+import * as T from 'fp-ts/Task';
 import { flow, pipe } from 'fp-ts/function';
 
-export const getAuthenticators =
-  (P: GetAuthenticators & LogError) => async (userId: string) => {
+export const getAuthenticatorDocuments =
+  (P: GetAuthenticators & LogError) =>
+  async (userId: string): Promise<readonly AuthenticatorDocument[]> => {
     return pipe(
       TE.tryCatch(async () => P.getAuthenticators(userId), E.toError),
       TE.chainW(
@@ -23,7 +24,7 @@ export const getAuthenticators =
           });
         }
       }),
-      TO.fromTaskEither,
+      TE.fold(() => T.of([]), T.of),
       (t) => t()
     );
   };
