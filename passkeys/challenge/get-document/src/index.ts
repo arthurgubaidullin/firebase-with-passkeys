@@ -1,1 +1,2 @@
-export * from './lib/passkeys-challenge-get-document';
+export * from './lib/get-document';
+export * from './lib/get-document-type';
