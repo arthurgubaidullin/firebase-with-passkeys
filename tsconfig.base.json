@@ -39,7 +39,7 @@
         "passkeys/authenticator/repository/firestore/src/index.ts"
       ],
       "@firebase-with-passkeys/passkeys-authenticator-repository-type": [
-        "passkeys/authenticator/repository-type/src/index.ts"
+        "passkeys/authenticator/repository/type/src/index.ts"
       ],
       "@firebase-with-passkeys/passkeys-challenge-document": [
         "passkeys/challenge/document/src/index.ts"

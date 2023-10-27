@@ -1,16 +1,16 @@
 {
   "name": "passkeys-authenticator-repository-type",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "passkeys/authenticator/repository-type/src",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/authenticator/repository/type/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/passkeys/authenticator/repository-type",
-        "main": "passkeys/authenticator/repository-type/src/index.ts",
-        "tsConfig": "passkeys/authenticator/repository-type/tsconfig.lib.json",
+        "outputPath": "dist/passkeys/authenticator/repository/type",
+        "main": "passkeys/authenticator/repository/type/src/index.ts",
+        "tsConfig": "passkeys/authenticator/repository/type/tsconfig.lib.json",
         "assets": []
       }
     },
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "passkeys/authenticator/repository-type/**/*.ts",
-          "passkeys/authenticator/repository-type/package.json"
+          "passkeys/authenticator/repository/type/**/*.ts",
+          "passkeys/authenticator/repository/type/package.json"
         ]
       }
     },
@@ -29,7 +29,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../../coverage/passkeys/authenticator/repository-type"
+        "reportsDirectory": "../../../../coverage/passkeys/authenticator/repository/type"
       }
     }
   },
