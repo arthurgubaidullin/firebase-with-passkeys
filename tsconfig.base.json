@@ -16,6 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@firebase-with-passkeys/auth-get-user": [
+        "auth/get-user/use-case/src/index.ts"
+      ],
       "@firebase-with-passkeys/auth-get-user-api": [
         "auth/get-user/api/src/index.ts"
       ],
