@@ -56,6 +56,9 @@
       "@firebase-with-passkeys/passkeys-get-authenticator-document": [
         "passkeys/authenticator/get-document/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-get-authenticator-documents": [
+        "passkeys/authenticator/get-documents/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-types": ["passkeys/types/src/index.ts"],
       "@firebase-with-passkeys/passkeys-update-authenticator-document": [
         "passkeys/authenticator/update-document/src/index.ts"
