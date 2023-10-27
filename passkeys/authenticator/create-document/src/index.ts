@@ -1,1 +1,1 @@
-export * from './lib/passkeys-create-authenticator-document';
+export * from './lib/create-authenticator';
