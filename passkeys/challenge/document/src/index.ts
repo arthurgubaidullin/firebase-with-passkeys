@@ -1,1 +1,1 @@
-export * from './lib/passkeys-challenge-document';
+export * from './lib/document';
