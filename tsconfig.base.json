@@ -35,8 +35,8 @@
       "@firebase-with-passkeys/passkeys-authenticator-document": [
         "passkeys/authenticator/document/src/index.ts"
       ],
-      "@firebase-with-passkeys/passkeys-authenticator-repository": [
-        "passkeys/authenticator/repository/src/index.ts"
+      "@firebase-with-passkeys/passkeys-authenticator-repository-firestore": [
+        "passkeys/authenticator/repository/firestore/src/index.ts"
       ],
       "@firebase-with-passkeys/passkeys-authenticator-repository-type": [
         "passkeys/authenticator/repository-type/src/index.ts"

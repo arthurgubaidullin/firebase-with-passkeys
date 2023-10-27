@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-authenticator-repository-firestore",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/authenticator/repository/firestore/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/authenticator/repository/firestore",
+        "main": "passkeys/authenticator/repository/firestore/src/index.ts",
+        "tsConfig": "passkeys/authenticator/repository/firestore/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/authenticator/repository/firestore/**/*.ts",
+          "passkeys/authenticator/repository/firestore/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../../coverage/passkeys/authenticator/repository/firestore"
+      }
+    }
+  },
+  "tags": []
+}
