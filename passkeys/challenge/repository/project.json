@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-challenge-repository",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/challenge/repository/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/challenge/repository",
+        "main": "passkeys/challenge/repository/src/index.ts",
+        "tsConfig": "passkeys/challenge/repository/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/challenge/repository/**/*.ts",
+          "passkeys/challenge/repository/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/passkeys/challenge/repository"
+      }
+    }
+  },
+  "tags": []
+}
