@@ -53,6 +53,9 @@
       "@firebase-with-passkeys/passkeys-challenge-repository-firestore": [
         "passkeys/challenge/repository/firestore/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-challenge-repository-type": [
+        "passkeys/challenge/repository/type/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-challenge-set-document": [
         "passkeys/challenge/set-document/src/index.ts"
       ],
