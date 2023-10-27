@@ -1,5 +1,5 @@
 {
-  "name": "user-auth-repository",
+  "name": "auth-user-repository",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "auth/user-repository/src",
   "projectType": "library",

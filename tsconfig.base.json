@@ -30,7 +30,7 @@
       "@firebase-with-passkeys/uint8-array": [
         "io-ts-types/uint8-array/src/index.ts"
       ],
-      "@firebase-with-passkeys/user-auth-repository": [
+      "@firebase-with-passkeys/auth-user-repository": [
         "auth/user-repository/src/index.ts"
       ]
     }
