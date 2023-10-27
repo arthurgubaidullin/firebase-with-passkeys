@@ -35,6 +35,9 @@
       "@firebase-with-passkeys/https-callable-server-enforcer": [
         "https-callable-enforcer/server/src/index.ts"
       ],
+      "@firebase-with-passkeys/logger-type-server": [
+        "logger/type/server/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-authenticator-document": [
         "passkeys/authenticator/document/src/index.ts"
       ],
