@@ -1,1 +1,1 @@
-export * from './lib/passkeys-challenge-repository';
+export * from './lib/repository';
