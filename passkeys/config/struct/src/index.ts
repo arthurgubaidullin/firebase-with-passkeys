@@ -1,1 +1,1 @@
-export * from './lib/passkeys-config-struct';
+export * from './lib/config-struct';
