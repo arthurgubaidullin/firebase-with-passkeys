@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-config-reader-env",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/config/reader/env/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/config/reader/env",
+        "main": "passkeys/config/reader/env/src/index.ts",
+        "tsConfig": "passkeys/config/reader/env/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/config/reader/env/**/*.ts",
+          "passkeys/config/reader/env/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../../coverage/passkeys/config/reader/env"
+      }
+    }
+  },
+  "tags": []
+}

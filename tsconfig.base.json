@@ -62,6 +62,9 @@
       "@firebase-with-passkeys/passkeys-challenge-set-document": [
         "passkeys/challenge/set-document/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-config-reader-env": [
+        "passkeys/config/reader/env/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-config-reader-type": [
         "passkeys/config/reader/type/src/index.ts"
       ],
