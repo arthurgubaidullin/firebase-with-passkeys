@@ -1,16 +1,16 @@
 {
   "name": "auth-get-user-api",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "auth/get-user-api/src",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "auth/get-user/api/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/auth/get-user-api",
-        "main": "auth/get-user-api/src/index.ts",
-        "tsConfig": "auth/get-user-api/tsconfig.lib.json",
+        "outputPath": "dist/auth/get-user/api",
+        "main": "auth/get-user/api/src/index.ts",
+        "tsConfig": "auth/get-user/api/tsconfig.lib.json",
         "assets": []
       }
     },
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "auth/get-user-api/**/*.ts",
-          "auth/get-user-api/package.json"
+          "auth/get-user/api/**/*.ts",
+          "auth/get-user/api/package.json"
         ]
       }
     },
@@ -29,7 +29,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/auth/get-user-api"
+        "reportsDirectory": "../../../coverage/auth/get-user/api"
       }
     }
   },
