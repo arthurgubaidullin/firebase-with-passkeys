@@ -80,8 +80,8 @@
       "@firebase-with-passkeys/passkeys-get-authenticator-documents": [
         "passkeys/authenticator/get-documents/src/index.ts"
       ],
-      "@firebase-with-passkeys/passkeys-get-config-api": [
-        "passkeys/config/get/api/src/index.ts"
+      "@firebase-with-passkeys/passkeys-get-config": [
+        "passkeys/config/get/use-case/src/index.ts"
       ],
       "@firebase-with-passkeys/passkeys-types": ["passkeys/types/src/index.ts"],
       "@firebase-with-passkeys/passkeys-update-authenticator-document": [
