@@ -6,7 +6,8 @@
     "@firebase-with-passkeys/passkeys-challenge-document": "*",
     "fp-ts": "^2.16.1",
     "firebase-admin": "^11.11.0",
-    "io-ts": "^2.2.20"
+    "io-ts": "^2.2.20",
+    "@firebase-with-passkeys/passkeys-challenge-repository-type": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

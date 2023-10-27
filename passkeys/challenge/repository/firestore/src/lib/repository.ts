@@ -2,7 +2,7 @@ import { ChallengeDocument } from '@firebase-with-passkeys/passkeys-challenge-do
 import { Firestore, getFirestore } from 'firebase-admin/firestore';
 import * as O from 'fp-ts/Option';
 import { OutputOf } from 'io-ts';
-import { ChallengeRepository } from './repository-type';
+import { ChallengeRepository } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 
 const getRef = (db: Firestore) => (userId: string) =>
   db.collection('users').doc(userId).collection('challenges').doc(userId);
