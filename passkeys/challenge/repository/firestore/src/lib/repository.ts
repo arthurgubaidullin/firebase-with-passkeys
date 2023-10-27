@@ -7,7 +7,7 @@ import { ChallengeRepository } from '@firebase-with-passkeys/passkeys-challenge-
 const getRef = (db: Firestore) => (userId: string) =>
   db.collection('users').doc(userId).collection('challenges').doc(userId);
 
-export const get = (): ChallengeRepository => {
+export const getChallengeRepository = (): ChallengeRepository => {
   const db = getFirestore();
   const _getRef = getRef(db);
   return {
