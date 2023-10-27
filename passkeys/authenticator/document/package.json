@@ -4,7 +4,8 @@
   "dependencies": {
     "tslib": "^2.3.0",
     "io-ts": "^2.2.20",
-    "@firebase-with-passkeys/uint8-array": "*"
+    "@firebase-with-passkeys/uint8-array": "*",
+    "@firebase-with-passkeys/passkeys-types": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
