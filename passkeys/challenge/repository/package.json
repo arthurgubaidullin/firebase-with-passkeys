@@ -2,7 +2,11 @@
   "name": "@firebase-with-passkeys/passkeys-challenge-repository",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@firebase-with-passkeys/passkeys-challenge-document": "*",
+    "fp-ts": "^2.16.1",
+    "firebase-admin": "^11.11.0",
+    "io-ts": "^2.2.20"
   },
   "type": "commonjs",
   "main": "./src/index.js",
