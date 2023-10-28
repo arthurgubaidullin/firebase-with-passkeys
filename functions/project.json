@@ -11,7 +11,12 @@
         "outputPath": "dist/functions",
         "main": "functions/src/index.ts",
         "tsConfig": "functions/tsconfig.lib.json",
-        "assets": ["functions/*.md"],
+        "assets": [
+          "functions/*.md",
+          "functions/*.env",
+          "functions/.env",
+          "functions/.env.*"
+        ],
         "generatePackageJson": true,
         "format": ["cjs"],
         "platform": "node",
