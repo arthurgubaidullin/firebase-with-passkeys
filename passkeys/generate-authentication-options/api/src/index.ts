@@ -1,1 +1,1 @@
-export * from './lib/passkeys-generate-authentication-options-api';
+export * from './lib/handler';
