@@ -91,7 +91,7 @@ export const verifyAuthenticationResponse =
       verification = await _verifyAuthenticationResponse({
         response: data,
         expectedChallenge: expectedChallenge.value.challenge,
-        expectedOrigin: origin,
+        expectedOrigin: config.NX_ORIGIN,
         expectedRPID: config.NX_RP_ID,
         authenticator: authenticator,
       });

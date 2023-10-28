@@ -76,7 +76,7 @@ export const verifyRegistrationResponse =
       verification = await _verifyRegistrationResponse({
         response: data,
         expectedChallenge: expectedChallenge.value.challenge,
-        expectedOrigin: origin,
+        expectedOrigin: config.NX_ORIGIN,
         expectedRPID: config.NX_RP_ID,
       });
     } catch (error) {
