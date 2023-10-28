@@ -2,7 +2,19 @@
   "name": "@firebase-with-passkeys/passkeys-verify-registration-response-api",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@firebase-with-passkeys/auth-service-type": "*",
+    "@firebase-with-passkeys/passkeys-authenticator-document": "*",
+    "@firebase-with-passkeys/passkeys-authenticator-repository-type": "*",
+    "@firebase-with-passkeys/passkeys-challenge-get-document": "*",
+    "@firebase-with-passkeys/passkeys-config-reader-type": "*",
+    "@firebase-with-passkeys/passkeys-create-authenticator-document": "*",
+    "@firebase-with-passkeys/passkeys-get-config": "*",
+    "@firebase-with-passkeys/passkeys-types": "*",
+    "@simplewebauthn/server": "^8.3.2",
+    "firebase-functions": "^4.4.1",
+    "fp-ts": "^2.16.1",
+    "io-ts": "^2.2.20"
   },
   "type": "commonjs",
   "main": "./src/index.js",
