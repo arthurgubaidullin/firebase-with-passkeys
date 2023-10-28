@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "npx nx run-many --target=build,test,lint --fix",
-    "emulators:start": "firebase emulators:start",
+    "emulators:start": "firebase emulators:start --import=./.emulators --export-on-exit",
     "preemulators:start": "npm run build"
   },
   "private": true,
