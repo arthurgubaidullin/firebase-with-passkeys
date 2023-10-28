@@ -1,1 +1,1 @@
-export * from './lib/passkeys-verify-registration-response-api';
+export * from './lib/handler';
