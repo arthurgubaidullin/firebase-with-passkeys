@@ -93,6 +93,9 @@
       "@firebase-with-passkeys/passkeys-update-authenticator-document": [
         "passkeys/authenticator/update-document/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-verify-registration-response-api": [
+        "passkeys/verify-registration-response/api/src/index.ts"
+      ],
       "@firebase-with-passkeys/uint8-array": [
         "io-ts-types/uint8-array/src/index.ts"
       ]
