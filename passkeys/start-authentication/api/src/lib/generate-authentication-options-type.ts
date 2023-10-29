@@ -1,5 +1,7 @@
 export interface GenerateAuthenticationOptions {
-  readonly generateAuthenticationOptions: (data?: unknown) => Promise<{
+  readonly generateAuthenticationOptions: (data: {
+    username: string;
+  }) => Promise<{
     data?: unknown;
   }>;
 }
