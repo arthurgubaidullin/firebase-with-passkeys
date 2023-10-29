@@ -16,8 +16,9 @@ const VerifyRegistrationResponseData = t.readonly(
 
 export const startAuthenticationApi =
   (P: GenerateAuthenticationOptions & VerifyAuthenticationResponse) =>
+  (username: string) =>
   async (): Promise<E.Either<Error, void>> => {
-    const resp = await P.generateAuthenticationOptions();
+    const resp = await P.generateAuthenticationOptions({ username });
 
     const _data = pipe(
       resp.data,
