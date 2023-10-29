@@ -89,6 +89,9 @@
       "@firebase-with-passkeys/passkeys-get-config": [
         "passkeys/config/get/use-case/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-start-authentication-api": [
+        "passkeys/start-authentication/api/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-start-registration-api": [
         "passkeys/start-registration/api/src/index.ts"
       ],
