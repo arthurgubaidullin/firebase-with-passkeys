@@ -38,8 +38,7 @@ export const verifyAuthenticationResponse =
       UpdateAuthenticator
   ) =>
   async (
-    rawAuthenticationResponseJSON: unknown,
-    userId?: string
+    rawAuthenticationResponseJSON: unknown
   ): Promise<
     E.Either<
       Error | string[] | typeof UNAUTHENTICATED | typeof FAILED_PRECONDITION,
@@ -64,10 +63,6 @@ export const verifyAuthenticationResponse =
     }
     const config = _config.right;
 
-    if (userId) {
-      return E.left(UNAUTHENTICATED);
-    }
-
     const [expectedChallenge, _authenticator] = await Promise.all([
       getChallenge(P)(data.id),
       getAuthenticatorDocument(P)(data.id, data.id),
@@ -78,9 +73,7 @@ export const verifyAuthenticationResponse =
     }
 
     if (O.isNone(_authenticator)) {
-      const e = new Error(
-        `Could not find authenticator ${data.id} for user ${userId}`
-      );
+      const e = new Error(`Could not find authenticator ${data.id} for user.`);
       P.error(e.message, e);
       return E.left(FAILED_PRECONDITION);
     }
