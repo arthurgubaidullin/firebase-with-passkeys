@@ -2,6 +2,6 @@ import { AuthenticatorDocument } from '@firebase-with-passkeys/passkeys-authenti
 
 export interface GetAuthenticators {
   readonly getAuthenticators: (
-    userId: string
+    username: string
   ) => Promise<AuthenticatorDocument[]>;
 }

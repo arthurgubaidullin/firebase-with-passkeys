@@ -8,9 +8,9 @@ import { flow, pipe } from 'fp-ts/function';
 
 export const getAuthenticatorDocuments =
   (P: GetAuthenticators & LogError) =>
-  async (userId: string): Promise<readonly AuthenticatorDocument[]> => {
+  async (username: string): Promise<readonly AuthenticatorDocument[]> => {
     return pipe(
-      TE.tryCatch(async () => P.getAuthenticators(userId), E.toError),
+      TE.tryCatch(async () => P.getAuthenticators(username), E.toError),
       TE.chainW(
         TE.traverseArray(flow(AuthenticatorDocument.decode, TE.fromEither))
       ),
