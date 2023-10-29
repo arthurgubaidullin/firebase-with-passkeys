@@ -1,30 +1,46 @@
+import { GetUserByEmail } from '@firebase-with-passkeys/auth-service-type';
 import { GetAuthenticators } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
+import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { setChallenge } from '@firebase-with-passkeys/passkeys-challenge-set-document';
+import { getAuthenticatorDocuments } from '@firebase-with-passkeys/passkeys-get-authenticator-documents';
 import { PublicKeyCredentialRequestOptionsJSON } from '@firebase-with-passkeys/passkeys-types';
 import { generateAuthenticationOptions as _generateAuthenticationOptions } from '@simplewebauthn/server';
 import {
-  PublicKeyCredentialDescriptorFuture,
   PublicKeyCredentialRequestOptionsJSON as _PublicKeyCredentialRequestOptionsJSON,
+  PublicKeyCredentialDescriptorFuture,
 } from '@simplewebauthn/typescript-types';
 import * as E from 'fp-ts/Either';
+import { pipe } from 'fp-ts/function';
+import * as O from 'fp-ts/Option';
+import { failure } from 'io-ts/PathReporter';
+import { RequestData } from './request-data';
 
-export const UNAUTHENTICATED = 'unauthenticated';
+export const FAILED_PRECONDITION = 'failed-precondition';
 
 export const generateAuthenticationOptions =
-  (P: GetAuthenticators & SetChallenge) =>
+  (P: LogError & GetAuthenticators & SetChallenge & GetUserByEmail) =>
   async (
-    data?: Readonly<{ uid?: string }>
+    rawData: unknown
   ): Promise<
-    E.Either<typeof UNAUTHENTICATED, _PublicKeyCredentialRequestOptionsJSON>
+    E.Either<
+      typeof FAILED_PRECONDITION | string[],
+      _PublicKeyCredentialRequestOptionsJSON
+    >
   > => {
-    const userId = data?.uid;
+    const _data = pipe(rawData, RequestData.decode, E.mapLeft(failure));
+    if (E.isLeft(_data)) {
+      return _data;
+    }
+    const data = _data.right;
 
-    if (!userId) {
-      return E.left(UNAUTHENTICATED);
+    const u = await P.getUserByEmail(data.username);
+
+    if (O.isNone(u)) {
+      return E.left(FAILED_PRECONDITION);
     }
 
-    const authenticators = await P.getAuthenticators(userId);
+    const authenticators = await getAuthenticatorDocuments(P)(data.username);
 
     const options = await _generateAuthenticationOptions({
       allowCredentials: authenticators.map(
@@ -37,7 +53,7 @@ export const generateAuthenticationOptions =
       userVerification: 'preferred',
     });
 
-    await setChallenge(P)(userId, options);
+    await setChallenge(P)(u.value.uid, options);
 
     return E.right(PublicKeyCredentialRequestOptionsJSON.encode(options));
   };
