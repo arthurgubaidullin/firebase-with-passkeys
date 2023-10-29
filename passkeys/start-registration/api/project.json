@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-start-registration-api",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/start-registration/api/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/start-registration/api",
+        "main": "passkeys/start-registration/api/src/index.ts",
+        "tsConfig": "passkeys/start-registration/api/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/start-registration/api/**/*.ts",
+          "passkeys/start-registration/api/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/passkeys/start-registration/api"
+      }
+    }
+  },
+  "tags": []
+}
