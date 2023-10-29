@@ -1,1 +1,1 @@
-export * from './lib/passkeys-start-registration-api';
+export * from './lib/start-registration-api';
