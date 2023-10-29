@@ -12,5 +12,10 @@ export const get = (): AuthRepository => {
         TE.tryCatch(() => auth.getUser(userId), E.toError),
         (t) => t()
       ),
+    getUserByEmail: async (email) =>
+      pipe(
+        TE.tryCatch(() => auth.getUserByEmail(email), E.toError),
+        (t) => t()
+      ),
   };
 };
