@@ -10,7 +10,7 @@ import {
 } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
-import { CallableContext, HttpsError } from 'firebase-functions/v1/https';
+import { HttpsError } from 'firebase-functions/v1/https';
 import * as E from 'fp-ts/Either';
 import { absurd } from 'fp-ts/function';
 import { RequestData } from './request-data';
@@ -32,14 +32,8 @@ export const verifyAuthenticationResponseHandler =
       GetAuthenticator &
       UpdateAuthenticator
   ) =>
-  async (
-    data: RequestData,
-    context?: CallableContext
-  ): Promise<ResponseData> => {
-    const result = await verifyAuthenticationResponse(P)(
-      data,
-      context?.auth?.uid
-    );
+  async (data: RequestData): Promise<ResponseData> => {
+    const result = await verifyAuthenticationResponse(P)(data);
 
     if (E.isLeft(result)) {
       if (result.left === UNAUTHENTICATED) {
