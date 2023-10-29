@@ -3,14 +3,16 @@ import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-reposit
 import { PublicKeyCredentialRequestOptionsJSON as _PublicKeyCredentialRequestOptionsJSON } from '@simplewebauthn/typescript-types';
 import { CallableContext, HttpsError } from 'firebase-functions/v1/https';
 import * as E from 'fp-ts/Either';
+import { absurd } from 'fp-ts/function';
 import {
-  UNAUTHENTICATED,
+  FAILED_PRECONDITION,
   generateAuthenticationOptions,
 } from './generate-authentication-options';
-import { absurd } from 'fp-ts/function';
+import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
+import { GetUserByEmail } from '@firebase-with-passkeys/auth-service-type';
 
 export const generateAuthenticationOptionsHandler =
-  (P: GetAuthenticators & SetChallenge) =>
+  (P: LogError & GetAuthenticators & SetChallenge & GetUserByEmail) =>
   async (
     _: unknown,
     context?: CallableContext
@@ -18,8 +20,11 @@ export const generateAuthenticationOptionsHandler =
     const result = await generateAuthenticationOptions(P)(context?.auth);
 
     if (E.isLeft(result)) {
-      if (result.left === UNAUTHENTICATED) {
-        throw new HttpsError('unauthenticated', 'Unauthenticated.');
+      if (result.left === FAILED_PRECONDITION) {
+        throw new HttpsError('failed-precondition', 'Failed precondition.');
+      }
+      if (Array.isArray(result.left)) {
+        throw new HttpsError('invalid-argument', 'Invalid argument.');
       }
       absurd(result.left);
       throw new HttpsError('internal', 'Internal.');
