@@ -44,10 +44,8 @@ export const generateRegistrationOptions =
 
     const _user = P.getUser(userId);
 
-    const _authenticators: Promise<readonly AuthenticatorDocument[]> =
-      getAuthenticatorDocuments(P)(userId);
-
     const user = await _user;
+
     if (O.isNone(user)) {
       return E.left(UNAUTHENTICATED);
     }
@@ -55,7 +53,8 @@ export const generateRegistrationOptions =
       return E.left(FAILED_PRECONDITION);
     }
 
-    const authenticators = await _authenticators;
+    const authenticators: readonly AuthenticatorDocument[] =
+      await getAuthenticatorDocuments(P)(user.value.email);
 
     const options = await _generateRegistrationOptions({
       rpName: config.NX_RP_NAME,
