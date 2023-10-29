@@ -10,6 +10,7 @@ export interface AuthenticatorDocument
   extends t.TypeOf<typeof AuthenticatorDocument> {}
 
 export const AuthenticatorDocument = t.strict({
+  username: t.string,
   credentialID: Uint8ArrayCodec,
   credentialPublicKey: Uint8ArrayCodec,
   counter: t.number,

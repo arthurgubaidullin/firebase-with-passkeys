@@ -67,6 +67,10 @@ export const verifyRegistrationResponse =
       return E.left(UNAUTHENTICATED);
     }
 
+    if (!user.value.email) {
+      return E.left(FAILED_PRECONDITION);
+    }
+
     if (O.isNone(expectedChallenge)) {
       return E.left(FAILED_PRECONDITION);
     }
@@ -95,6 +99,7 @@ export const verifyRegistrationResponse =
       } = registrationInfo;
 
       const newAuthenticator: AuthenticatorDocument = {
+        username: user.value.email,
         credentialID,
         credentialPublicKey,
         counter,
