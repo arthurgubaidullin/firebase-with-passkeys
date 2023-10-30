@@ -3,8 +3,6 @@
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",
-    "@firebase-with-passkeys/passkeys-types": "*",
-    "io-ts": "^2.2.20",
     "@firebase-with-passkeys/auth-service-type": "*",
     "@firebase-with-passkeys/logger-type-server": "*",
     "@firebase-with-passkeys/passkeys-authenticator-repository-type": "*",
@@ -16,7 +14,8 @@
     "@firebase-with-passkeys/passkeys-get-config": "*",
     "@firebase-with-passkeys/passkeys-update-authenticator-counter": "*",
     "@simplewebauthn/server": "^8.3.2",
-    "fp-ts": "^2.16.1"
+    "fp-ts": "^2.16.1",
+    "@firebase-with-passkeys/passkeys-verify-authentication-response-contract": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

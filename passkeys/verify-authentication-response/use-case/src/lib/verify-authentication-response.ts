@@ -21,13 +21,14 @@ import {
 } from '@firebase-with-passkeys/passkeys-get-authenticator-document';
 import { getConfig } from '@firebase-with-passkeys/passkeys-get-config';
 import { updateAuthenticatorCounter } from '@firebase-with-passkeys/passkeys-update-authenticator-counter';
+import {
+  RequestData,
+  ResponseData,
+} from '@firebase-with-passkeys/passkeys-verify-authentication-response-contract';
 import { verifyAuthenticationResponse as _verifyAuthenticationResponse } from '@simplewebauthn/server';
 import * as E from 'fp-ts/Either';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-
-import { RequestData } from './request-data';
-import { ResponseData } from './response-data';
 
 export const verifyAuthenticationResponse =
   (
