@@ -3,14 +3,13 @@ import { GetAuthenticators } from '@firebase-with-passkeys/passkeys-authenticato
 import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
-import {
-  UserHasNoEmail,
-  UserUnauthenticated,
-} from '@firebase-with-passkeys/passkeys-event-types';
+import * as HttpsError from '@firebase-with-passkeys/passkeys-firebase-functions-v1-https-error-adapter';
+import { logUnknownError } from '@firebase-with-passkeys/passkeys-log-unknown-error';
 import { PublicKeyCredentialCreationOptionsJSON as _PublicKeyCredentialCreationOptionsJSON } from '@simplewebauthn/typescript-types';
-import { CallableContext, HttpsError } from 'firebase-functions/v1/https';
-import * as E from 'fp-ts/Either';
-import { absurd } from 'fp-ts/function';
+import { CallableContext } from 'firebase-functions/v1/https';
+import * as T from 'fp-ts/Task';
+import * as TE from 'fp-ts/TaskEither';
+import { pipe } from 'fp-ts/function';
 import { generateRegistrationOptions } from './generate-registration-options';
 
 export const generateRegistrationOptionsHandler =
@@ -18,26 +17,11 @@ export const generateRegistrationOptionsHandler =
   async (
     _: unknown,
     context?: CallableContext
-  ): Promise<_PublicKeyCredentialCreationOptionsJSON> => {
-    const result = await generateRegistrationOptions(P)(context?.auth);
-
-    if (E.isLeft(result)) {
-      if (result.left instanceof UserUnauthenticated) {
-        throw new HttpsError('unauthenticated', result.left.message);
-      }
-      if (result.left instanceof UserHasNoEmail) {
-        throw new HttpsError(
-          'failed-precondition',
-          result.left.message,
-          result.left.data
-        );
-      }
-      if (result.left instanceof Error) {
-        throw new HttpsError('internal', 'Internal.');
-      }
-      absurd(result.left);
-      throw new HttpsError('internal', 'Internal.');
-    }
-
-    return result.right;
-  };
+  ): Promise<_PublicKeyCredentialCreationOptionsJSON> =>
+    pipe(
+      async () => await generateRegistrationOptions(P)(context?.auth),
+      TE.orElseFirstIOK(logUnknownError(P)),
+      TE.mapLeft(HttpsError.fromEventOrError),
+      TE.foldW(HttpsError.throwHttpsError, T.of),
+      (t) => t()
+    );
