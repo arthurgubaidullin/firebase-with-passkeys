@@ -9,28 +9,26 @@ import { getProgram } from '@firebase-with-passkeys/passkeys-program-firebase-fu
 
 initializeApp();
 
-const program = getProgram();
-
 export const generateRegistrationOptions = pipe(
-  program,
+  getProgram(),
   generateRegistrationOptionsHandler,
   onCall
 );
 
 export const verifyRegistrationResponse = pipe(
-  program,
+  getProgram(),
   verifyRegistrationResponseHandler,
   onCall
 );
 
 export const generateAuthenticationOptions = pipe(
-  program,
+  getProgram(),
   generateAuthenticationOptionsHandler,
   onCall
 );
 
 export const verifyAuthenticationResponse = pipe(
-  program,
+  getProgram(),
   verifyAuthenticationResponseHandler,
   onCall
 );
