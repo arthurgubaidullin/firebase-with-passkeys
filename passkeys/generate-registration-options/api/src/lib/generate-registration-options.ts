@@ -50,7 +50,7 @@ export const generateRegistrationOptions =
       return E.left(new UserUnauthenticated());
     }
     if (!user.value.email) {
-      return E.left(new UserHasNoEmail());
+      return E.left(new UserHasNoEmail({ userId: user.value.uid }));
     }
 
     const authenticators: readonly AuthenticatorDocument[] =
