@@ -91,6 +91,9 @@
       "@firebase-with-passkeys/passkeys-generate-authentication-options-use-case": [
         "passkeys/generate-authentication-options/use-case/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-generate-registration-options-contract": [
+        "passkeys/generate-registration-options/contract/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-generate-registration-options-firebase-function-client": [
         "passkeys/generate-registration-options/firebase-function/client/src/index.ts"
       ],
