@@ -21,7 +21,6 @@ import {
   VerifiedRegistrationResponse,
   verifyRegistrationResponse as _verifyRegistrationResponse,
 } from '@simplewebauthn/server';
-import { logger } from 'firebase-functions/v1';
 import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import * as TE from 'fp-ts/TaskEither';
@@ -91,7 +90,6 @@ export const verifyRegistrationResponse =
         expectedRPID: config.NX_RP_ID,
       });
     } catch (error) {
-      logger.error(error);
       return E.left(E.toError(error));
     }
 

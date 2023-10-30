@@ -9,7 +9,7 @@ import { CallableContext } from 'firebase-functions/v1/https';
 import * as T from 'fp-ts/Task';
 import * as TE from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-import { verifyRegistrationResponse } from './verify-registration-response';
+import { verifyRegistrationResponse } from '@firebase-with-passkeys/passkeys-verify-registration-response-use-case';
 
 export const verifyRegistrationResponseHandler =
   (P: GetConfig & LogError & GetUser & GetChallenge & CreateAuthenticator) =>
