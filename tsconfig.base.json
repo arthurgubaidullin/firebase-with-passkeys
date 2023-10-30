@@ -149,6 +149,9 @@
       "@firebase-with-passkeys/passkeys-verify-registration-response-api": [
         "passkeys/verify-registration-response/api/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-verify-registration-response-firebase-function-client": [
+        "passkeys/verify-registration-response/firebase-function/client/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-verify-registration-response-use-case": [
         "passkeys/verify-registration-response/use-case/src/index.ts"
       ],
