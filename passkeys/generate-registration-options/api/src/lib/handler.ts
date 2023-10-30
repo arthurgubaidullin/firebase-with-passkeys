@@ -19,7 +19,7 @@ export const generateRegistrationOptionsHandler =
     context?: CallableContext
   ): Promise<_PublicKeyCredentialCreationOptionsJSON> =>
     pipe(
-      async () => await generateRegistrationOptions(P)(context?.auth),
+      generateRegistrationOptions(P)(context?.auth),
       TE.orElseFirstIOK(logUnknownError(P)),
       TE.mapLeft(HttpsError.fromEventOrError),
       TE.foldW(HttpsError.throwHttpsError, T.of),

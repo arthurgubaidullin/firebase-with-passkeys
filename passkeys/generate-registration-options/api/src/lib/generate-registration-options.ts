@@ -17,17 +17,17 @@ import { PublicKeyCredentialCreationOptionsJSON as _PublicKeyCredentialCreationO
 import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
+import { TaskEither } from 'fp-ts/TaskEither';
 
 export const generateRegistrationOptions =
   (P: GetConfig & GetUser & SetChallenge & GetAuthenticators & LogError) =>
-  async (
+  (
     data?: Readonly<{ uid?: string }>
-  ): Promise<
-    E.Either<
-      Error | UserUnauthenticated | UserHasNoEmail,
-      _PublicKeyCredentialCreationOptionsJSON
-    >
-  > => {
+  ): TaskEither<
+    Error | UserUnauthenticated | UserHasNoEmail,
+    _PublicKeyCredentialCreationOptionsJSON
+  > =>
+  async () => {
     const userId = data?.uid;
 
     const _config = pipe(getConfig(P), (a) => a());
