@@ -1,1 +1,1 @@
-export * from './lib/passkeys-generate-authentication-options-use-case';
+export * from './lib/generate-authentication-options';

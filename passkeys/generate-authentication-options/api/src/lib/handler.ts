@@ -9,7 +9,7 @@ import { CallableContext } from 'firebase-functions/v1/https';
 import * as T from 'fp-ts/Task';
 import * as TE from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-import { generateAuthenticationOptions } from './generate-authentication-options';
+import { generateAuthenticationOptions } from '@firebase-with-passkeys/passkeys-generate-authentication-options-use-case';
 
 export const generateAuthenticationOptionsHandler =
   (P: LogError & GetAuthenticators & SetChallenge & GetUserByEmail) =>
