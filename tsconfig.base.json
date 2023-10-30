@@ -146,6 +146,9 @@
       "@firebase-with-passkeys/passkeys-verify-authentication-response-use-case": [
         "passkeys/verify-authentication-response/use-case/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-verify-registration-response-contract": [
+        "passkeys/verify-registration-response/contract/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-verify-registration-response-firebase-function-client": [
         "passkeys/verify-registration-response/firebase-function/client/src/index.ts"
       ],

@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-verify-registration-response-contract",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/verify-registration-response/contract/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/verify-registration-response/contract",
+        "main": "passkeys/verify-registration-response/contract/src/index.ts",
+        "tsConfig": "passkeys/verify-registration-response/contract/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/verify-registration-response/contract/**/*.ts",
+          "passkeys/verify-registration-response/contract/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/passkeys/verify-registration-response/contract"
+      }
+    }
+  },
+  "tags": ["tier:use-case"]
+}
