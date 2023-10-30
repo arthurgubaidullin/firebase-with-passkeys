@@ -3,15 +3,15 @@ import { GetAuthenticators } from '@firebase-with-passkeys/passkeys-authenticato
 import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
+import {
+  UserHasNoEmail,
+  UserUnauthenticated,
+} from '@firebase-with-passkeys/passkeys-event-types';
 import { PublicKeyCredentialCreationOptionsJSON as _PublicKeyCredentialCreationOptionsJSON } from '@simplewebauthn/typescript-types';
 import { CallableContext, HttpsError } from 'firebase-functions/v1/https';
 import * as E from 'fp-ts/Either';
 import { absurd } from 'fp-ts/function';
-import {
-  FAILED_PRECONDITION,
-  generateRegistrationOptions,
-} from './generate-registration-options';
-import { UserUnauthenticated } from '@firebase-with-passkeys/passkeys-event-types';
+import { generateRegistrationOptions } from './generate-registration-options';
 
 export const generateRegistrationOptionsHandler =
   (P: GetConfig & GetUser & SetChallenge & GetAuthenticators & LogError) =>
@@ -23,10 +23,10 @@ export const generateRegistrationOptionsHandler =
 
     if (E.isLeft(result)) {
       if (result.left instanceof UserUnauthenticated) {
-        throw new HttpsError('unauthenticated', 'Unauthenticated.');
+        throw new HttpsError('unauthenticated', result.left.message);
       }
-      if (result.left === FAILED_PRECONDITION) {
-        throw new HttpsError('failed-precondition', 'Failed precondition.');
+      if (result.left instanceof UserHasNoEmail) {
+        throw new HttpsError('failed-precondition', result.left.message);
       }
       if (result.left instanceof Error) {
         throw new HttpsError('internal', 'Internal.');

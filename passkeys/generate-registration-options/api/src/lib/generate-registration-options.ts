@@ -5,7 +5,10 @@ import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-documen
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { setChallenge } from '@firebase-with-passkeys/passkeys-challenge-set-document';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
-import { UserUnauthenticated } from '@firebase-with-passkeys/passkeys-event-types';
+import {
+  UserHasNoEmail,
+  UserUnauthenticated,
+} from '@firebase-with-passkeys/passkeys-event-types';
 import { getAuthenticatorDocuments } from '@firebase-with-passkeys/passkeys-get-authenticator-documents';
 import { getConfig } from '@firebase-with-passkeys/passkeys-get-config';
 import { PublicKeyCredentialCreationOptionsJSON } from '@firebase-with-passkeys/passkeys-types';
@@ -15,15 +18,13 @@ import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 
-export const FAILED_PRECONDITION = 'failed-precondition';
-
 export const generateRegistrationOptions =
   (P: GetConfig & GetUser & SetChallenge & GetAuthenticators & LogError) =>
   async (
     data?: Readonly<{ uid?: string }>
   ): Promise<
     E.Either<
-      Error | UserUnauthenticated | typeof FAILED_PRECONDITION,
+      Error | UserUnauthenticated | UserHasNoEmail,
       _PublicKeyCredentialCreationOptionsJSON
     >
   > => {
@@ -49,7 +50,7 @@ export const generateRegistrationOptions =
       return E.left(new UserUnauthenticated());
     }
     if (!user.value.email) {
-      return E.left(FAILED_PRECONDITION);
+      return E.left(new UserHasNoEmail());
     }
 
     const authenticators: readonly AuthenticatorDocument[] =
