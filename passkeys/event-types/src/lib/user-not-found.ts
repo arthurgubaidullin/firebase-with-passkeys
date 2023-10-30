@@ -1,4 +1,4 @@
 export class UserNotFound {
-  public _tag = 'UserNotFound' as const;
-  public message = 'User is not found.' as const;
+  public readonly _tag = 'UserNotFound' as const;
+  public readonly message = 'User is not found.' as const;
 }
