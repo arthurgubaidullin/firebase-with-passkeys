@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-verify-registration-response-firebase-function-server",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/verify-registration-response/firebase-function/server/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/verify-registration-response/firebase-function/server",
+        "main": "passkeys/verify-registration-response/firebase-function/server/src/index.ts",
+        "tsConfig": "passkeys/verify-registration-response/firebase-function/server/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/verify-registration-response/firebase-function/server/**/*.ts",
+          "passkeys/verify-registration-response/firebase-function/server/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../../coverage/passkeys/verify-registration-response/firebase-function/server"
+      }
+    }
+  },
+  "tags": []
+}
