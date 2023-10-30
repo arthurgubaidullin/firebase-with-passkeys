@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-update-authenticator-counter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/update-authenticator-counter/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/update-authenticator-counter",
+        "main": "passkeys/update-authenticator-counter/src/index.ts",
+        "tsConfig": "passkeys/update-authenticator-counter/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/update-authenticator-counter/**/*.ts",
+          "passkeys/update-authenticator-counter/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/passkeys/update-authenticator-counter"
+      }
+    }
+  },
+  "tags": ["tier:use-case"]
+}
