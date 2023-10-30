@@ -1,1 +1,1 @@
-export * from './lib/passkeys-generate-registration-options-contract';
+export * from './lib/response-data';

@@ -2,7 +2,9 @@
   "name": "@firebase-with-passkeys/passkeys-generate-registration-options-contract",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@firebase-with-passkeys/passkeys-types": "*",
+    "@simplewebauthn/typescript-types": "^8.0.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",

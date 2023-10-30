@@ -17,7 +17,7 @@ import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { LogError } from '@firebase-with-passkeys/logger-type-server';
-import { ResponseData } from './response-data';
+import { ResponseData } from '@firebase-with-passkeys/passkeys-generate-registration-options-contract';
 
 export const generateRegistrationOptions =
   (P: GetConfig & GetUser & SetChallenge & GetAuthenticators & LogError) =>

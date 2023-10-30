@@ -12,11 +12,11 @@
     "@firebase-with-passkeys/passkeys-event-types": "*",
     "@firebase-with-passkeys/passkeys-get-authenticator-documents": "*",
     "@firebase-with-passkeys/passkeys-get-config": "*",
-    "@firebase-with-passkeys/passkeys-types": "*",
     "@simplewebauthn/server": "^8.3.2",
     "@simplewebauthn/typescript-types": "^8.0.0",
     "fp-ts": "^2.16.1",
-    "@firebase-with-passkeys/logger-type-server": "*"
+    "@firebase-with-passkeys/logger-type-server": "*",
+    "@firebase-with-passkeys/passkeys-generate-registration-options-contract": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
