@@ -1,8 +1,10 @@
-import { getFunctions, httpsCallable } from 'firebase/functions';
+import { Functions, httpsCallable } from 'firebase/functions';
 
-const verifyRegistrationResponse = () =>
-  httpsCallable(getFunctions(), 'verifyRegistrationResponse');
+const verifyRegistrationResponse = (functions: Functions) =>
+  httpsCallable(functions, 'verifyRegistrationResponse');
 
-export const getVerifyRegistrationResponseFirebaseFunction = () => ({
-  verifyRegistrationResponse: verifyRegistrationResponse(),
+export const getVerifyRegistrationResponseFirebaseFunction = (
+  functions: Functions
+) => ({
+  verifyRegistrationResponse: verifyRegistrationResponse(functions),
 });

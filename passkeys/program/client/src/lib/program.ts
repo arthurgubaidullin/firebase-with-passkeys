@@ -2,7 +2,7 @@ import { getGenerateAuthenticationOptionsFirebaseFunction } from '@firebase-with
 import { getGenerateRegistrationOptionsFirebaseFunction } from '@firebase-with-passkeys/passkeys-generate-registration-options-firebase-function-client';
 import { getVerifyAuthenticationResponseFirebaseFunction } from '@firebase-with-passkeys/passkeys-verify-authentication-response-firebase-function-client';
 import { getVerifyRegistrationResponseFirebaseFunction } from '@firebase-with-passkeys/passkeys-verify-registration-response-firebase-function-client';
-import { HttpsCallable } from 'firebase/functions';
+import { Functions, HttpsCallable } from 'firebase/functions';
 
 type ClientProgram = Readonly<{
   generateRegistrationOptions: HttpsCallable<unknown, unknown>;
@@ -11,11 +11,13 @@ type ClientProgram = Readonly<{
   verifyAuthenticationResponse: HttpsCallable<unknown, unknown>;
 }>;
 
-export const getClientPasskeysProgram = (): ClientProgram => {
+export const getClientPasskeysProgram = (
+  functions: Functions
+): ClientProgram => {
   return {
-    ...getGenerateAuthenticationOptionsFirebaseFunction(),
-    ...getGenerateRegistrationOptionsFirebaseFunction(),
-    ...getVerifyRegistrationResponseFirebaseFunction(),
-    ...getVerifyAuthenticationResponseFirebaseFunction(),
+    ...getGenerateAuthenticationOptionsFirebaseFunction(functions),
+    ...getGenerateRegistrationOptionsFirebaseFunction(functions),
+    ...getVerifyRegistrationResponseFirebaseFunction(functions),
+    ...getVerifyAuthenticationResponseFirebaseFunction(functions),
   };
 };

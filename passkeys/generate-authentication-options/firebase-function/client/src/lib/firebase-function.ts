@@ -1,10 +1,12 @@
-import { HttpsCallable, getFunctions, httpsCallable } from 'firebase/functions';
+import { Functions, HttpsCallable, httpsCallable } from 'firebase/functions';
 
-const generateAuthenticationOptions = () =>
-  httpsCallable(getFunctions(), 'generateAuthenticationOptions');
+const generateAuthenticationOptions = (functions: Functions) =>
+  httpsCallable(functions, 'generateAuthenticationOptions');
 
-export const getGenerateAuthenticationOptionsFirebaseFunction = (): Readonly<{
+export const getGenerateAuthenticationOptionsFirebaseFunction = (
+  functions: Functions
+): Readonly<{
   generateAuthenticationOptions: HttpsCallable<unknown, unknown>;
 }> => ({
-  generateAuthenticationOptions: generateAuthenticationOptions(),
+  generateAuthenticationOptions: generateAuthenticationOptions(functions),
 });

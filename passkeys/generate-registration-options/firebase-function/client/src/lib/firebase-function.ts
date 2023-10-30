@@ -1,10 +1,10 @@
-import { Functions, getFunctions, httpsCallable } from 'firebase/functions';
+import { Functions, httpsCallable } from 'firebase/functions';
 
-const generateRegistrationOptions = (functions?: Functions) =>
-  httpsCallable(functions ?? getFunctions(), 'generateRegistrationOptions');
+const generateRegistrationOptions = (functions: Functions) =>
+  httpsCallable(functions, 'generateRegistrationOptions');
 
 export const getGenerateRegistrationOptionsFirebaseFunction = (
-  functions?: Functions
+  functions: Functions
 ) => ({
   generateRegistrationOptions: generateRegistrationOptions(functions),
 });
