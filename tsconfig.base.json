@@ -79,6 +79,9 @@
       "@firebase-with-passkeys/passkeys-event-types": [
         "passkeys/event-types/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-firebase-functions-client-program": [
+        "passkeys/program/firebase-functions/client/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-functions": [
         "passkeys/functions/src/index.ts"
       ],
