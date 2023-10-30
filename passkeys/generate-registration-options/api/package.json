@@ -11,9 +11,9 @@
     "firebase-functions": "^4.4.1",
     "fp-ts": "^2.16.1",
     "@firebase-with-passkeys/passkeys-log-unknown-error": "*",
-    "@firebase-with-passkeys/passkeys-firebase-functions-v1-https-error-adapter": "*",
     "@firebase-with-passkeys/passkeys-generate-registration-options-use-case": "*",
-    "@firebase-with-passkeys/logger-type-server": "*"
+    "@firebase-with-passkeys/logger-type-server": "*",
+    "@firebase-with-passkeys/passkeys-https-error-adapter": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

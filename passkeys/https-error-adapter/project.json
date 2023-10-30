@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-https-error-adapter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/https-error-adapter/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/https-error-adapter",
+        "main": "passkeys/https-error-adapter/src/index.ts",
+        "tsConfig": "passkeys/https-error-adapter/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/https-error-adapter/**/*.ts",
+          "passkeys/https-error-adapter/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/passkeys/https-error-adapter"
+      }
+    }
+  },
+  "tags": []
+}

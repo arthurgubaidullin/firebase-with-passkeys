@@ -1,5 +1,5 @@
 {
-  "name": "@firebase-with-passkeys/passkeys-firebase-functions-v1-https-error-adapter",
+  "name": "@firebase-with-passkeys/passkeys-https-error-adapter",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",
