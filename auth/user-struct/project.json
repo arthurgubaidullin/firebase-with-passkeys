@@ -1,0 +1,37 @@
+{
+  "name": "auth-user-struct",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "auth/user-struct/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/auth/user-struct",
+        "main": "auth/user-struct/src/index.ts",
+        "tsConfig": "auth/user-struct/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "auth/user-struct/**/*.ts",
+          "auth/user-struct/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/auth/user-struct"
+      }
+    }
+  },
+  "tags": ["tier:use-case"]
+}
