@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-generate-authentication-options-contract",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/generate-authentication-options/contract/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/generate-authentication-options/contract",
+        "main": "passkeys/generate-authentication-options/contract/src/index.ts",
+        "tsConfig": "passkeys/generate-authentication-options/contract/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/generate-authentication-options/contract/**/*.ts",
+          "passkeys/generate-authentication-options/contract/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/passkeys/generate-authentication-options/contract"
+      }
+    }
+  },
+  "tags": ["tier:use-case"]
+}
