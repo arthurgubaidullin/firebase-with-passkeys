@@ -1,4 +1,5 @@
 import {
+  InvalidInput,
   UserHasNoEmail,
   UserNotFound,
   UserUnauthenticated,
@@ -7,10 +8,13 @@ import { HttpsError } from 'firebase-functions/v1/https';
 import { absurd } from 'fp-ts/function';
 
 export const fromEventOrError = (
-  e: Error | UserUnauthenticated | UserHasNoEmail | UserNotFound
+  e: Error | UserUnauthenticated | UserHasNoEmail | UserNotFound | InvalidInput
 ): HttpsError => {
   if (e instanceof UserNotFound) {
     return new HttpsError('failed-precondition', e.message);
+  }
+  if (e instanceof InvalidInput) {
+    return new HttpsError('failed-precondition', e.message, e.data);
   }
   if (e instanceof UserUnauthenticated) {
     return new HttpsError('unauthenticated', e.message);
