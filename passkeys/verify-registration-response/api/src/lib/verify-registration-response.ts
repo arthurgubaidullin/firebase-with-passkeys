@@ -26,7 +26,7 @@ import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import * as TE from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-import { ResponseData } from './Response-data';
+import { ResponseData } from './response-data';
 
 export const verifyRegistrationResponse =
   (P: GetConfig & LogError & GetUser & GetChallenge & CreateAuthenticator) =>
