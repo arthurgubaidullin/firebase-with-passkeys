@@ -2,7 +2,10 @@
   "name": "@firebase-with-passkeys/passkeys-firebase-functions-client-program",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@firebase-with-passkeys/passkeys-generate-authentication-options-firebase-function-client": "*",
+    "@firebase-with-passkeys/passkeys-generate-registration-options-firebase-function-browser": "*",
+    "firebase": "^10.5.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",
