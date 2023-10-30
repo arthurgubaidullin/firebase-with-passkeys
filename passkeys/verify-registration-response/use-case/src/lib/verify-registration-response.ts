@@ -16,7 +16,6 @@ import {
   UserUnauthenticated,
 } from '@firebase-with-passkeys/passkeys-event-types';
 import { getConfig } from '@firebase-with-passkeys/passkeys-get-config';
-import { RegistrationResponseJSON } from '@firebase-with-passkeys/passkeys-types';
 import {
   VerifiedRegistrationResponse,
   verifyRegistrationResponse as _verifyRegistrationResponse,
@@ -26,6 +25,7 @@ import * as O from 'fp-ts/Option';
 import * as TE from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
 import { ResponseData } from './response-data';
+import { RequestData } from './request-data';
 
 export const verifyRegistrationResponse =
   (P: GetConfig & LogError & GetUser & GetChallenge & CreateAuthenticator) =>
@@ -56,7 +56,7 @@ export const verifyRegistrationResponse =
 
     const _data = pipe(
       rawRegistrationResponseJSON,
-      RegistrationResponseJSON.decode,
+      RequestData.decode,
       E.mapLeft(InvalidInput.create)
     );
     if (E.isLeft(_data)) {
