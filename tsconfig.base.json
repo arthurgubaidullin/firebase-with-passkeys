@@ -74,6 +74,9 @@
       "@firebase-with-passkeys/passkeys-create-authenticator-document": [
         "passkeys/authenticator/create-document/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-event-types": [
+        "passkeys/event-types/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-generate-authentication-options-api": [
         "passkeys/generate-authentication-options/api/src/index.ts"
       ],
