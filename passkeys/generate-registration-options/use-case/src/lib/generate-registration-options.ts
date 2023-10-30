@@ -10,7 +10,6 @@ import {
 } from '@firebase-with-passkeys/passkeys-event-types';
 import { getAuthenticatorDocuments } from '@firebase-with-passkeys/passkeys-get-authenticator-documents';
 import { getConfig } from '@firebase-with-passkeys/passkeys-get-config';
-import { PublicKeyCredentialCreationOptionsJSON } from '@firebase-with-passkeys/passkeys-types';
 import { generateRegistrationOptions as _generateRegistrationOptions } from '@simplewebauthn/server';
 import { PublicKeyCredentialCreationOptionsJSON as _PublicKeyCredentialCreationOptionsJSON } from '@simplewebauthn/typescript-types';
 import * as E from 'fp-ts/Either';
@@ -18,6 +17,7 @@ import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { LogError } from '@firebase-with-passkeys/logger-type-server';
+import { ResponseData } from './response-data';
 
 export const generateRegistrationOptions =
   (P: GetConfig & GetUser & SetChallenge & GetAuthenticators & LogError) =>
@@ -71,5 +71,5 @@ export const generateRegistrationOptions =
 
     await setChallenge(P)(user.value.uid, options);
 
-    return E.right(PublicKeyCredentialCreationOptionsJSON.encode(options));
+    return E.right(ResponseData.encode(options));
   };
