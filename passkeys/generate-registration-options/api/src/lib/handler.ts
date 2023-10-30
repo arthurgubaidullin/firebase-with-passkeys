@@ -9,9 +9,9 @@ import * as E from 'fp-ts/Either';
 import { absurd } from 'fp-ts/function';
 import {
   FAILED_PRECONDITION,
-  UNAUTHENTICATED,
   generateRegistrationOptions,
 } from './generate-registration-options';
+import { UserUnauthenticated } from '@firebase-with-passkeys/passkeys-event-types';
 
 export const generateRegistrationOptionsHandler =
   (P: GetConfig & GetUser & SetChallenge & GetAuthenticators & LogError) =>
@@ -22,7 +22,7 @@ export const generateRegistrationOptionsHandler =
     const result = await generateRegistrationOptions(P)(context?.auth);
 
     if (E.isLeft(result)) {
-      if (result.left === UNAUTHENTICATED) {
+      if (result.left instanceof UserUnauthenticated) {
         throw new HttpsError('unauthenticated', 'Unauthenticated.');
       }
       if (result.left === FAILED_PRECONDITION) {
