@@ -26,7 +26,11 @@ export const generateRegistrationOptionsHandler =
         throw new HttpsError('unauthenticated', result.left.message);
       }
       if (result.left instanceof UserHasNoEmail) {
-        throw new HttpsError('failed-precondition', result.left.message);
+        throw new HttpsError(
+          'failed-precondition',
+          result.left.message,
+          result.left.data
+        );
       }
       if (result.left instanceof Error) {
         throw new HttpsError('internal', 'Internal.');
