@@ -1,16 +1,16 @@
 {
   "name": "passkeys-program-firebase-functions-server",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "passkeys/program/firebase-functions/server/src",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/program/server/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/passkeys/program/firebase-functions/server",
-        "main": "passkeys/program/firebase-functions/server/src/index.ts",
-        "tsConfig": "passkeys/program/firebase-functions/server/tsconfig.lib.json",
+        "outputPath": "dist/passkeys/program/server",
+        "main": "passkeys/program/server/src/index.ts",
+        "tsConfig": "passkeys/program/server/tsconfig.lib.json",
         "assets": []
       }
     },
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "passkeys/program/firebase-functions/server/**/*.ts",
-          "passkeys/program/firebase-functions/server/package.json"
+          "passkeys/program/server/**/*.ts",
+          "passkeys/program/server/package.json"
         ]
       }
     },
@@ -29,7 +29,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../../../coverage/passkeys/program/firebase-functions/server"
+        "reportsDirectory": "../../../coverage/passkeys/program/server"
       }
     }
   },

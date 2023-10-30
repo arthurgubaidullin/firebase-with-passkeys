@@ -119,7 +119,7 @@
         "passkeys/program/client/src/index.ts"
       ],
       "@firebase-with-passkeys/passkeys-program-firebase-functions-server": [
-        "passkeys/program/firebase-functions/server/src/index.ts"
+        "passkeys/program/server/src/index.ts"
       ],
       "@firebase-with-passkeys/passkeys-start-authentication-api": [
         "passkeys/start-authentication/api/src/index.ts"
