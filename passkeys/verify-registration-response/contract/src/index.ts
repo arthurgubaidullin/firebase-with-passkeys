@@ -1,1 +1,2 @@
-export * from './lib/passkeys-verify-registration-response-contract';
+export * from './lib/request-data';
+export * from './lib/response-data';

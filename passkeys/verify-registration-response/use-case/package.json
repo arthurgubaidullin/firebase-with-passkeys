@@ -15,7 +15,8 @@
     "@firebase-with-passkeys/passkeys-get-config": "*",
     "@firebase-with-passkeys/passkeys-types": "*",
     "@simplewebauthn/server": "^8.3.2",
-    "fp-ts": "^2.16.1"
+    "fp-ts": "^2.16.1",
+    "@firebase-with-passkeys/passkeys-verify-registration-response-contract": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
