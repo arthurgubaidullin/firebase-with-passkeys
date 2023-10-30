@@ -1,4 +1,4 @@
-import { getGenerateAuthenticationOptionsFunction } from '@firebase-with-passkeys/passkeys-generate-authentication-options-firebase-function-client';
+import { getGenerateAuthenticationOptionsFirebaseFunction } from '@firebase-with-passkeys/passkeys-generate-authentication-options-firebase-function-client';
 import { getGenerateRegistrationOptionsFirebaseFunction } from '@firebase-with-passkeys/passkeys-generate-registration-options-firebase-function-client';
 import { getVerifyAuthenticationResponseFirebaseFunction } from '@firebase-with-passkeys/passkeys-verify-authentication-response-firebase-function-client';
 import { getVerifyRegistrationResponseFirebaseFunction } from '@firebase-with-passkeys/passkeys-verify-registration-response-firebase-function-client';
@@ -13,7 +13,7 @@ type ClientProgram = Readonly<{
 
 export const getClientPasskeysProgram = (): ClientProgram => {
   return {
-    ...getGenerateAuthenticationOptionsFunction(),
+    ...getGenerateAuthenticationOptionsFirebaseFunction(),
     ...getGenerateRegistrationOptionsFirebaseFunction(),
     ...getVerifyRegistrationResponseFirebaseFunction(),
     ...getVerifyAuthenticationResponseFirebaseFunction(),
