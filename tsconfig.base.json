@@ -101,6 +101,9 @@
       "@firebase-with-passkeys/passkeys-log-unknown-error": [
         "passkeys/log-unknown-error/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-program-firebase-functions-v1": [
+        "passkeys/program/firebase-functions-v1/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-start-authentication-api": [
         "passkeys/start-authentication/api/src/index.ts"
       ],
