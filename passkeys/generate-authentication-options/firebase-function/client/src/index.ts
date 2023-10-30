@@ -1,1 +1,1 @@
-export * from './lib/passkeys-generate-authentication-options-firebase-function-client';
+export * from './lib/firebase-function';
