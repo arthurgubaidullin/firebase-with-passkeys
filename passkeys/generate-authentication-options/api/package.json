@@ -15,7 +15,10 @@
     "io-ts-types": "^0.5.19",
     "@firebase-with-passkeys/passkeys-get-authenticator-documents": "*",
     "@firebase-with-passkeys/auth-service-type": "*",
-    "@firebase-with-passkeys/logger-type-server": "*"
+    "@firebase-with-passkeys/logger-type-server": "*",
+    "@firebase-with-passkeys/passkeys-event-types": "*",
+    "@firebase-with-passkeys/passkeys-https-error-adapter": "*",
+    "@firebase-with-passkeys/passkeys-log-unknown-error": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
