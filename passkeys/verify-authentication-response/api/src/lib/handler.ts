@@ -1,4 +1,5 @@
 import { GetUser } from '@firebase-with-passkeys/auth-service-type';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import {
   GetAuthenticator,
   GetAuthenticators,
@@ -7,17 +8,14 @@ import {
 import { GetChallenge } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
-import { HttpsError } from 'firebase-functions/v1/https';
-import * as E from 'fp-ts/Either';
-import { absurd } from 'fp-ts/function';
+import { logUnknownError } from '@firebase-with-passkeys/passkeys-log-unknown-error';
+import * as T from 'fp-ts/Task';
+import * as TE from 'fp-ts/TaskEither';
+import { pipe } from 'fp-ts/function';
 import { RequestData } from './request-data';
 import { ResponseData } from './response-data';
-import {
-  FAILED_PRECONDITION,
-  UNAUTHENTICATED,
-  verifyAuthenticationResponse,
-} from './verify-authentication-response';
-import { LogError } from '@firebase-with-passkeys/logger-type-server';
+import { verifyAuthenticationResponse } from './verify-authentication-response';
+import * as HttpsError from '@firebase-with-passkeys/passkeys-https-error-adapter';
 
 export const verifyAuthenticationResponseHandler =
   (
@@ -31,24 +29,11 @@ export const verifyAuthenticationResponseHandler =
       UpdateAuthenticator
   ) =>
   async (data: RequestData): Promise<ResponseData> => {
-    const result = await verifyAuthenticationResponse(P)(data);
-
-    if (E.isLeft(result)) {
-      if (result.left === UNAUTHENTICATED) {
-        throw new HttpsError('unauthenticated', 'Unauthenticated.');
-      }
-      if (result.left === FAILED_PRECONDITION) {
-        throw new HttpsError('failed-precondition', 'Failed precondition.');
-      }
-      if (result.left instanceof Error) {
-        throw new HttpsError('internal', 'Internal.');
-      }
-      if (Array.isArray(result.left)) {
-        throw new HttpsError('invalid-argument', 'Invalid argument.');
-      }
-      absurd(result.left);
-      throw new HttpsError('internal', 'Internal.');
-    }
-
-    return result.right;
+    return pipe(
+      verifyAuthenticationResponse(P)(data),
+      TE.orElseFirstIOK(logUnknownError(P)),
+      TE.mapLeft(HttpsError.fromEventOrError),
+      TE.foldW(HttpsError.throwHttpsError, T.of),
+      (t) => t()
+    );
   };

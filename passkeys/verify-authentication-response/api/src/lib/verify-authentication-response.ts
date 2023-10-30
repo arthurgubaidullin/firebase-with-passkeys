@@ -1,30 +1,30 @@
 import { GetUser } from '@firebase-with-passkeys/auth-service-type';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import {
   GetAuthenticator,
   GetAuthenticators,
   UpdateAuthenticator,
 } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
 import {
+  ChallengeNotFound,
   GetChallenge,
+  InvalidChallenge,
   getChallenge,
 } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
+import { InvalidInput } from '@firebase-with-passkeys/passkeys-event-types';
 import { getAuthenticatorDocument } from '@firebase-with-passkeys/passkeys-get-authenticator-document';
 import { getConfig } from '@firebase-with-passkeys/passkeys-get-config';
+import { updateAuthenticatorCounter } from '@firebase-with-passkeys/passkeys-update-authenticator-counter';
 import { verifyAuthenticationResponse as _verifyAuthenticationResponse } from '@simplewebauthn/server';
 import * as E from 'fp-ts/Either';
-import * as O from 'fp-ts/Option';
+import { TaskEither } from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-import { failure } from 'io-ts/PathReporter';
+import { AuthenticatorNotFound } from 'passkeys/authenticator/get-document/src/lib/document-not-found';
+import { InvalidAuthenticator } from 'passkeys/authenticator/get-document/src/lib/invalid-document';
 import { RequestData } from './request-data';
 import { ResponseData } from './response-data';
-import { updateAuthenticatorCounter } from '@firebase-with-passkeys/passkeys-update-authenticator-counter';
-import { LogError } from '@firebase-with-passkeys/logger-type-server';
-
-export const UNAUTHENTICATED = 'unauthenticated';
-
-export const FAILED_PRECONDITION = 'failed-precondition';
 
 export const verifyAuthenticationResponse =
   (
@@ -37,18 +37,22 @@ export const verifyAuthenticationResponse =
       GetAuthenticator &
       UpdateAuthenticator
   ) =>
-  async (
+  (
     rawAuthenticationResponseJSON: unknown
-  ): Promise<
-    E.Either<
-      Error | string[] | typeof UNAUTHENTICATED | typeof FAILED_PRECONDITION,
-      ResponseData
-    >
-  > => {
+  ): TaskEither<
+    | Error
+    | InvalidChallenge
+    | ChallengeNotFound
+    | AuthenticatorNotFound
+    | InvalidAuthenticator
+    | InvalidInput,
+    ResponseData
+  > =>
+  async () => {
     const _data = pipe(
       rawAuthenticationResponseJSON,
       RequestData.decode,
-      E.mapLeft(failure)
+      E.mapLeft(InvalidInput.create)
     );
     if (E.isLeft(_data)) {
       return _data;
@@ -64,26 +68,24 @@ export const verifyAuthenticationResponse =
     const config = _config.right;
 
     const [expectedChallenge, _authenticator] = await Promise.all([
-      getChallenge(P)(data.id),
-      getAuthenticatorDocument(P)(data.id, data.id),
+      getChallenge(P)(data.id)(),
+      getAuthenticatorDocument(P)(data.id, data.id)(),
     ]);
 
-    if (O.isNone(expectedChallenge)) {
-      return E.left(FAILED_PRECONDITION);
+    if (E.isLeft(expectedChallenge)) {
+      return expectedChallenge;
     }
 
-    if (O.isNone(_authenticator)) {
-      const e = new Error(`Could not find authenticator ${data.id} for user.`);
-      P.error(e.message, e);
-      return E.left(FAILED_PRECONDITION);
+    if (E.isLeft(_authenticator)) {
+      return _authenticator;
     }
-    const [authenticator, updatedAt] = _authenticator.value;
+    const [authenticator, updatedAt] = _authenticator.right;
 
     let verification;
     try {
       verification = await _verifyAuthenticationResponse({
         response: data,
-        expectedChallenge: expectedChallenge.value.challenge,
+        expectedChallenge: expectedChallenge.right.challenge,
         expectedOrigin: config.NX_ORIGIN,
         expectedRPID: config.NX_RP_ID,
         authenticator: authenticator,

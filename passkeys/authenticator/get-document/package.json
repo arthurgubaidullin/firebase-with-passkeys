@@ -6,7 +6,8 @@
     "@firebase-with-passkeys/passkeys-authenticator-document": "*",
     "@firebase-with-passkeys/passkeys-authenticator-repository-type": "*",
     "fp-ts": "^2.16.1",
-    "@firebase-with-passkeys/logger-type-server": "*"
+    "@firebase-with-passkeys/logger-type-server": "*",
+    "io-ts": "^2.2.20"
   },
   "type": "commonjs",
   "main": "./src/index.js",

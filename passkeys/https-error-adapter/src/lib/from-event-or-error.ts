@@ -1,4 +1,8 @@
 import {
+  InvalidChallenge,
+  ChallengeNotFound,
+} from '@firebase-with-passkeys/passkeys-challenge-get-document';
+import {
   InvalidInput,
   UserHasNoEmail,
   UserNotFound,
@@ -6,9 +10,20 @@ import {
 } from '@firebase-with-passkeys/passkeys-event-types';
 import { HttpsError } from 'firebase-functions/v1/https';
 import { absurd } from 'fp-ts/function';
+import { AuthenticatorNotFound } from 'passkeys/authenticator/get-document/src/lib/document-not-found';
+import { InvalidAuthenticator } from 'passkeys/authenticator/get-document/src/lib/invalid-document';
 
 export const fromEventOrError = (
-  e: Error | UserUnauthenticated | UserHasNoEmail | UserNotFound | InvalidInput
+  e:
+    | Error
+    | UserUnauthenticated
+    | UserHasNoEmail
+    | UserNotFound
+    | InvalidChallenge
+    | ChallengeNotFound
+    | AuthenticatorNotFound
+    | InvalidAuthenticator
+    | InvalidInput
 ): HttpsError => {
   if (e instanceof UserNotFound) {
     return new HttpsError('failed-precondition', e.message);
@@ -21,6 +36,14 @@ export const fromEventOrError = (
   }
   if (e instanceof UserHasNoEmail) {
     return new HttpsError('failed-precondition', e.message, e.data);
+  }
+  if (
+    e instanceof InvalidChallenge ||
+    e instanceof ChallengeNotFound ||
+    e instanceof AuthenticatorNotFound ||
+    e instanceof InvalidAuthenticator
+  ) {
+    return new HttpsError('failed-precondition', e.message);
   }
   if (e instanceof Error) {
     return new HttpsError('internal', 'Internal.');
