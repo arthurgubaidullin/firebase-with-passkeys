@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-generate-registration-options-firebase-function-client",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/generate-registration-options/firebase-function/client/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/generate-registration-options/firebase-function/client",
+        "main": "passkeys/generate-registration-options/firebase-function/client/src/index.ts",
+        "tsConfig": "passkeys/generate-registration-options/firebase-function/client/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/generate-registration-options/firebase-function/client/**/*.ts",
+          "passkeys/generate-registration-options/firebase-function/client/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../../coverage/passkeys/generate-registration-options/firebase-function/client"
+      }
+    }
+  },
+  "tags": []
+}
