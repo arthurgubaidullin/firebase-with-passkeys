@@ -7,6 +7,10 @@ import {
   InvalidInput,
   UserNotFound,
 } from '@firebase-with-passkeys/passkeys-event-types';
+import {
+  ResponseData,
+  RequestData,
+} from '@firebase-with-passkeys/passkeys-generate-authentication-options-contract';
 import { getAuthenticatorDocuments } from '@firebase-with-passkeys/passkeys-get-authenticator-documents';
 import { generateAuthenticationOptions as _generateAuthenticationOptions } from '@simplewebauthn/server';
 import { PublicKeyCredentialDescriptorFuture } from '@simplewebauthn/typescript-types';
@@ -14,8 +18,6 @@ import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-import { RequestData } from './request-data';
-import { ResponseData } from './response-data';
 
 export const generateAuthenticationOptions =
   (P: LogError & GetAuthenticators & SetChallenge & GetUserByEmail) =>

@@ -10,12 +10,10 @@
     "@firebase-with-passkeys/passkeys-challenge-set-document": "*",
     "@firebase-with-passkeys/passkeys-event-types": "*",
     "@firebase-with-passkeys/passkeys-get-authenticator-documents": "*",
-    "@firebase-with-passkeys/passkeys-types": "*",
     "@simplewebauthn/server": "^8.3.2",
     "@simplewebauthn/typescript-types": "^8.0.0",
     "fp-ts": "^2.16.1",
-    "io-ts": "^2.2.20",
-    "io-ts-types": "^0.5.19"
+    "@firebase-with-passkeys/passkeys-generate-authentication-options-contract": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
