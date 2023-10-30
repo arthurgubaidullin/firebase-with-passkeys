@@ -1,6 +1,6 @@
 import { generateAuthenticationOptionsHandler } from '@firebase-with-passkeys/passkeys-generate-authentication-options-firebase-function-server';
 import { generateRegistrationOptionsHandler } from '@firebase-with-passkeys/passkeys-generate-registration-options-firebase-function-server';
-import { verifyAuthenticationResponseHandler } from '@firebase-with-passkeys/passkeys-verify-authentication-response-api';
+import { verifyAuthenticationResponseHandler } from '@firebase-with-passkeys/passkeys-verify-authentication-response-firebase-function-server';
 import { verifyRegistrationResponseHandler } from '@firebase-with-passkeys/passkeys-verify-registration-response-api';
 import { initializeApp } from 'firebase-admin/app';
 import { onCall } from 'firebase-functions/v1/https';
