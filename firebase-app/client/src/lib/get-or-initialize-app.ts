@@ -7,12 +7,9 @@ import {
 
 const DEFAULT = '[DEFAULT]' as const;
 
-export const getOrInitializeApp = (
-  options: FirebaseOptions,
-  name?: string | undefined
-) => {
+export const getOrInitializeApp = (options: FirebaseOptions) => {
   let app: FirebaseApp;
-  const _name = name ?? DEFAULT;
+  const _name = DEFAULT;
   const _app = getApps().find((a) => a.name === _name);
   if (_app) {
     app = _app;
