@@ -1,4 +1,4 @@
-import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import { IO } from 'fp-ts/IO';
 
 export const logUnknownError =
