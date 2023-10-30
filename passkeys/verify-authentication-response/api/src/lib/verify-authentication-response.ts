@@ -19,7 +19,7 @@ import { pipe } from 'fp-ts/function';
 import { failure } from 'io-ts/PathReporter';
 import { RequestData } from './request-data';
 import { ResponseData } from './response-data';
-import { updateAuthenticatorCounter } from './update-authenticator-counter';
+import { updateAuthenticatorCounter } from '@firebase-with-passkeys/passkeys-update-authenticator-counter';
 import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 export const UNAUTHENTICATED = 'unauthenticated';
@@ -94,10 +94,10 @@ export const verifyAuthenticationResponse =
       return E.left(E.toError(error));
     }
 
-    const { verified } = verification;
-
-    const { authenticationInfo } = verification;
-    const { newCounter } = authenticationInfo;
+    const {
+      verified,
+      authenticationInfo: { newCounter },
+    } = verification;
 
     await updateAuthenticatorCounter(P)(
       data.id,

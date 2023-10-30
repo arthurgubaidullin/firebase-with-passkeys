@@ -2,7 +2,10 @@
   "name": "@firebase-with-passkeys/passkeys-update-authenticator-counter",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@firebase-with-passkeys/passkeys-authenticator-document": "*",
+    "@firebase-with-passkeys/passkeys-authenticator-repository-type": "*",
+    "@firebase-with-passkeys/passkeys-update-authenticator-document": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
