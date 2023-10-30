@@ -1,13 +1,17 @@
 import {
   UserHasNoEmail,
+  UserNotFound,
   UserUnauthenticated,
 } from '@firebase-with-passkeys/passkeys-event-types';
 import { HttpsError } from 'firebase-functions/v1/https';
 import { absurd } from 'fp-ts/function';
 
 export const fromEventOrError = (
-  e: Error | UserUnauthenticated | UserHasNoEmail
+  e: Error | UserUnauthenticated | UserHasNoEmail | UserNotFound
 ): HttpsError => {
+  if (e instanceof UserNotFound) {
+    return new HttpsError('failed-precondition', e.message);
+  }
   if (e instanceof UserUnauthenticated) {
     return new HttpsError('unauthenticated', e.message);
   }
