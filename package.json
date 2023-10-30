@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "npx nx run-many --target=build,test,lint --fix",
+    "build": "npx nx run-many --target=build,test,lint --fix --parallel=7",
     "emulators:start": "firebase emulators:start --import=./.emulators --export-on-exit",
     "preemulators:start": "npm run build"
   },
