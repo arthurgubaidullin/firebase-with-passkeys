@@ -1,4 +1,4 @@
-import { generateAuthenticationOptionsHandler } from '@firebase-with-passkeys/passkeys-generate-authentication-options-api';
+import { generateAuthenticationOptionsHandler } from '@firebase-with-passkeys/passkeys-generate-authentication-options-firebase-function-server';
 import { generateRegistrationOptionsHandler } from '@firebase-with-passkeys/passkeys-generate-registration-options-firebase-function-server';
 import { verifyAuthenticationResponseHandler } from '@firebase-with-passkeys/passkeys-verify-authentication-response-api';
 import { verifyRegistrationResponseHandler } from '@firebase-with-passkeys/passkeys-verify-registration-response-api';
