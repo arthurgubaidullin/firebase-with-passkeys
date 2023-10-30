@@ -1,1 +1,1 @@
-export * from './lib/passkeys-verify-authentication-response-firebase-function-client';
+export * from './lib/firebase-function';
