@@ -10,7 +10,7 @@ import { CallableContext } from 'firebase-functions/v1/https';
 import * as T from 'fp-ts/Task';
 import * as TE from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-import { generateRegistrationOptions } from './generate-registration-options';
+import { generateRegistrationOptions } from '@firebase-with-passkeys/passkeys-generate-registration-options-use-case';
 
 export const generateRegistrationOptionsHandler =
   (P: GetConfig & GetUser & SetChallenge & GetAuthenticators & LogError) =>
