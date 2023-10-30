@@ -1,21 +1,21 @@
 {
-  "name": "functions",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "functions/src",
+  "name": "passkeys-functions",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/functions/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/functions",
-        "main": "functions/src/index.ts",
-        "tsConfig": "functions/tsconfig.lib.json",
+        "outputPath": "dist/passkeys/functions",
+        "main": "passkeys/functions/src/index.ts",
+        "tsConfig": "passkeys/functions/tsconfig.lib.json",
         "assets": [
-          "functions/*.md",
-          "functions/*.env",
-          "functions/.env",
-          "functions/.env.*"
+          "passkeys/functions/*.md",
+          "passkeys/functions/*.env",
+          "passkeys/functions/.env",
+          "passkeys/functions/.env.*"
         ],
         "generatePackageJson": true,
         "format": ["cjs"],
@@ -31,7 +31,7 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["functions/**/*.ts"]
+        "lintFilePatterns": ["passkeys/functions/**/*.ts"]
       }
     },
     "test": {
@@ -39,7 +39,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../coverage/functions"
+        "reportsDirectory": "../../coverage/passkeys/functions"
       }
     }
   },

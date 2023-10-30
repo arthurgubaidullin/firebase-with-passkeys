@@ -1,5 +1,5 @@
 {
-  "name": "@firebase-with-passkeys/functions",
+  "name": "@firebase-with-passkeys/passkeys-functions",
   "version": "0.0.1",
   "dependencies": {
     "firebase-admin": "^11.11.0",

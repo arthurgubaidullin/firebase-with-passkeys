@@ -8,8 +8,8 @@
   },
   "functions": [
     {
-      "source": "dist/functions",
-      "codebase": "default",
+      "source": "dist/passkeys/functions",
+      "codebase": "passkeys",
       "ignore": [
         "node_modules",
         ".git",
