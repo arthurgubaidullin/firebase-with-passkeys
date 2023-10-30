@@ -82,6 +82,9 @@
       "@firebase-with-passkeys/passkeys-functions": [
         "passkeys/functions/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-generate-authentication-options-firebase-function-client": [
+        "passkeys/generate-authentication-options/firebase-function/client/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-generate-authentication-options-firebase-function-server": [
         "passkeys/generate-authentication-options/firebase-function/server/src/index.ts"
       ],
