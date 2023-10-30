@@ -6,7 +6,6 @@ import {
 } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
 import {
   GetChallenge,
-  LogError,
   getChallenge,
 } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
@@ -21,6 +20,7 @@ import { failure } from 'io-ts/PathReporter';
 import { RequestData } from './request-data';
 import { ResponseData } from './response-data';
 import { updateAuthenticatorCounter } from './update-authenticator-counter';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 export const UNAUTHENTICATED = 'unauthenticated';
 

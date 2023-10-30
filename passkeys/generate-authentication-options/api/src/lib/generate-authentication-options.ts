@@ -1,6 +1,5 @@
 import { GetUserByEmail } from '@firebase-with-passkeys/auth-service-type';
 import { GetAuthenticators } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
-import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { setChallenge } from '@firebase-with-passkeys/passkeys-challenge-set-document';
 import { getAuthenticatorDocuments } from '@firebase-with-passkeys/passkeys-get-authenticator-documents';
@@ -15,6 +14,7 @@ import { pipe } from 'fp-ts/function';
 import * as O from 'fp-ts/Option';
 import { failure } from 'io-ts/PathReporter';
 import { RequestData } from './request-data';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 export const FAILED_PRECONDITION = 'failed-precondition';
 

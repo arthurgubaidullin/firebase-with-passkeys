@@ -3,7 +3,6 @@ import { AuthenticatorDocument } from '@firebase-with-passkeys/passkeys-authenti
 import { CreateAuthenticator } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
 import {
   GetChallenge,
-  LogError,
   getChallenge,
 } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
@@ -20,6 +19,7 @@ import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 import { failure } from 'io-ts/PathReporter';
 import { ResponseData } from './Response-data';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 export const UNAUTHENTICATED = 'unauthenticated';
 

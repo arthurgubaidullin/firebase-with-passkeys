@@ -1,9 +1,6 @@
 import { GetUser } from '@firebase-with-passkeys/auth-service-type';
 import { CreateAuthenticator } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
-import {
-  GetChallenge,
-  LogError,
-} from '@firebase-with-passkeys/passkeys-challenge-get-document';
+import { GetChallenge } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
 import { CallableContext, HttpsError } from 'firebase-functions/v1/https';
 import * as E from 'fp-ts/Either';
@@ -14,6 +11,7 @@ import {
   FAILED_PRECONDITION,
 } from './verify-registration-response';
 import { ResponseData } from './Response-data';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 export const verifyRegistrationResponseHandler =
   (P: GetConfig & LogError & GetUser & GetChallenge & CreateAuthenticator) =>

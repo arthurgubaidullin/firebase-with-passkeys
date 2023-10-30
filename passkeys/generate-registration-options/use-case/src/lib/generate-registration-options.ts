@@ -1,7 +1,6 @@
 import { GetUser } from '@firebase-with-passkeys/auth-service-type';
 import { AuthenticatorDocument } from '@firebase-with-passkeys/passkeys-authenticator-document';
 import { GetAuthenticators } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
-import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { setChallenge } from '@firebase-with-passkeys/passkeys-challenge-set-document';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
@@ -18,6 +17,7 @@ import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 import { TaskEither } from 'fp-ts/TaskEither';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 export const generateRegistrationOptions =
   (P: GetConfig & GetUser & SetChallenge & GetAuthenticators & LogError) =>

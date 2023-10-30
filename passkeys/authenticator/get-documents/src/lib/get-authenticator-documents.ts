@@ -1,10 +1,10 @@
 import { AuthenticatorDocument } from '@firebase-with-passkeys/passkeys-authenticator-document';
 import { GetAuthenticators } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
-import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import * as E from 'fp-ts/Either';
 import * as TE from 'fp-ts/TaskEither';
 import * as T from 'fp-ts/Task';
 import { flow, pipe } from 'fp-ts/function';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 export const getAuthenticatorDocuments =
   (P: GetAuthenticators & LogError) =>

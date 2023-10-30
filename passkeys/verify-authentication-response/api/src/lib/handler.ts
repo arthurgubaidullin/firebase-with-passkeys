@@ -4,10 +4,7 @@ import {
   GetAuthenticators,
   UpdateAuthenticator,
 } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
-import {
-  GetChallenge,
-  LogError,
-} from '@firebase-with-passkeys/passkeys-challenge-get-document';
+import { GetChallenge } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
 import { HttpsError } from 'firebase-functions/v1/https';
@@ -20,6 +17,7 @@ import {
   UNAUTHENTICATED,
   verifyAuthenticationResponse,
 } from './verify-authentication-response';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 export const verifyAuthenticationResponseHandler =
   (

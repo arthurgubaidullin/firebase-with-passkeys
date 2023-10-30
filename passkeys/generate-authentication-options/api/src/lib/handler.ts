@@ -8,8 +8,8 @@ import {
   FAILED_PRECONDITION,
   generateAuthenticationOptions,
 } from './generate-authentication-options';
-import { LogError } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { GetUserByEmail } from '@firebase-with-passkeys/auth-service-type';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 export const generateAuthenticationOptionsHandler =
   (P: LogError & GetAuthenticators & SetChallenge & GetUserByEmail) =>

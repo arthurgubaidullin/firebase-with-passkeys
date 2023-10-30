@@ -5,7 +5,8 @@
     "tslib": "^2.3.0",
     "@firebase-with-passkeys/passkeys-challenge-document": "*",
     "fp-ts": "^2.16.1",
-    "io-ts": "^2.2.20"
+    "io-ts": "^2.2.20",
+    "@firebase-with-passkeys/logger-type-server": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

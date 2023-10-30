@@ -6,7 +6,6 @@
     "@firebase-with-passkeys/auth-service-type": "*",
     "@firebase-with-passkeys/passkeys-authenticator-document": "*",
     "@firebase-with-passkeys/passkeys-authenticator-repository-type": "*",
-    "@firebase-with-passkeys/passkeys-challenge-get-document": "*",
     "@firebase-with-passkeys/passkeys-challenge-repository-type": "*",
     "@firebase-with-passkeys/passkeys-challenge-set-document": "*",
     "@firebase-with-passkeys/passkeys-config-reader-type": "*",
@@ -16,7 +15,8 @@
     "@firebase-with-passkeys/passkeys-types": "*",
     "@simplewebauthn/server": "^8.3.2",
     "@simplewebauthn/typescript-types": "^8.0.0",
-    "fp-ts": "^2.16.1"
+    "fp-ts": "^2.16.1",
+    "@firebase-with-passkeys/logger-type-server": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

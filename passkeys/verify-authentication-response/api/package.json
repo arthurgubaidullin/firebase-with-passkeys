@@ -17,7 +17,8 @@
     "io-ts": "^2.2.20",
     "@firebase-with-passkeys/passkeys-authenticator-document": "*",
     "@firebase-with-passkeys/passkeys-update-authenticator-document": "*",
-    "firebase-admin": "^11.11.0"
+    "firebase-admin": "^11.11.0",
+    "@firebase-with-passkeys/logger-type-server": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

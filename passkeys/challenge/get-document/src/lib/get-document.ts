@@ -6,7 +6,7 @@ import * as TO from 'fp-ts/TaskOption';
 import { flow, identity, pipe } from 'fp-ts/function';
 import { failure } from 'io-ts/PathReporter';
 import { GetChallenge } from './get-document-type';
-import { LogError } from './log-error-type';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 
 const NOT_FOUND = 'Not found.' as const;
 
