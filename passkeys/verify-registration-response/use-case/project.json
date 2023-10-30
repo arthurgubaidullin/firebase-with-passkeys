@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-verify-registration-response-use-case",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/verify-registration-response/use-case/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/verify-registration-response/use-case",
+        "main": "passkeys/verify-registration-response/use-case/src/index.ts",
+        "tsConfig": "passkeys/verify-registration-response/use-case/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/verify-registration-response/use-case/**/*.ts",
+          "passkeys/verify-registration-response/use-case/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/passkeys/verify-registration-response/use-case"
+      }
+    }
+  },
+  "tags": []
+}

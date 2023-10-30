@@ -125,6 +125,9 @@
       "@firebase-with-passkeys/passkeys-verify-registration-response-api": [
         "passkeys/verify-registration-response/api/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-verify-registration-response-use-case": [
+        "passkeys/verify-registration-response/use-case/src/index.ts"
+      ],
       "@firebase-with-passkeys/uint8-array": [
         "io-ts-types/uint8-array/src/index.ts"
       ]
