@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-generate-registration-options-use-case",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/generate-registration-options/use-case/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/generate-registration-options/use-case",
+        "main": "passkeys/generate-registration-options/use-case/src/index.ts",
+        "tsConfig": "passkeys/generate-registration-options/use-case/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/generate-registration-options/use-case/**/*.ts",
+          "passkeys/generate-registration-options/use-case/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/passkeys/generate-registration-options/use-case"
+      }
+    }
+  },
+  "tags": []
+}

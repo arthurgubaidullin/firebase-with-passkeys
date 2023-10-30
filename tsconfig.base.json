@@ -86,6 +86,9 @@
       "@firebase-with-passkeys/passkeys-generate-registration-options-api": [
         "passkeys/generate-registration-options/api/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-generate-registration-options-use-case": [
+        "passkeys/generate-registration-options/use-case/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-get-authenticator-document": [
         "passkeys/authenticator/get-document/src/index.ts"
       ],
