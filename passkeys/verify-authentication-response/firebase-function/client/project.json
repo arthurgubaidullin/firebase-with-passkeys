@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-verify-authentication-response-firebase-function-client",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/verify-authentication-response/firebase-function/client/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/verify-authentication-response/firebase-function/client",
+        "main": "passkeys/verify-authentication-response/firebase-function/client/src/index.ts",
+        "tsConfig": "passkeys/verify-authentication-response/firebase-function/client/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/verify-authentication-response/firebase-function/client/**/*.ts",
+          "passkeys/verify-authentication-response/firebase-function/client/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../../coverage/passkeys/verify-authentication-response/firebase-function/client"
+      }
+    }
+  },
+  "tags": ["tier:api"]
+}

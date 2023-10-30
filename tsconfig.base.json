@@ -137,6 +137,9 @@
       "@firebase-with-passkeys/passkeys-verify-authentication-response-contract": [
         "passkeys/verify-authentication-response/contract/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-verify-authentication-response-firebase-function-client": [
+        "passkeys/verify-authentication-response/firebase-function/client/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-verify-authentication-response-firebase-function-server": [
         "passkeys/verify-authentication-response/firebase-function/server/src/index.ts"
       ],
