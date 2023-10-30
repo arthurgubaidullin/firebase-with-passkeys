@@ -1,5 +1,5 @@
 {
-  "name": "@firebase-with-passkeys/passkeys-program-firebase-functions-v1",
+  "name": "@firebase-with-passkeys/passkeys-program-firebase-functions-server",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",

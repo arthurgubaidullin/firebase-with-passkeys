@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-program-firebase-functions-server",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/program/firebase-functions/server/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/program/firebase-functions/server",
+        "main": "passkeys/program/firebase-functions/server/src/index.ts",
+        "tsConfig": "passkeys/program/firebase-functions/server/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/program/firebase-functions/server/**/*.ts",
+          "passkeys/program/firebase-functions/server/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../../coverage/passkeys/program/firebase-functions/server"
+      }
+    }
+  },
+  "tags": []
+}

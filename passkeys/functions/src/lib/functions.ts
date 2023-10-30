@@ -5,7 +5,7 @@ import { verifyRegistrationResponseHandler } from '@firebase-with-passkeys/passk
 import { initializeApp } from 'firebase-admin/app';
 import { onCall } from 'firebase-functions/v1/https';
 import { pipe } from 'fp-ts/function';
-import { getProgram } from '@firebase-with-passkeys/passkeys-program-firebase-functions-v1';
+import { getProgram } from '@firebase-with-passkeys/passkeys-program-firebase-functions-server';
 
 initializeApp();
 
