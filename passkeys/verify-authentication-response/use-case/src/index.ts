@@ -1,1 +1,1 @@
-export * from './lib/passkeys-verify-authentication-response-use-case';
+export * from './lib/verify-authentication-response';

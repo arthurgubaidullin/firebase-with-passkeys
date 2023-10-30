@@ -1,42 +1,23 @@
 import { GetUser } from '@firebase-with-passkeys/auth-service-type';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import { CreateAuthenticator } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
 import { GetChallenge } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
-import { CallableContext, HttpsError } from 'firebase-functions/v1/https';
-import * as E from 'fp-ts/Either';
-import { absurd } from 'fp-ts/function';
-import {
-  verifyRegistrationResponse,
-  UNAUTHENTICATED,
-  FAILED_PRECONDITION,
-} from './verify-registration-response';
-import { ResponseData } from './Response-data';
-import { LogError } from '@firebase-with-passkeys/logger-type-server';
+import * as HttpsError from '@firebase-with-passkeys/passkeys-https-error-adapter';
+import { logUnknownError } from '@firebase-with-passkeys/passkeys-log-unknown-error';
+import { CallableContext } from 'firebase-functions/v1/https';
+import * as T from 'fp-ts/Task';
+import * as TE from 'fp-ts/TaskEither';
+import { pipe } from 'fp-ts/function';
+import { verifyRegistrationResponse } from './verify-registration-response';
 
 export const verifyRegistrationResponseHandler =
   (P: GetConfig & LogError & GetUser & GetChallenge & CreateAuthenticator) =>
-  async (_data: unknown, context?: CallableContext): Promise<ResponseData> => {
-    const result = await verifyRegistrationResponse(P)(
-      _data,
-      context?.auth?.uid
+  async (_data: unknown, context?: CallableContext): Promise<unknown> =>
+    await pipe(
+      verifyRegistrationResponse(P)(_data, context?.auth?.uid),
+      TE.orElseFirstIOK(logUnknownError(P)),
+      TE.mapLeft(HttpsError.fromEventOrError),
+      TE.foldW(HttpsError.throwHttpsError, T.of),
+      (t) => t()
     );
-
-    if (E.isLeft(result)) {
-      if (result.left === UNAUTHENTICATED) {
-        throw new HttpsError('unauthenticated', 'Unauthenticated.');
-      }
-      if (result.left === FAILED_PRECONDITION) {
-        throw new HttpsError('failed-precondition', 'Failed precondition.');
-      }
-      if (result.left instanceof Error) {
-        throw new HttpsError('internal', 'Internal.');
-      }
-      if (Array.isArray(result.left)) {
-        throw new HttpsError('invalid-argument', 'Invalid argument.');
-      }
-      absurd(result.left);
-      throw new HttpsError('internal', 'Internal.');
-    }
-
-    return result.right;
-  };

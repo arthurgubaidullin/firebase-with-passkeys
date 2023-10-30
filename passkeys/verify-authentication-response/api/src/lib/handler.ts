@@ -8,14 +8,12 @@ import {
 import { GetChallenge } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
+import * as HttpsError from '@firebase-with-passkeys/passkeys-https-error-adapter';
 import { logUnknownError } from '@firebase-with-passkeys/passkeys-log-unknown-error';
+import { verifyAuthenticationResponse } from '@firebase-with-passkeys/passkeys-verify-authentication-response-use-case';
 import * as T from 'fp-ts/Task';
 import * as TE from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-import { RequestData } from './request-data';
-import { ResponseData } from './response-data';
-import { verifyAuthenticationResponse } from './verify-authentication-response';
-import * as HttpsError from '@firebase-with-passkeys/passkeys-https-error-adapter';
 
 export const verifyAuthenticationResponseHandler =
   (
@@ -28,7 +26,7 @@ export const verifyAuthenticationResponseHandler =
       GetAuthenticator &
       UpdateAuthenticator
   ) =>
-  async (data: RequestData): Promise<ResponseData> => {
+  async (data: unknown): Promise<unknown> => {
     return pipe(
       verifyAuthenticationResponse(P)(data),
       TE.orElseFirstIOK(logUnknownError(P)),

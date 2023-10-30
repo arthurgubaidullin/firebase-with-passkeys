@@ -8,10 +8,12 @@ import {
   UserNotFound,
   UserUnauthenticated,
 } from '@firebase-with-passkeys/passkeys-event-types';
+import {
+  AuthenticatorNotFound,
+  InvalidAuthenticator,
+} from '@firebase-with-passkeys/passkeys-get-authenticator-document';
 import { HttpsError } from 'firebase-functions/v1/https';
 import { absurd } from 'fp-ts/function';
-import { AuthenticatorNotFound } from 'passkeys/authenticator/get-document/src/lib/document-not-found';
-import { InvalidAuthenticator } from 'passkeys/authenticator/get-document/src/lib/invalid-document';
 
 export const fromEventOrError = (
   e:

@@ -14,15 +14,18 @@ import {
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
 import { InvalidInput } from '@firebase-with-passkeys/passkeys-event-types';
-import { getAuthenticatorDocument } from '@firebase-with-passkeys/passkeys-get-authenticator-document';
+import {
+  AuthenticatorNotFound,
+  InvalidAuthenticator,
+  getAuthenticatorDocument,
+} from '@firebase-with-passkeys/passkeys-get-authenticator-document';
 import { getConfig } from '@firebase-with-passkeys/passkeys-get-config';
 import { updateAuthenticatorCounter } from '@firebase-with-passkeys/passkeys-update-authenticator-counter';
 import { verifyAuthenticationResponse as _verifyAuthenticationResponse } from '@simplewebauthn/server';
 import * as E from 'fp-ts/Either';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-import { AuthenticatorNotFound } from 'passkeys/authenticator/get-document/src/lib/document-not-found';
-import { InvalidAuthenticator } from 'passkeys/authenticator/get-document/src/lib/invalid-document';
+
 import { RequestData } from './request-data';
 import { ResponseData } from './response-data';
 

@@ -1,12 +1,20 @@
 import { GetUser } from '@firebase-with-passkeys/auth-service-type';
+import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import { AuthenticatorDocument } from '@firebase-with-passkeys/passkeys-authenticator-document';
 import { CreateAuthenticator } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
 import {
+  ChallengeNotFound,
   GetChallenge,
+  InvalidChallenge,
   getChallenge,
 } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
 import { createAuthenticatorDocument } from '@firebase-with-passkeys/passkeys-create-authenticator-document';
+import {
+  InvalidInput,
+  UserHasNoEmail,
+  UserUnauthenticated,
+} from '@firebase-with-passkeys/passkeys-event-types';
 import { getConfig } from '@firebase-with-passkeys/passkeys-get-config';
 import { RegistrationResponseJSON } from '@firebase-with-passkeys/passkeys-types';
 import {
@@ -16,26 +24,25 @@ import {
 import { logger } from 'firebase-functions/v1';
 import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
+import * as TE from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
-import { failure } from 'io-ts/PathReporter';
 import { ResponseData } from './Response-data';
-import { LogError } from '@firebase-with-passkeys/logger-type-server';
-
-export const UNAUTHENTICATED = 'unauthenticated';
-
-export const FAILED_PRECONDITION = 'failed-precondition';
 
 export const verifyRegistrationResponse =
   (P: GetConfig & LogError & GetUser & GetChallenge & CreateAuthenticator) =>
-  async (
+  (
     rawRegistrationResponseJSON: unknown,
     userId?: string
-  ): Promise<
-    E.Either<
-      typeof UNAUTHENTICATED | typeof FAILED_PRECONDITION | string[] | Error,
-      ResponseData
-    >
-  > => {
+  ): TE.TaskEither<
+    | UserUnauthenticated
+    | UserHasNoEmail
+    | InvalidChallenge
+    | ChallengeNotFound
+    | InvalidInput
+    | Error,
+    ResponseData
+  > =>
+  async () => {
     const _config = pipe(getConfig(P), (a) => a());
     if (E.isLeft(_config)) {
       const e = _config.left;
@@ -45,13 +52,13 @@ export const verifyRegistrationResponse =
     const config = _config.right;
 
     if (!userId) {
-      return E.left(UNAUTHENTICATED);
+      return E.left(new UserUnauthenticated());
     }
 
     const _data = pipe(
       rawRegistrationResponseJSON,
       RegistrationResponseJSON.decode,
-      E.mapLeft(failure)
+      E.mapLeft(InvalidInput.create)
     );
     if (E.isLeft(_data)) {
       return _data;
@@ -60,26 +67,26 @@ export const verifyRegistrationResponse =
 
     const [user, expectedChallenge] = await Promise.all([
       P.getUser(userId),
-      getChallenge(P)(userId),
+      getChallenge(P)(userId)(),
     ]);
 
     if (O.isNone(user)) {
-      return E.left(UNAUTHENTICATED);
+      return E.left(new UserUnauthenticated());
     }
 
     if (!user.value.email) {
-      return E.left(FAILED_PRECONDITION);
+      return E.left(new UserHasNoEmail({ userId }));
     }
 
-    if (O.isNone(expectedChallenge)) {
-      return E.left(FAILED_PRECONDITION);
+    if (E.isLeft(expectedChallenge)) {
+      return expectedChallenge;
     }
 
     let verification: VerifiedRegistrationResponse;
     try {
       verification = await _verifyRegistrationResponse({
         response: data,
-        expectedChallenge: expectedChallenge.value.challenge,
+        expectedChallenge: expectedChallenge.right.challenge,
         expectedOrigin: config.NX_ORIGIN,
         expectedRPID: config.NX_RP_ID,
       });
