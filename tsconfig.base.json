@@ -77,6 +77,9 @@
       "@firebase-with-passkeys/passkeys-event-types": [
         "passkeys/event-types/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-firebase-functions-v1-https-error-adapter": [
+        "passkeys/firebase-functions/v1/https-error-adapter/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-generate-authentication-options-api": [
         "passkeys/generate-authentication-options/api/src/index.ts"
       ],
