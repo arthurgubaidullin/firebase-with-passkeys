@@ -1,1 +1,1 @@
-export * from './lib/passkeys-log-unknown-error';
+export * from './lib/log-unknown-error';
