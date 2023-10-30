@@ -1,1 +1,1 @@
-export * from './lib/auth-user-struct';
+export * from './lib/user-struct';
