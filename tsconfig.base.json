@@ -92,6 +92,9 @@
       "@firebase-with-passkeys/passkeys-get-config": [
         "passkeys/config/get/use-case/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-log-unknown-error": [
+        "passkeys/log-unknown-error/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-start-authentication-api": [
         "passkeys/start-authentication/api/src/index.ts"
       ],

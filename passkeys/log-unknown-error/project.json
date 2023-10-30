@@ -1,0 +1,37 @@
+{
+  "name": "passkeys-log-unknown-error",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/log-unknown-error/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/passkeys/log-unknown-error",
+        "main": "passkeys/log-unknown-error/src/index.ts",
+        "tsConfig": "passkeys/log-unknown-error/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "passkeys/log-unknown-error/**/*.ts",
+          "passkeys/log-unknown-error/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/passkeys/log-unknown-error"
+      }
+    }
+  },
+  "tags": []
+}
