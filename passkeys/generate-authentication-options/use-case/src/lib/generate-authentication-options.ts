@@ -8,26 +8,18 @@ import {
   UserNotFound,
 } from '@firebase-with-passkeys/passkeys-event-types';
 import { getAuthenticatorDocuments } from '@firebase-with-passkeys/passkeys-get-authenticator-documents';
-import { PublicKeyCredentialRequestOptionsJSON } from '@firebase-with-passkeys/passkeys-types';
 import { generateAuthenticationOptions as _generateAuthenticationOptions } from '@simplewebauthn/server';
-import {
-  PublicKeyCredentialDescriptorFuture,
-  PublicKeyCredentialRequestOptionsJSON as _PublicKeyCredentialRequestOptionsJSON,
-} from '@simplewebauthn/typescript-types';
+import { PublicKeyCredentialDescriptorFuture } from '@simplewebauthn/typescript-types';
 import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
 import { RequestData } from './request-data';
+import { ResponseData } from './response-data';
 
 export const generateAuthenticationOptions =
   (P: LogError & GetAuthenticators & SetChallenge & GetUserByEmail) =>
-  (
-    rawData: unknown
-  ): TaskEither<
-    UserNotFound | InvalidInput,
-    _PublicKeyCredentialRequestOptionsJSON
-  > =>
+  (rawData: unknown): TaskEither<UserNotFound | InvalidInput, ResponseData> =>
   async () => {
     const _data = pipe(
       rawData,
@@ -60,5 +52,5 @@ export const generateAuthenticationOptions =
 
     await setChallenge(P)(u.value.uid, options);
 
-    return E.right(PublicKeyCredentialRequestOptionsJSON.encode(options));
+    return E.right(ResponseData.encode(options));
   };
