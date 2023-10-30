@@ -21,7 +21,9 @@ export const getAuthenticatorRepository = (): AuthenticatorRepository => {
       (userId, authenticatorId, updateAt) => async (authenticator) => {
         await _getRef(userId)
           .doc(authenticatorId)
-          .update(authenticator, { lastUpdateTime: updateAt });
+          .update(authenticator, {
+            lastUpdateTime: Timestamp.fromMillis(updateAt),
+          });
       },
     getAuthenticator: async (userId, authenticatorId) => {
       const ref = _getRef(userId).doc(authenticatorId);
@@ -37,7 +39,10 @@ export const getAuthenticatorRepository = (): AuthenticatorRepository => {
           (data) =>
             [
               data,
-              snap.updateTime ? snap.updateTime : new Timestamp(0, 0),
+              (snap.updateTime
+                ? snap.updateTime
+                : new Timestamp(0, 0)
+              ).toMillis(),
             ] as const
         )
       );
