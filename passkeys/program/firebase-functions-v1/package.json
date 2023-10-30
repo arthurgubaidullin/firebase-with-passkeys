@@ -2,7 +2,17 @@
   "name": "@firebase-with-passkeys/passkeys-program-firebase-functions-v1",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@firebase-with-passkeys/auth-get-user-api": "*",
+    "@firebase-with-passkeys/auth-service-type": "*",
+    "@firebase-with-passkeys/logger-type-server": "*",
+    "@firebase-with-passkeys/passkeys-authenticator-repository-firestore": "*",
+    "@firebase-with-passkeys/passkeys-authenticator-repository-type": "*",
+    "@firebase-with-passkeys/passkeys-challenge-repository-firestore": "*",
+    "@firebase-with-passkeys/passkeys-challenge-repository-type": "*",
+    "@firebase-with-passkeys/passkeys-config-reader-env": "*",
+    "@firebase-with-passkeys/passkeys-config-reader-type": "*",
+    "firebase-functions": "^4.4.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",
