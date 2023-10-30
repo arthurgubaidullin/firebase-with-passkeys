@@ -1,1 +1,1 @@
-export * from './lib/passkeys-firebase-functions-client-program';
+export * from './lib/program';
