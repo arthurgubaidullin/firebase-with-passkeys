@@ -1,1 +1,1 @@
-export * from './lib/firebase-app-client';
+export * from './lib/get-or-initialize-app';
