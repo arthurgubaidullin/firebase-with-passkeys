@@ -128,6 +128,9 @@
       "@firebase-with-passkeys/passkeys-verify-authentication-response-api": [
         "passkeys/verify-authentication-response/api/src/index.ts"
       ],
+      "@firebase-with-passkeys/passkeys-verify-authentication-response-contract": [
+        "passkeys/verify-authentication-response/contract/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-verify-authentication-response-use-case": [
         "passkeys/verify-authentication-response/use-case/src/index.ts"
       ],
