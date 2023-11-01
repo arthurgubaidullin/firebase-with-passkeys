@@ -31,8 +31,8 @@
       "@firebase-with-passkeys/auth-user-struct": [
         "auth/user-struct/src/index.ts"
       ],
-      "@firebase-with-passkeys/firebase-app-client": [
-        "firebase-app/client/src/index.ts"
+      "@firebase-with-passkeys/get-or-initialize-firebase-app": [
+        "firebase-app/get-or-initialize/src/index.ts"
       ],
       "@firebase-with-passkeys/https-callable-client-enforcer": [
         "https-callable-enforcer/client/src/index.ts"

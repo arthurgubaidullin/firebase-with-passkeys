@@ -1,16 +1,16 @@
 {
-  "name": "firebase-app-client",
+  "name": "get-or-initialize-firebase-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "firebase-app/client/src",
+  "sourceRoot": "firebase-app/get-or-initialize/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/firebase-app/client",
-        "main": "firebase-app/client/src/index.ts",
-        "tsConfig": "firebase-app/client/tsconfig.lib.json",
+        "outputPath": "dist/firebase-app/get-or-initialize",
+        "main": "firebase-app/get-or-initialize/src/index.ts",
+        "tsConfig": "firebase-app/get-or-initialize/tsconfig.lib.json",
         "assets": []
       }
     },
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "firebase-app/client/**/*.ts",
-          "firebase-app/client/package.json"
+          "firebase-app/get-or-initialize/**/*.ts",
+          "firebase-app/get-or-initialize/package.json"
         ]
       }
     },
@@ -29,7 +29,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/firebase-app/client"
+        "reportsDirectory": "../../coverage/firebase-app/get-or-initialize"
       }
     }
   },
