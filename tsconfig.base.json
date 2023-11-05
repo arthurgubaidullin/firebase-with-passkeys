@@ -28,6 +28,7 @@
       "@firebase-with-passkeys/auth-service-type": [
         "auth/service/type/src/index.ts"
       ],
+      "@firebase-with-passkeys/auth-state": ["auth/state/src/index.ts"],
       "@firebase-with-passkeys/auth-user-struct": [
         "auth/user-struct/src/index.ts"
       ],
