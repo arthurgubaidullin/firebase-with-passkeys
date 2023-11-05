@@ -1,3 +1,5 @@
+import { absurd } from 'fp-ts/function';
+
 const INITIAL = 'initial' as const;
 const FETCHING = 'fetching' as const;
 const SUCCESS = 'success' as const;
@@ -58,3 +60,27 @@ export const failure = <E>(error: E): Failure<E> =>
     _tag: FAILURE,
     error,
   });
+
+export const fold =
+  <E, A, B>(
+    onInitial: (result: Initial) => B,
+    onFetching: (result: Fetching) => B,
+    onFailure: (result: Failure<E>) => B,
+    onSuccess: (result: Success<A>) => B
+  ) =>
+  (result: FetchResult<E, A>): B => {
+    if (isInitial(result)) {
+      return onInitial(result);
+    }
+    if (isFetching(result)) {
+      return onFetching(result);
+    }
+    if (isSuccess(result)) {
+      return onSuccess(result);
+    }
+    if (isFailure(result)) {
+      return onFailure(result);
+    }
+    absurd(result);
+    throw new TypeError();
+  };
