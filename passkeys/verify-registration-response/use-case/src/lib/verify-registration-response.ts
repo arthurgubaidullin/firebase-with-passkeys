@@ -75,7 +75,7 @@ export const verifyRegistrationResponse =
       return E.left(new UserUnauthenticated());
     }
 
-    if (!user.value.email) {
+    if (O.isNone(user.value.email)) {
       return E.left(new UserHasNoEmail({ userId }));
     }
 
@@ -106,7 +106,7 @@ export const verifyRegistrationResponse =
       } = registrationInfo;
 
       const newAuthenticator: AuthenticatorDocument = {
-        username: user.value.email,
+        username: user.value.email.value,
         credentialID,
         credentialPublicKey,
         counter,

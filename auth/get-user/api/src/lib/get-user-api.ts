@@ -1,12 +1,12 @@
-import { UserRecord } from 'firebase-admin/auth';
-import * as O from 'fp-ts/Option';
-import * as AuthRepository from '@firebase-with-passkeys/auth-service-firebase';
-import * as functions from 'firebase-functions/v1';
 import { getUser, getUserByEmail } from '@firebase-with-passkeys/auth-get-user';
+import * as AuthRepository from '@firebase-with-passkeys/auth-service-firebase';
+import { UserStruct } from '@firebase-with-passkeys/auth-user-struct';
+import * as functions from 'firebase-functions/v1';
+import * as O from 'fp-ts/Option';
 
 interface GetUserApi {
-  readonly getUser: (userId: string) => Promise<O.Option<UserRecord>>;
-  readonly getUserByEmail: (email: string) => Promise<O.Option<UserRecord>>;
+  readonly getUser: (userId: string) => Promise<O.Option<UserStruct>>;
+  readonly getUserByEmail: (email: string) => Promise<O.Option<UserStruct>>;
 }
 
 export const getUserApi = (): GetUserApi => {

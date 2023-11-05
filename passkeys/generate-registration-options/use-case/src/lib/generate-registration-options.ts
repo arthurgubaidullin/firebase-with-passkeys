@@ -49,18 +49,18 @@ export const generateRegistrationOptions =
     if (O.isNone(user)) {
       return E.left(new UserUnauthenticated());
     }
-    if (!user.value.email) {
+    if (O.isNone(user.value.email)) {
       return E.left(new UserHasNoEmail({ userId: user.value.uid }));
     }
 
     const authenticators: readonly AuthenticatorDocument[] =
-      await getAuthenticatorDocuments(P)(user.value.email);
+      await getAuthenticatorDocuments(P)(user.value.email.value);
 
     const options = await _generateRegistrationOptions({
       rpName: config.NX_RP_NAME,
       rpID: config.NX_RP_ID,
       userID: user.value.uid,
-      userName: user.value.email,
+      userName: user.value.email.value,
       attestationType: 'none',
       excludeCredentials: authenticators.map((authenticator) => ({
         id: authenticator.credentialID,
