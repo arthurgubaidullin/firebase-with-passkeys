@@ -1,4 +1,4 @@
 export type UserStruct = {
-  uid: string;
-  email?: string;
+  readonly uid: string;
+  readonly email?: string;
 };
