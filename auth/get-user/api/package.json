@@ -3,11 +3,10 @@
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",
-    "fp-ts": "^2.16.1",
     "firebase-functions": "^4.4.1",
     "@firebase-with-passkeys/auth-get-user": "*",
-    "@firebase-with-passkeys/auth-user-struct": "*",
-    "@firebase-with-passkeys/auth-repository-firebase-auth": "*"
+    "@firebase-with-passkeys/auth-repository-firebase-auth": "*",
+    "@firebase-with-passkeys/auth-service-type": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
