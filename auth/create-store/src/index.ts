@@ -1,1 +1,1 @@
-export * from './lib/auth-create-store';
+export * from './lib/create-store';
