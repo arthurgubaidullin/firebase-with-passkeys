@@ -1,9 +1,9 @@
+import { GetUserByEmail } from '@firebase-with-passkeys/auth-repository-type';
 import { UserStruct } from '@firebase-with-passkeys/auth-user-struct';
 import * as O from 'fp-ts/Option';
 import * as TE from 'fp-ts/TaskEither';
 import * as TO from 'fp-ts/TaskOption';
 import { pipe } from 'fp-ts/function';
-import { GetUserByEmail } from './get-user-by-email-type';
 import { LogError } from './log-error';
 
 export const getUserByEmail =

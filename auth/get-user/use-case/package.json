@@ -4,7 +4,8 @@
   "dependencies": {
     "tslib": "^2.3.0",
     "fp-ts": "^2.16.1",
-    "@firebase-with-passkeys/auth-user-struct": "*"
+    "@firebase-with-passkeys/auth-user-struct": "*",
+    "@firebase-with-passkeys/auth-repository-type": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

@@ -3,7 +3,7 @@ import * as O from 'fp-ts/Option';
 import * as TE from 'fp-ts/TaskEither';
 import * as TO from 'fp-ts/TaskOption';
 import { pipe } from 'fp-ts/function';
-import { GetUser } from './get-user-type';
+import { GetUser } from '@firebase-with-passkeys/auth-repository-type';
 import { LogError } from './log-error';
 
 export const getUser =
