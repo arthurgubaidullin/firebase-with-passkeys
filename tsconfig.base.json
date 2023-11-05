@@ -16,6 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@firebase-with-passkeys/auth-create-store": [
+        "auth/create-store/src/index.ts"
+      ],
       "@firebase-with-passkeys/auth-get-user": [
         "auth/get-user/use-case/src/index.ts"
       ],
