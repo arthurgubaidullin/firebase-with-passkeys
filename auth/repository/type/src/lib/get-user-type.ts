@@ -1,6 +1,6 @@
 import { UserStruct } from '@firebase-with-passkeys/auth-user-struct';
-import * as E from 'fp-ts/Either';
+import * as TE from 'fp-ts/TaskEither';
 
 export interface GetUser {
-  readonly getUser: (userId: string) => Promise<E.Either<Error, UserStruct>>;
+  readonly getUser: (userId: string) => TE.TaskEither<Error, UserStruct>;
 }

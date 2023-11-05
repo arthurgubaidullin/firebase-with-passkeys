@@ -8,17 +8,15 @@ import { fromUserRecord } from '@firebase-with-passkeys/auth-user-struct';
 export const get = (): AuthRepository => {
   const auth = getAuth();
   return {
-    getUser: async (userId) =>
+    getUser: (userId) =>
       pipe(
-        TE.tryCatch(() => auth.getUser(userId), E.toError),
-        TE.map(fromUserRecord),
-        (t) => t()
+        TE.tryCatch(async () => auth.getUser(userId), E.toError),
+        TE.map(fromUserRecord)
       ),
-    getUserByEmail: async (email) =>
+    getUserByEmail: (email) =>
       pipe(
-        TE.tryCatch(() => auth.getUserByEmail(email), E.toError),
-        TE.map(fromUserRecord),
-        (t) => t()
+        TE.tryCatch(async () => auth.getUserByEmail(email), E.toError),
+        TE.map(fromUserRecord)
       ),
   };
 };

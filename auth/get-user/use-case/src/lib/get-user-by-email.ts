@@ -10,7 +10,7 @@ export const getUserByEmail =
   (P: GetUserByEmail & LogError) =>
   async (userId: string): Promise<O.Option<UserStruct>> =>
     pipe(
-      async () => P.getUserByEmail(userId),
+      P.getUserByEmail(userId),
       TE.orElseFirstIOK((e) => () => {
         P.error(e.message, e);
       }),
