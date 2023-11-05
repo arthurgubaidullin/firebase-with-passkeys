@@ -42,7 +42,7 @@ export const generateRegistrationOptions =
       return E.left(new UserUnauthenticated());
     }
 
-    const _user = P.getUser(userId);
+    const _user = P.getUser(userId)();
 
     const user = await _user;
 

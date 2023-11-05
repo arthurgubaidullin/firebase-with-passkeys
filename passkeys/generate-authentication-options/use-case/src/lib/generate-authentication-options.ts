@@ -33,7 +33,7 @@ export const generateAuthenticationOptions =
     }
     const data = _data.right;
 
-    const u = await P.getUserByEmail(data.username);
+    const u = await P.getUserByEmail(data.username)();
 
     if (O.isNone(u)) {
       return E.left(new UserNotFound());

@@ -67,7 +67,7 @@ export const verifyRegistrationResponse =
     const data = _data.right;
 
     const [user, expectedChallenge] = await Promise.all([
-      P.getUser(userId),
+      P.getUser(userId)(),
       getChallenge(P)(userId)(),
     ]);
 
