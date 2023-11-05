@@ -28,7 +28,9 @@
                   "firebase-admin",
                   "firebase-admin/*",
                   "firebase-functions",
-                  "firebase-functions/*"
+                  "firebase-functions/*",
+                  "mobx",
+                  "mobx-react-lite"
                 ]
               },
               {
