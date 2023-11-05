@@ -1,0 +1,37 @@
+{
+  "name": "auth-repository-type",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "auth/repository/type/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/auth/repository/type",
+        "main": "auth/repository/type/src/index.ts",
+        "tsConfig": "auth/repository/type/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "auth/repository/type/**/*.ts",
+          "auth/repository/type/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/auth/repository/type"
+      }
+    }
+  },
+  "tags": []
+}
