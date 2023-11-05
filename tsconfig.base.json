@@ -44,6 +44,7 @@
       "@firebase-with-passkeys/auth-user-struct": [
         "auth/user-struct/src/index.ts"
       ],
+      "@firebase-with-passkeys/fetch-result": ["fetch-result/src/index.ts"],
       "@firebase-with-passkeys/get-or-initialize-firebase-app": [
         "firebase-app/get-or-initialize/src/index.ts"
       ],

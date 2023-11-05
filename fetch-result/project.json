@@ -1,0 +1,37 @@
+{
+  "name": "fetch-result",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "fetch-result/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/fetch-result",
+        "main": "fetch-result/src/index.ts",
+        "tsConfig": "fetch-result/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "fetch-result/**/*.ts",
+          "fetch-result/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../coverage/fetch-result"
+      }
+    }
+  },
+  "tags": ["tier:lib"]
+}
