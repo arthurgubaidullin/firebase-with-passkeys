@@ -22,8 +22,16 @@
                 "onlyDependOnLibsWithTags": ["tier:lib"]
               },
               {
+                "sourceTag": "tier:domain",
+                "onlyDependOnLibsWithTags": ["tier:domain", "tier:lib"]
+              },
+              {
                 "sourceTag": "tier:use-case",
-                "onlyDependOnLibsWithTags": ["tier:use-case", "tier:lib"],
+                "onlyDependOnLibsWithTags": [
+                  "tier:use-case",
+                  "tier:domain",
+                  "tier:lib"
+                ],
                 "bannedExternalImports": [
                   "firebase-admin",
                   "firebase-admin/*",
