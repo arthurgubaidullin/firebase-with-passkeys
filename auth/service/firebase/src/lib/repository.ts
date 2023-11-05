@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase-admin/auth';
 import * as E from 'fp-ts/Either';
 import * as TE from 'fp-ts/TaskEither';
-import { AuthRepository } from './repository-type';
+import { AuthRepository } from '@firebase-with-passkeys/auth-repository-type';
 import { pipe } from 'fp-ts/function';
 import { fromUserRecord } from '@firebase-with-passkeys/auth-user-struct';
 
