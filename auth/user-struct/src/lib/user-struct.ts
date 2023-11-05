@@ -7,7 +7,7 @@ export interface UserStruct {
 
 export const fromUserRecord = (a: {
   uid: string;
-  email?: string;
+  email?: string | null;
 }): UserStruct => ({
   uid: a.uid,
   email: O.fromNullable(a.email),
