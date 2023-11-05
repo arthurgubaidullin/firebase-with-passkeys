@@ -1,5 +1,5 @@
 import { getUser, getUserByEmail } from '@firebase-with-passkeys/auth-get-user';
-import * as AuthRepository from '@firebase-with-passkeys/auth-service-firebase';
+import * as AuthRepository from '@firebase-with-passkeys/auth-repository-firebase-auth';
 import { UserStruct } from '@firebase-with-passkeys/auth-user-struct';
 import * as functions from 'firebase-functions/v1';
 import * as O from 'fp-ts/Option';

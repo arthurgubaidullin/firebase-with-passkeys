@@ -1,16 +1,16 @@
 {
-  "name": "auth-service-firebase",
+  "name": "auth-repository-firebase-auth",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "auth/service/firebase/src",
+  "sourceRoot": "auth/repository/firebase-auth/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/auth/service/firebase",
-        "main": "auth/service/firebase/src/index.ts",
-        "tsConfig": "auth/service/firebase/tsconfig.lib.json",
+        "outputPath": "dist/auth/repository/firebase-auth",
+        "main": "auth/repository/firebase-auth/src/index.ts",
+        "tsConfig": "auth/repository/firebase-auth/tsconfig.lib.json",
         "assets": []
       }
     },
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "auth/service/firebase/**/*.ts",
-          "auth/service/firebase/package.json"
+          "auth/repository/firebase-auth/**/*.ts",
+          "auth/repository/firebase-auth/package.json"
         ]
       }
     },
@@ -29,7 +29,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../../coverage/auth/service/firebase"
+        "reportsDirectory": "../../../coverage/auth/repository/firebase-auth"
       }
     }
   },

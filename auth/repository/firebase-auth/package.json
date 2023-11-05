@@ -1,5 +1,5 @@
 {
-  "name": "@firebase-with-passkeys/auth-service-firebase",
+  "name": "@firebase-with-passkeys/auth-repository-firebase-auth",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",

@@ -6,8 +6,8 @@
     "fp-ts": "^2.16.1",
     "firebase-functions": "^4.4.1",
     "@firebase-with-passkeys/auth-get-user": "*",
-    "@firebase-with-passkeys/auth-service-firebase": "*",
-    "@firebase-with-passkeys/auth-user-struct": "*"
+    "@firebase-with-passkeys/auth-user-struct": "*",
+    "@firebase-with-passkeys/auth-repository-firebase-auth": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
