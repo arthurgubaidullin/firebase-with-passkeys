@@ -34,9 +34,6 @@ export const isFailure = (process: Process): process is Failure =>
 
 export const initial: Initial = Object.freeze({
   _tag: 'initial',
-  email: null,
-  password: null,
-  error: null,
 });
 
 const fetching = (email: string, password: string): Fetching => ({
