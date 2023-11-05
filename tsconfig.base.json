@@ -44,6 +44,9 @@
       "@firebase-with-passkeys/logger-type-server": [
         "logger/type/server/src/index.ts"
       ],
+      "@firebase-with-passkeys/observable-type": [
+        "observable/type/src/index.ts"
+      ],
       "@firebase-with-passkeys/passkeys-authenticator-document": [
         "passkeys/authenticator/document/src/index.ts"
       ],
