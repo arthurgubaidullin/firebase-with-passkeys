@@ -34,9 +34,6 @@
       "@firebase-with-passkeys/get-or-initialize-firebase-app": [
         "firebase-app/get-or-initialize/src/index.ts"
       ],
-      "@firebase-with-passkeys/https-callable-client-enforcer": [
-        "https-callable-enforcer/client/src/index.ts"
-      ],
       "@firebase-with-passkeys/logger-type-server": [
         "logger/type/server/src/index.ts"
       ],
