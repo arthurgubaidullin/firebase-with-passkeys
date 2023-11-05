@@ -5,7 +5,6 @@
     "tslib": "^2.3.0",
     "@firebase-with-passkeys/auth-state": "*",
     "@firebase-with-passkeys/auth-user-struct": "*",
-    "@firebase-with-passkeys/get-or-initialize-firebase-app": "*",
     "firebase": "^10.5.0",
     "fp-ts": "^2.16.1",
     "mobx": "^6.10.2",
