@@ -1,7 +1,4 @@
-interface User {
-  readonly uid: string;
-  readonly email?: string | null;
-}
+import { UserStruct } from '@firebase-with-passkeys/auth-user-struct';
 
 const UNDEFINED = 'undefined' as const;
 const FETCHING = 'fetching' as const;
@@ -18,7 +15,7 @@ interface Fetching {
 
 interface Authorized {
   readonly _tag: typeof AUTHORIZED;
-  readonly currentUser: User;
+  readonly currentUser: UserStruct;
 }
 
 interface NotAuthorized {
@@ -42,7 +39,7 @@ export const initial: Undefined = Object.freeze({ _tag: UNDEFINED });
 
 const fetching: Fetching = Object.freeze({ _tag: FETCHING });
 
-const authorized = (user: User): Authorized => ({
+const authorized = (user: UserStruct): Authorized => ({
   _tag: AUTHORIZED,
   currentUser: user,
 });
@@ -55,7 +52,7 @@ export const startFetching = (a: AuthState): AuthState =>
   isUndefined(a) ? fetching : a;
 
 export const userAuthorized =
-  (user: User) =>
+  (user: UserStruct) =>
   (state: AuthState): AuthState =>
     isFetching(state) || isNotAuthorized(state) ? authorized(user) : state;
 
