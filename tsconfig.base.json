@@ -22,9 +22,6 @@
       "@firebase-with-passkeys/auth-create-store-api": [
         "auth/create-store-api/src/index.ts"
       ],
-      "@firebase-with-passkeys/auth-create-user-with-email-and-password-process-struct": [
-        "auth/create-user-with-email-and-password/process-struct/src/index.ts"
-      ],
       "@firebase-with-passkeys/auth-get-user": [
         "auth/get-user/use-case/src/index.ts"
       ],
