@@ -18,6 +18,10 @@
                 "onlyDependOnLibsWithTags": ["*"]
               },
               {
+                "sourceTag": "tier:lib",
+                "onlyDependOnLibsWithTags": ["tier:lib"]
+              },
+              {
                 "sourceTag": "tier:use-case",
                 "onlyDependOnLibsWithTags": ["tier:use-case", "tier:lib"],
                 "bannedExternalImports": [
