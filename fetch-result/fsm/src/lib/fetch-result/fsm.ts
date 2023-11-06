@@ -1,7 +1,14 @@
 import * as FR from '@firebase-with-passkeys/fetch-result-type';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
-export type { FetchResult } from '@firebase-with-passkeys/fetch-result-type';
+export {
+  isFailure,
+  isFetching,
+  isInitial,
+  isSuccess,
+  FetchResult,
+  fold,
+} from '@firebase-with-passkeys/fetch-result-type';
 
 export const initial = FR.initial;
 
