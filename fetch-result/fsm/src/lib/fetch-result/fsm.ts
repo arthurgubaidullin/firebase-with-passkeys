@@ -6,9 +6,9 @@ export {
   isFetching,
   isInitial,
   isSuccess,
-  FetchResult,
   fold,
 } from '@firebase-with-passkeys/fetch-result-type';
+export type { FetchResult } from '@firebase-with-passkeys/fetch-result-type';
 
 export const initial = FR.initial;
 

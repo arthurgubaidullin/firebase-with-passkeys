@@ -10,9 +10,9 @@ export {
   isFetching,
   isInitial,
   isSuccess,
-  FetchResult,
   fold,
 } from '@firebase-with-passkeys/fetch-result-fsm';
+export type { FetchResult } from '@firebase-with-passkeys/fetch-result-fsm';
 
 type ReadonlyObservable<A> = { readonly get: () => A };
 
