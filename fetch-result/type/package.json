@@ -1,5 +1,5 @@
 {
-  "name": "@firebase-with-passkeys/fetch-result",
+  "name": "@firebase-with-passkeys/fetch-result-type",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",

@@ -1,16 +1,16 @@
 {
-  "name": "fetch-result",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "fetch-result/src",
+  "name": "fetch-result-type",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "fetch-result/type/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/fetch-result",
-        "main": "fetch-result/src/index.ts",
-        "tsConfig": "fetch-result/tsconfig.lib.json",
+        "outputPath": "dist/fetch-result/type",
+        "main": "fetch-result/type/src/index.ts",
+        "tsConfig": "fetch-result/type/tsconfig.lib.json",
         "assets": []
       }
     },
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "fetch-result/**/*.ts",
-          "fetch-result/package.json"
+          "fetch-result/type/**/*.ts",
+          "fetch-result/type/package.json"
         ]
       }
     },
@@ -29,7 +29,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../coverage/fetch-result"
+        "reportsDirectory": "../../coverage/fetch-result/type"
       }
     }
   },
