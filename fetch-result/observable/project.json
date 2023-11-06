@@ -1,0 +1,37 @@
+{
+  "name": "fetch-result-observable",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "fetch-result/observable/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/fetch-result/observable",
+        "main": "fetch-result/observable/src/index.ts",
+        "tsConfig": "fetch-result/observable/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "fetch-result/observable/**/*.ts",
+          "fetch-result/observable/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/fetch-result/observable"
+      }
+    }
+  },
+  "tags": []
+}

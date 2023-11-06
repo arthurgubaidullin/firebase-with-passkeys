@@ -44,6 +44,9 @@
       "@firebase-with-passkeys/fetch-result-fsm": [
         "fetch-result/fsm/src/index.ts"
       ],
+      "@firebase-with-passkeys/fetch-result-observable": [
+        "fetch-result/observable/src/index.ts"
+      ],
       "@firebase-with-passkeys/fetch-result-type": [
         "fetch-result/type/src/index.ts"
       ],
