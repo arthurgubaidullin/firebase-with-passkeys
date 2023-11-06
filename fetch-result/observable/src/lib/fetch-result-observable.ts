@@ -1,16 +1,17 @@
+import * as FR from '@firebase-with-passkeys/fetch-result-fsm';
 import * as E from 'fp-ts/Either';
+import * as O from 'fp-ts/Option';
 import * as T from 'fp-ts/Task';
 import * as TE from 'fp-ts/TaskEither';
 import * as TO from 'fp-ts/TaskOption';
 import { constVoid, pipe } from 'fp-ts/function';
 import { action, computed, observable } from 'mobx';
-import * as FR from '@firebase-with-passkeys/fetch-result-fsm';
 export {
+  fold,
   isFailure,
   isFetching,
   isInitial,
   isSuccess,
-  fold,
 } from '@firebase-with-passkeys/fetch-result-fsm';
 export type { FetchResult } from '@firebase-with-passkeys/fetch-result-fsm';
 
@@ -23,11 +24,26 @@ type FetchResultApi<I, E, A> = FR.FetchResult<E, A> & {
 export const createFetchResultObservable = <I, E, A>(
   f: (i: I) => TE.TaskEither<E, A>
 ): ReadonlyObservable<FetchResultApi<I, E, A>> => {
-  const box = observable.box(FR.initial, { deep: false });
+  const box = observable.box<FR.FetchResult<E, A>>(FR.initial, { deep: false });
 
-  const fetch = action(() => FR.fetch<E, A>(box.get()));
-  const success = action((a: A) => FR.success<E, A>(a)(box.get()));
-  const failure = action((e: E) => FR.failure<E, A>(e)(box.get()));
+  const fetch = action(() =>
+    pipe(
+      FR.fetch<E, A>(box.get()),
+      O.map((r) => box.set(r))
+    )
+  );
+  const success = action((a: A) =>
+    pipe(
+      FR.success<E, A>(a)(box.get()),
+      O.map((r) => box.set(r))
+    )
+  );
+  const failure = action((e: E) =>
+    pipe(
+      FR.failure<E, A>(e)(box.get()),
+      O.map((r) => box.set(r))
+    )
+  );
 
   const makeFetcher =
     <I>(f: (i: I) => TE.TaskEither<E, A>) =>
