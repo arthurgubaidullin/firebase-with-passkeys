@@ -41,6 +41,9 @@
       "@firebase-with-passkeys/auth-user-struct": [
         "auth/user-struct/src/index.ts"
       ],
+      "@firebase-with-passkeys/fetch-result-fsm": [
+        "fetch-result/fsm/src/index.ts"
+      ],
       "@firebase-with-passkeys/fetch-result-type": [
         "fetch-result/type/src/index.ts"
       ],

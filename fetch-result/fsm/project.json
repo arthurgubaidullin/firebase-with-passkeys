@@ -1,0 +1,37 @@
+{
+  "name": "fetch-result-fsm",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "fetch-result/fsm/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/fetch-result/fsm",
+        "main": "fetch-result/fsm/src/index.ts",
+        "tsConfig": "fetch-result/fsm/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "fetch-result/fsm/**/*.ts",
+          "fetch-result/fsm/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/fetch-result/fsm"
+      }
+    }
+  },
+  "tags": []
+}
