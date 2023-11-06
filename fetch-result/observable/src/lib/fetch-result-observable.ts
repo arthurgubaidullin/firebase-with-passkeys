@@ -5,6 +5,14 @@ import * as TO from 'fp-ts/TaskOption';
 import { constVoid, pipe } from 'fp-ts/function';
 import { action, computed, observable } from 'mobx';
 import * as FR from '@firebase-with-passkeys/fetch-result-fsm';
+export {
+  isFailure,
+  isFetching,
+  isInitial,
+  isSuccess,
+  FetchResult,
+  fold,
+} from '@firebase-with-passkeys/fetch-result-fsm';
 
 type ReadonlyObservable<A> = { readonly get: () => A };
 
