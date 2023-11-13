@@ -1,0 +1,37 @@
+{
+  "name": "firebase-app-functions",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "firebase-app/functions/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/firebase-app/functions",
+        "main": "firebase-app/functions/src/index.ts",
+        "tsConfig": "firebase-app/functions/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "firebase-app/functions/**/*.ts",
+          "firebase-app/functions/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/firebase-app/functions"
+      }
+    }
+  },
+  "tags": []
+}
