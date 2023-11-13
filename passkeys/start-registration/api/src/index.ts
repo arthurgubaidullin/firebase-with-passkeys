@@ -1,1 +1,1 @@
-export * from './lib/start-registration-api';
+export * from './lib/ext-api';
