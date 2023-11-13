@@ -53,6 +53,9 @@
       "@firebase-with-passkeys/firebase-app-config": [
         "firebase-app/config/src/index.ts"
       ],
+      "@firebase-with-passkeys/firebase-app-instance": [
+        "firebase-app/instance/src/index.ts"
+      ],
       "@firebase-with-passkeys/get-or-initialize-firebase-app": [
         "firebase-app/get-or-initialize/src/index.ts"
       ],

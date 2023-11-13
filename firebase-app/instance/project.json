@@ -1,0 +1,37 @@
+{
+  "name": "firebase-app-instance",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "firebase-app/instance/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/firebase-app/instance",
+        "main": "firebase-app/instance/src/index.ts",
+        "tsConfig": "firebase-app/instance/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "firebase-app/instance/**/*.ts",
+          "firebase-app/instance/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/firebase-app/instance"
+      }
+    }
+  },
+  "tags": ["tier:api"]
+}
