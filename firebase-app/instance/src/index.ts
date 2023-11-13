@@ -1,1 +1,1 @@
-export * from './lib/firebase-app-instance';
+export * from './lib/instance';
