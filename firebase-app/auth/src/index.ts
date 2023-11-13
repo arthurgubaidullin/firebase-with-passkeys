@@ -1,1 +1,1 @@
-export * from './lib/firebase-app-auth';
+export * from './lib/get-auth';
