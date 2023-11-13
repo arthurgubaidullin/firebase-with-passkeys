@@ -1,1 +1,1 @@
-export * from './lib/start-authentication-api';
+export * from './lib/start-authentication-ext-api';
