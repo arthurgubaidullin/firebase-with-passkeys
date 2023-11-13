@@ -1,7 +1,12 @@
 {
   "name": "@firebase-with-passkeys/firebase-app-config",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "firebase": "^10.5.0",
+    "fp-ts": "^2.16.1",
+    "io-ts": "^2.2.20",
+    "io-ts-types": "^0.5.19"
+  },
   "main": "./index.js",
   "module": "./index.mjs",
   "typings": "./index.d.ts"
