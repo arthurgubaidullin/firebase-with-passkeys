@@ -1,1 +1,1 @@
-export * from './lib/firebase-app-functions';
+export * from './lib/get-functions';
