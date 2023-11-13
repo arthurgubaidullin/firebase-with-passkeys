@@ -1,1 +1,1 @@
-export * from './lib/firebase-app-config';
+export * from './lib/config';
