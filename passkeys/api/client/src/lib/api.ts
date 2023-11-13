@@ -1,5 +1,5 @@
 import { Functions } from 'firebase/functions';
-import { startAuthenticationApi } from './start-authentication-api';
+import { startAuthenticationApi } from '@firebase-with-passkeys/passkeys-start-authentication-api';
 import { PasskeysClientApi } from './api-type';
 import { startRegistrationApi } from '@firebase-with-passkeys/passkeys-start-registration-api';
 
