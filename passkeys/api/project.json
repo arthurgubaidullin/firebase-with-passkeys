@@ -1,16 +1,16 @@
 {
-  "name": "passkeys-api-client",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "passkeys/api/client/src",
+  "name": "passkeys-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "passkeys/api/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/passkeys/api/client",
-        "main": "passkeys/api/client/src/index.ts",
-        "tsConfig": "passkeys/api/client/tsconfig.lib.json",
+        "outputPath": "dist/passkeys/api",
+        "main": "passkeys/api/src/index.ts",
+        "tsConfig": "passkeys/api/tsconfig.lib.json",
         "assets": []
       }
     },
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "passkeys/api/client/**/*.ts",
-          "passkeys/api/client/package.json"
+          "passkeys/api/**/*.ts",
+          "passkeys/api/package.json"
         ]
       }
     },
@@ -29,7 +29,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../../coverage/passkeys/api/client"
+        "reportsDirectory": "../../coverage/passkeys/api"
       }
     }
   },
