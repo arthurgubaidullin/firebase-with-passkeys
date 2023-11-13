@@ -50,6 +50,9 @@
       "@firebase-with-passkeys/fetch-result-type": [
         "fetch-result/type/src/index.ts"
       ],
+      "@firebase-with-passkeys/firebase-app-auth": [
+        "firebase-app/auth/src/index.ts"
+      ],
       "@firebase-with-passkeys/firebase-app-config": [
         "firebase-app/config/src/index.ts"
       ],
