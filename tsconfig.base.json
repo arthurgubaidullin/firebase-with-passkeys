@@ -71,7 +71,6 @@
       "@firebase-with-passkeys/observable-type": [
         "observable/type/src/index.ts"
       ],
-      "@firebase-with-passkeys/passkeys-api": ["passkeys/api/src/index.ts"],
       "@firebase-with-passkeys/passkeys-authenticator-document": [
         "passkeys/authenticator/document/src/index.ts"
       ],
