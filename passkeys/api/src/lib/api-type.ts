@@ -7,5 +7,3 @@ export interface StartAuthenticationApi {
 export interface StartRegistrationApi {
   readonly startRegistration: _StartRegistrationApi;
 }
-
-export type PasskeysClientApi = StartAuthenticationApi & StartRegistrationApi;
