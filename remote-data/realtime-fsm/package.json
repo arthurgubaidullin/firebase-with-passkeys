@@ -2,7 +2,9 @@
   "name": "@firebase-with-passkeys/remote-data-realtime-fsm",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@firebase-with-passkeys/remote-data-type": "*",
+    "fp-ts": "^2.16.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",
