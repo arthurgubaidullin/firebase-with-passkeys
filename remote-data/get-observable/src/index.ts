@@ -1,1 +1,1 @@
-export * from './lib/fetch-result-observable';
+export * from './lib/get-observable';
