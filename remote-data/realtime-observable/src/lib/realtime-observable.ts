@@ -23,20 +23,22 @@ export const createRealtimeObservable = <E, A>(
 
   const fetch: () => O.Option<void> = action(() =>
     pipe(
-      FSM.fetch<E, A>(box.get()),
+      box.get(),
+      FSM.fetch,
       O.map((r) => box.set(r))
     )
   );
-  const next: (a: A) => O.Option<void> = action((a: A) =>
+  const successOrNext: (a: A) => O.Option<void> = action((a: A) =>
     pipe(
       box.get(),
       FSM.success<E, A>(a),
       O.map((r) => box.set(r))
     )
   );
-  const error: (e: E) => O.Option<void> = action((e: E) =>
+  const failure: (e: E) => O.Option<void> = action((e: E) =>
     pipe(
-      FSM.failure<E, A>(e)(box.get()),
+      box.get(),
+      FSM.failure<E, A>(e),
       O.map((r) => box.set(r))
     )
   );
@@ -48,10 +50,10 @@ export const createRealtimeObservable = <E, A>(
         (): Unsubscribe =>
           subscribe({
             next: (a) => {
-              next(a);
+              successOrNext(a);
             },
             error: (e) => {
-              error(e);
+              failure(e);
             },
             complete: () => {
               box.set(FSM.initial);
