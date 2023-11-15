@@ -1,4 +1,4 @@
-import * as FR from '@firebase-with-passkeys/remote-data-get';
+import * as RDG from '@firebase-with-passkeys/remote-data-get';
 import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import * as T from 'fp-ts/Task';
@@ -13,34 +13,36 @@ export {
   isInitial,
   isSuccess,
 } from '@firebase-with-passkeys/remote-data-get';
-export type { RemoteData as FetchResult } from '@firebase-with-passkeys/remote-data-get';
+export type { RemoteData } from '@firebase-with-passkeys/remote-data-get';
 
 type ReadonlyObservable<A> = { readonly get: () => A };
 
-type FetchResultApi<I, E, A> = FR.RemoteData<E, A> & {
+type FetchResultApi<I, E, A> = RDG.RemoteData<E, A> & {
   readonly fetch: (i: I) => Promise<void>;
 };
 
 export const createFetchResultObservable = <I, E, A>(
   f: (i: I) => TE.TaskEither<E, A>
 ): ReadonlyObservable<FetchResultApi<I, E, A>> => {
-  const box = observable.box<FR.RemoteData<E, A>>(FR.initial, { deep: false });
+  const box = observable.box<RDG.RemoteData<E, A>>(RDG.initial, {
+    deep: false,
+  });
 
   const fetch = action(() =>
     pipe(
-      FR.fetch<E, A>(box.get()),
+      RDG.fetch<E, A>(box.get()),
       O.map((r) => box.set(r))
     )
   );
   const success = action((a: A) =>
     pipe(
-      FR.success<E, A>(a)(box.get()),
+      RDG.success<E, A>(a)(box.get()),
       O.map((r) => box.set(r))
     )
   );
   const failure = action((e: E) =>
     pipe(
-      FR.failure<E, A>(e)(box.get()),
+      RDG.failure<E, A>(e)(box.get()),
       O.map((r) => box.set(r))
     )
   );
