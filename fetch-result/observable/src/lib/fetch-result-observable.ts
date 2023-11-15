@@ -1,4 +1,4 @@
-import * as FR from '@firebase-with-passkeys/fetch-result-fsm';
+import * as FR from '@firebase-with-passkeys/remote-data-get';
 import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
 import * as T from 'fp-ts/Task';
@@ -12,8 +12,8 @@ export {
   isFetching,
   isInitial,
   isSuccess,
-} from '@firebase-with-passkeys/fetch-result-fsm';
-export type { FetchResult } from '@firebase-with-passkeys/fetch-result-fsm';
+} from '@firebase-with-passkeys/remote-data-get';
+export type { FetchResult } from '@firebase-with-passkeys/remote-data-get';
 
 type ReadonlyObservable<A> = { readonly get: () => A };
 

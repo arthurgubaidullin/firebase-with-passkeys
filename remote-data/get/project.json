@@ -1,16 +1,16 @@
 {
-  "name": "fetch-result-fsm",
+  "name": "remote-data-get",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "fetch-result/fsm/src",
+  "sourceRoot": "remote-data/get/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/fetch-result/fsm",
-        "main": "fetch-result/fsm/src/index.ts",
-        "tsConfig": "fetch-result/fsm/tsconfig.lib.json",
+        "outputPath": "dist/remote-data/get",
+        "main": "remote-data/get/src/index.ts",
+        "tsConfig": "remote-data/get/tsconfig.lib.json",
         "assets": []
       }
     },
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "fetch-result/fsm/**/*.ts",
-          "fetch-result/fsm/package.json"
+          "remote-data/get/**/*.ts",
+          "remote-data/get/package.json"
         ]
       }
     },
@@ -29,7 +29,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/fetch-result/fsm"
+        "reportsDirectory": "../../coverage/remote-data/get"
       }
     }
   },
