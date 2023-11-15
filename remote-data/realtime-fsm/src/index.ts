@@ -1,1 +1,1 @@
-export * from './lib/remote-data-realtime-fsm';
+export * from './lib/fsm';
