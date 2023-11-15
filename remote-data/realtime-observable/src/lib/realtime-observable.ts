@@ -1,10 +1,10 @@
 import * as FSM from '@firebase-with-passkeys/remote-data-realtime-fsm';
 import * as O from 'fp-ts/Option';
 import { constVoid, pipe } from 'fp-ts/function';
-import { action, computed, observable } from 'mobx';
-import { Unsubscribe } from './unsubscribe-type';
+import { action, observable, onBecomeObserved, onBecomeUnobserved } from 'mobx';
 import { Observer } from './observer-type';
 import { ReadonlyObservable } from './readonly-observable-type';
+import { Unsubscribe } from './unsubscribe-type';
 export {
   fold,
   isFailure,
@@ -14,13 +14,9 @@ export {
 } from '@firebase-with-passkeys/remote-data-realtime-fsm';
 export type { RemoteData } from '@firebase-with-passkeys/remote-data-realtime-fsm';
 
-type RemoteDataRealtimeApi<E, A> = FSM.RemoteData<E, A> & {
-  readonly subscribe: () => Unsubscribe;
-};
-
 export const createRealtimeObservable = <E, A>(
   subscribe: (observer: Observer<E, A>) => Unsubscribe
-): ReadonlyObservable<RemoteDataRealtimeApi<E, A>> => {
+): ReadonlyObservable<FSM.RemoteData<E, A>> => {
   const box = observable.box<FSM.RemoteData<E, A>>(FSM.initial, {
     deep: false,
   });
@@ -72,8 +68,15 @@ export const createRealtimeObservable = <E, A>(
       O.getOrElse(() => constVoid)
     );
 
-  return computed(() => ({
-    ...box.get(),
-    subscribe: _subscribe,
-  }));
+  let unsubscribe: Unsubscribe;
+
+  onBecomeObserved(box, () => {
+    unsubscribe = _subscribe();
+  });
+
+  onBecomeUnobserved(box, () => {
+    unsubscribe();
+  });
+
+  return box;
 };
