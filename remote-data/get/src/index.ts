@@ -1,1 +1,1 @@
-export * from './lib/fetch-result/fsm';
+export * from './lib/fsm';
