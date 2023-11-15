@@ -2,7 +2,10 @@
   "name": "@firebase-with-passkeys/remote-data/realtime-observable",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@firebase-with-passkeys/remote-data-realtime-fsm": "*",
+    "fp-ts": "^2.16.1",
+    "mobx": "^6.10.2"
   },
   "type": "commonjs",
   "main": "./src/index.js",
