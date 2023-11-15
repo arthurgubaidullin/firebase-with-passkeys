@@ -1,4 +1,4 @@
-import * as FR from '@firebase-with-passkeys/fetch-result-type';
+import * as FR from '@firebase-with-passkeys/remote-data-type';
 import { pipe } from 'fp-ts/function';
 import { observer } from 'mobx-react-lite';
 import { createCompleteStore } from './complete-store';

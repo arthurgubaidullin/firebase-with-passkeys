@@ -47,9 +47,6 @@
       "@firebase-with-passkeys/fetch-result-observable": [
         "fetch-result/observable/src/index.ts"
       ],
-      "@firebase-with-passkeys/fetch-result-type": [
-        "fetch-result/type/src/index.ts"
-      ],
       "@firebase-with-passkeys/firebase-app-auth": [
         "firebase-app/auth/src/index.ts"
       ],
@@ -194,6 +191,9 @@
       ],
       "@firebase-with-passkeys/passkeys-verify-registration-response-use-case": [
         "passkeys/verify-registration-response/use-case/src/index.ts"
+      ],
+      "@firebase-with-passkeys/remote-data-type": [
+        "remote-data/type/src/index.ts"
       ],
       "@firebase-with-passkeys/uint8-array": [
         "io-ts-types/uint8-array/src/index.ts"

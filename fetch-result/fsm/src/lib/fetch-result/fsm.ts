@@ -1,4 +1,4 @@
-import * as FR from '@firebase-with-passkeys/fetch-result-type';
+import * as FR from '@firebase-with-passkeys/remote-data-type';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 export {
@@ -7,8 +7,8 @@ export {
   isInitial,
   isSuccess,
   fold,
-} from '@firebase-with-passkeys/fetch-result-type';
-export type { FetchResult } from '@firebase-with-passkeys/fetch-result-type';
+} from '@firebase-with-passkeys/remote-data-type';
+export type { FetchResult } from '@firebase-with-passkeys/remote-data-type';
 
 export const initial = FR.initial;
 
