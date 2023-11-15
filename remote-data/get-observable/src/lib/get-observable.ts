@@ -30,19 +30,22 @@ export const createGetObservable = <I, E, A>(
 
   const fetch = action(() =>
     pipe(
-      RDG.fetch<E, A>(box.get()),
+      box.get(),
+      RDG.fetch,
       O.map((r) => box.set(r))
     )
   );
   const success = action((a: A) =>
     pipe(
-      RDG.success<E, A>(a)(box.get()),
+      box.get(),
+      RDG.success<E, A>(a),
       O.map((r) => box.set(r))
     )
   );
   const failure = action((e: E) =>
     pipe(
-      RDG.failure<E, A>(e)(box.get()),
+      box.get(),
+      RDG.failure<E, A>(e),
       O.map((r) => box.set(r))
     )
   );
