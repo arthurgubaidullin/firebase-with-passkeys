@@ -1,0 +1,37 @@
+{
+  "name": "remote-data/realtime-observable",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "remote-data/realtime-observable/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/remote-data/realtime-observable",
+        "main": "remote-data/realtime-observable/src/index.ts",
+        "tsConfig": "remote-data/realtime-observable/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "remote-data/realtime-observable/**/*.ts",
+          "remote-data/realtime-observable/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/remote-data/realtime-observable"
+      }
+    }
+  },
+  "tags": ["tier:api"]
+}
