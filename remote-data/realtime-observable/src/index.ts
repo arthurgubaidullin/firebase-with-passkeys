@@ -1,1 +1,1 @@
-export * from './lib/remote-data/realtime-observable';
+export * from './lib/realtime-observable';
