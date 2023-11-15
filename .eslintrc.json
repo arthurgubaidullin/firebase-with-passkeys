@@ -18,6 +18,10 @@
                 "onlyDependOnLibsWithTags": ["*"]
               },
               {
+                "sourceTag": "slice:remote-data",
+                "onlyDependOnLibsWithTags": ["slice:remote-data"]
+              },
+              {
                 "sourceTag": "tier:lib",
                 "onlyDependOnLibsWithTags": ["tier:lib"]
               },
