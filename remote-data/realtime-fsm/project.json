@@ -1,0 +1,37 @@
+{
+  "name": "remote-data-realtime-fsm",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "remote-data/realtime-fsm/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/remote-data/realtime-fsm",
+        "main": "remote-data/realtime-fsm/src/index.ts",
+        "tsConfig": "remote-data/realtime-fsm/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "remote-data/realtime-fsm/**/*.ts",
+          "remote-data/realtime-fsm/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/remote-data/realtime-fsm"
+      }
+    }
+  },
+  "tags": ["tier:use-case"]
+}

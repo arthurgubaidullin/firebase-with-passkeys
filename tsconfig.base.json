@@ -192,6 +192,9 @@
       "@firebase-with-passkeys/remote-data-get-observable": [
         "remote-data/get-observable/src/index.ts"
       ],
+      "@firebase-with-passkeys/remote-data-realtime-fsm": [
+        "remote-data/realtime-fsm/src/index.ts"
+      ],
       "@firebase-with-passkeys/remote-data-type": [
         "remote-data/type/src/index.ts"
       ],
