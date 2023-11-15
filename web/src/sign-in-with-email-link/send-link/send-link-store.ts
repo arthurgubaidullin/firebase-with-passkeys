@@ -1,7 +1,7 @@
 import { getAuth } from '@firebase-with-passkeys/firebase-app-auth';
 import { ReadonlyObservable } from '@firebase-with-passkeys/observable-type';
 import {
-  createFetchResultObservable,
+  createGetObservable,
   RemoteData,
 } from '@firebase-with-passkeys/remote-data-get-observable';
 import { sendSignInLinkToEmail } from 'firebase/auth';
@@ -17,7 +17,7 @@ type SendSignInLinkToEmailApi = RemoteData<Error, void> & {
 type SendSignInLinkToEmailStore = ReadonlyObservable<SendSignInLinkToEmailApi>;
 
 export const createSendLinkStore = (): SendSignInLinkToEmailStore => {
-  const box = createFetchResultObservable((email: string) => async () => {
+  const box = createGetObservable((email: string) => async () => {
     try {
       await sendSignInLinkToEmail(getAuth(), email, actionCodeSettings);
     } catch (error) {

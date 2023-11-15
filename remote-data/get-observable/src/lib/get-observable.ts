@@ -17,13 +17,13 @@ export type { RemoteData } from '@firebase-with-passkeys/remote-data-get';
 
 type ReadonlyObservable<A> = { readonly get: () => A };
 
-type FetchResultApi<I, E, A> = RDG.RemoteData<E, A> & {
+type RemoteDataApi<I, E, A> = RDG.RemoteData<E, A> & {
   readonly fetch: (i: I) => Promise<void>;
 };
 
-export const createFetchResultObservable = <I, E, A>(
+export const createGetObservable = <I, E, A>(
   f: (i: I) => TE.TaskEither<E, A>
-): ReadonlyObservable<FetchResultApi<I, E, A>> => {
+): ReadonlyObservable<RemoteDataApi<I, E, A>> => {
   const box = observable.box<RDG.RemoteData<E, A>>(RDG.initial, {
     deep: false,
   });

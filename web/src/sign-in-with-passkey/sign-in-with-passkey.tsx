@@ -1,11 +1,12 @@
-import * as FRO from '@firebase-with-passkeys/remote-data-get-observable';
+import {
+  createGetObservable,
+  fold,
+} from '@firebase-with-passkeys/remote-data-get-observable';
 import { startAuthenticationApi } from '@firebase-with-passkeys/passkeys-start-authentication-api';
 import { pipe } from 'fp-ts/function';
 import { observer } from 'mobx-react-lite';
 
-const startAuthenticationProcess = FRO.createFetchResultObservable(
-  startAuthenticationApi
-);
+const startAuthenticationProcess = createGetObservable(startAuthenticationApi);
 
 export const SignInWithPasskey = observer(() => {
   const process = startAuthenticationProcess.get();
@@ -42,7 +43,7 @@ export const SignInWithPasskey = observer(() => {
 
   return pipe(
     process,
-    FRO.fold(
+    fold(
       () => form,
       () => <div>Fetching…</div>,
       (e) => (
