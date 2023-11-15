@@ -33,5 +33,5 @@
       }
     }
   },
-  "tags": ["tier:use-case"]
+  "tags": ["tier:use-case", "slice:remote-data"]
 }
