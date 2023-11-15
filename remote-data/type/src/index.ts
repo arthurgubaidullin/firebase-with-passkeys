@@ -1,1 +1,1 @@
-export * from './lib/fetch-result';
+export * from './lib/remote-data';
