@@ -7,6 +7,7 @@ import { FirebaseApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
+import { IO } from 'fp-ts/IO';
 
 export const onAuthStateChangedAdapter =
   (firebaseApp: FirebaseApp) => (f: (user: O.Option<UserStruct>) => void) => {
@@ -17,7 +18,8 @@ export const onAuthStateChangedAdapter =
   };
 
 export const onAuthStateChangedAdapter2 =
-  (firebaseApp: FirebaseApp) => (observer: Observer<Error, UserStruct>) => {
+  (firebaseApp: FirebaseApp) =>
+  (observer: Observer<Error, UserStruct>): IO<void> => {
     const auth = getAuth(firebaseApp);
     return onAuthStateChanged(auth, {
       next: (user): void =>
