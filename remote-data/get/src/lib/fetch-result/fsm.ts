@@ -8,13 +8,13 @@ export {
   isSuccess,
   fold,
 } from '@firebase-with-passkeys/remote-data-type';
-export type { FetchResult } from '@firebase-with-passkeys/remote-data-type';
+export type { RemoteData as FetchResult } from '@firebase-with-passkeys/remote-data-type';
 
 export const initial = FR.initial;
 
 export const fetch = <E, A>(
-  r: FR.FetchResult<E, A>
-): O.Option<FR.FetchResult<E, A>> =>
+  r: FR.RemoteData<E, A>
+): O.Option<FR.RemoteData<E, A>> =>
   pipe(
     r,
     O.fromPredicate(FR.isInitial),
@@ -23,7 +23,7 @@ export const fetch = <E, A>(
 
 export const success =
   <E, A>(a: A) =>
-  (r: FR.FetchResult<E, A>): O.Option<FR.FetchResult<E, A>> =>
+  (r: FR.RemoteData<E, A>): O.Option<FR.RemoteData<E, A>> =>
     pipe(
       r,
       O.fromPredicate(FR.isFetching),
@@ -32,7 +32,7 @@ export const success =
 
 export const failure =
   <E, A>(e: E) =>
-  (r: FR.FetchResult<E, A>): O.Option<FR.FetchResult<E, A>> =>
+  (r: FR.RemoteData<E, A>): O.Option<FR.RemoteData<E, A>> =>
     pipe(
       r,
       O.fromPredicate(FR.isFetching),

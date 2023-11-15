@@ -23,23 +23,19 @@ export interface Failure<E> {
   readonly error: E;
 }
 
-export type FetchResult<E, A> = Initial | Fetching | Success<A> | Failure<E>;
+export type RemoteData<E, A> = Initial | Fetching | Success<A> | Failure<E>;
 
-export const isInitial = <E, A>(
-  process: FetchResult<E, A>
-): process is Initial => process._tag === INITIAL;
+export const isInitial = <E, A>(rd: RemoteData<E, A>): rd is Initial =>
+  rd._tag === INITIAL;
 
-export const isFetching = <E, A>(
-  process: FetchResult<E, A>
-): process is Fetching => process._tag === FETCHING;
+export const isFetching = <E, A>(rd: RemoteData<E, A>): rd is Fetching =>
+  rd._tag === FETCHING;
 
-export const isSuccess = <E, A>(
-  process: FetchResult<E, A>
-): process is Success<A> => process._tag === SUCCESS;
+export const isSuccess = <E, A>(rd: RemoteData<E, A>): rd is Success<A> =>
+  rd._tag === SUCCESS;
 
-export const isFailure = <E, A>(
-  process: FetchResult<E, A>
-): process is Failure<E> => process._tag === FAILURE;
+export const isFailure = <E, A>(rd: RemoteData<E, A>): rd is Failure<E> =>
+  rd._tag === FAILURE;
 
 export const initial: Initial = Object.freeze({
   _tag: INITIAL,
@@ -63,24 +59,24 @@ export const failure = <E>(error: E): Failure<E> =>
 
 export const fold =
   <E, A, B>(
-    onInitial: (result: Initial) => B,
-    onFetching: (result: Fetching) => B,
-    onFailure: (result: Failure<E>) => B,
-    onSuccess: (result: Success<A>) => B
+    onInitial: (remoteData: Initial) => B,
+    onFetching: (remoteData: Fetching) => B,
+    onFailure: (remoteData: Failure<E>) => B,
+    onSuccess: (remoteData: Success<A>) => B
   ) =>
-  (result: FetchResult<E, A>): B => {
-    if (isInitial(result)) {
-      return onInitial(result);
+  (remoteData: RemoteData<E, A>): B => {
+    if (isInitial(remoteData)) {
+      return onInitial(remoteData);
     }
-    if (isFetching(result)) {
-      return onFetching(result);
+    if (isFetching(remoteData)) {
+      return onFetching(remoteData);
     }
-    if (isSuccess(result)) {
-      return onSuccess(result);
+    if (isSuccess(remoteData)) {
+      return onSuccess(remoteData);
     }
-    if (isFailure(result)) {
-      return onFailure(result);
+    if (isFailure(remoteData)) {
+      return onFailure(remoteData);
     }
-    absurd(result);
+    absurd(remoteData);
     throw new TypeError();
   };
