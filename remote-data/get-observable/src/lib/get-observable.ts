@@ -47,19 +47,17 @@ export const createGetObservable = <I, E, A>(
     )
   );
 
-  const makeFetcher =
-    <I>(f: (i: I) => TE.TaskEither<E, A>) =>
-    (i: I) =>
-      pipe(
-        fetch(),
-        TO.fromOption,
-        TO.chain(() => pipe(f(i), T.map(E.fold(failure, success)))),
-        T.map(constVoid),
-        (t) => t()
-      );
+  const _fetch = (i: I) =>
+    pipe(
+      fetch(),
+      TO.fromOption,
+      TO.chain(() => pipe(f(i), T.map(E.fold(failure, success)))),
+      T.map(constVoid),
+      (t) => t()
+    );
 
   return computed(() => ({
     ...box.get(),
-    fetch: makeFetcher<I>(f),
+    fetch: _fetch,
   }));
 };
