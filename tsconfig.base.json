@@ -41,9 +41,6 @@
       "@firebase-with-passkeys/auth-user-struct": [
         "auth/user-struct/src/index.ts"
       ],
-      "@firebase-with-passkeys/fetch-result-observable": [
-        "fetch-result/observable/src/index.ts"
-      ],
       "@firebase-with-passkeys/firebase-app-auth": [
         "firebase-app/auth/src/index.ts"
       ],
@@ -191,6 +188,9 @@
       ],
       "@firebase-with-passkeys/remote-data-get": [
         "remote-data/get/src/index.ts"
+      ],
+      "@firebase-with-passkeys/remote-data-get-observable": [
+        "remote-data/get-observable/src/index.ts"
       ],
       "@firebase-with-passkeys/remote-data-type": [
         "remote-data/type/src/index.ts"

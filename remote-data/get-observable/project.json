@@ -1,16 +1,16 @@
 {
-  "name": "fetch-result-observable",
+  "name": "remote-data-get-observable",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "fetch-result/observable/src",
+  "sourceRoot": "remote-data/get-observable/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/fetch-result/observable",
-        "main": "fetch-result/observable/src/index.ts",
-        "tsConfig": "fetch-result/observable/tsconfig.lib.json",
+        "outputPath": "dist/remote-data/get-observable",
+        "main": "remote-data/get-observable/src/index.ts",
+        "tsConfig": "remote-data/get-observable/tsconfig.lib.json",
         "assets": []
       }
     },
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "fetch-result/observable/**/*.ts",
-          "fetch-result/observable/package.json"
+          "remote-data/get-observable/**/*.ts",
+          "remote-data/get-observable/package.json"
         ]
       }
     },
@@ -29,7 +29,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/fetch-result/observable"
+        "reportsDirectory": "../../coverage/remote-data/get-observable"
       }
     }
   },

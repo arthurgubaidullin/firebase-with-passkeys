@@ -1,5 +1,5 @@
 {
-  "name": "@firebase-with-passkeys/fetch-result-observable",
+  "name": "@firebase-with-passkeys/remote-data-get-observable",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",

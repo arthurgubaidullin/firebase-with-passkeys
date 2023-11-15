@@ -1,7 +1,7 @@
 import {
   FetchResult,
   createFetchResultObservable,
-} from '@firebase-with-passkeys/fetch-result-observable';
+} from '@firebase-with-passkeys/remote-data-get-observable';
 import { getAuth } from '@firebase-with-passkeys/firebase-app-auth';
 import { ReadonlyObservable } from '@firebase-with-passkeys/observable-type';
 import { signInWithEmailLink } from 'firebase/auth';
