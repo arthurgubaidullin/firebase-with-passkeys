@@ -13,18 +13,18 @@ export {
   isInitial,
   isSuccess,
 } from '@firebase-with-passkeys/remote-data-get';
-export type { FetchResult } from '@firebase-with-passkeys/remote-data-get';
+export type { RemoteData as FetchResult } from '@firebase-with-passkeys/remote-data-get';
 
 type ReadonlyObservable<A> = { readonly get: () => A };
 
-type FetchResultApi<I, E, A> = FR.FetchResult<E, A> & {
+type FetchResultApi<I, E, A> = FR.RemoteData<E, A> & {
   readonly fetch: (i: I) => Promise<void>;
 };
 
 export const createFetchResultObservable = <I, E, A>(
   f: (i: I) => TE.TaskEither<E, A>
 ): ReadonlyObservable<FetchResultApi<I, E, A>> => {
-  const box = observable.box<FR.FetchResult<E, A>>(FR.initial, { deep: false });
+  const box = observable.box<FR.RemoteData<E, A>>(FR.initial, { deep: false });
 
   const fetch = action(() =>
     pipe(
