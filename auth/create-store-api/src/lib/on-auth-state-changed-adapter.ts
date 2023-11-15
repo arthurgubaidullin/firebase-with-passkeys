@@ -2,6 +2,7 @@ import {
   UserStruct,
   fromUserRecord,
 } from '@firebase-with-passkeys/auth-user-struct';
+import { Observer } from '@firebase-with-passkeys/remote-data/realtime-observable';
 import { FirebaseApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import * as O from 'fp-ts/Option';
@@ -13,4 +14,23 @@ export const onAuthStateChangedAdapter =
     return onAuthStateChanged(auth, (user) =>
       pipe(user, O.fromNullable, O.map(fromUserRecord), f)
     );
+  };
+
+export const onAuthStateChangedAdapter2 =
+  (firebaseApp: FirebaseApp) => (observer: Observer<Error, UserStruct>) => {
+    const auth = getAuth(firebaseApp);
+    return onAuthStateChanged(auth, {
+      next: (user): void =>
+        pipe(
+          user,
+          O.fromNullable,
+          O.map(fromUserRecord),
+          O.map((u) => observer.next?.(u)),
+          O.toUndefined
+        ),
+      error: (e): void => {
+        observer.error?.(e);
+      },
+      complete: (): void => observer.complete?.(),
+    });
   };
