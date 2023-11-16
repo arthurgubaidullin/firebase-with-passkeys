@@ -33,5 +33,5 @@
       }
     }
   },
-  "tags": ["tier:api"]
+  "tags": ["tier:api", "slice:remote-data"]
 }
