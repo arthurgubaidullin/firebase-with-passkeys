@@ -1,1 +1,1 @@
-export * from './lib/remote-data-display';
+export * from './lib/display';
