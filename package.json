@@ -12,14 +12,14 @@
   },
   "private": true,
   "devDependencies": {
-    "@nx/cypress": "17.1.1",
-    "@nx/esbuild": "17.1.1",
-    "@nx/eslint": "17.1.1",
-    "@nx/eslint-plugin": "17.1.1",
-    "@nx/js": "17.1.1",
-    "@nx/react": "17.1.1",
-    "@nx/vite": "17.1.1",
-    "@nx/workspace": "17.1.1",
+    "@nx/cypress": "17.1.2",
+    "@nx/esbuild": "17.1.2",
+    "@nx/eslint": "17.1.2",
+    "@nx/eslint-plugin": "17.1.2",
+    "@nx/js": "17.1.2",
+    "@nx/react": "17.1.2",
+    "@nx/vite": "17.1.2",
+    "@nx/workspace": "17.1.2",
     "@simplewebauthn/typescript-types": "^8.0.0",
     "@swc-node/register": "~1.6.7",
     "@swc/cli": "~0.1.62",
@@ -45,7 +45,7 @@
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "jsdom": "~22.1.0",
-    "nx": "17.1.1",
+    "nx": "17.1.2",
     "prettier": "^2.6.2",
     "typescript": "5.2.2",
     "vite": "~4.3.9",
@@ -72,3 +72,4 @@
     "source-map-support": "^0.5.21"
   }
 }
+
