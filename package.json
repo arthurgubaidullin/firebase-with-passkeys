@@ -3,12 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx run-many --target=build --parallel=7",
-    "lint": "nx run-many --target=lint --fix --parallel=7",
-    "test": "nx run-many --target=test --parallel=7",
+    "build": "nx run-many --target=build,test,lint --nxBail --fix --parallel=7",
     "emulators:start": "firebase emulators:start --import=./.emulators --export-on-exit",
-    "preemulators:start": "npm run build",
-    "postbuild": "npm run lint; npm run test"
+    "preemulators:start": "npm run build"
   },
   "private": true,
   "devDependencies": {
@@ -72,4 +69,3 @@
     "source-map-support": "^0.5.21"
   }
 }
-
