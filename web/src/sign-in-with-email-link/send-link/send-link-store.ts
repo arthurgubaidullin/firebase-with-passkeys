@@ -1,14 +1,12 @@
 import { getAuth } from '@firebase-with-passkeys/firebase-app-auth';
 import { ReadonlyObservable } from '@firebase-with-passkeys/observable-type';
-import {
-  createGetObservable,
-  RemoteData,
-} from '@firebase-with-passkeys/remote-data-get-observable';
+import { createGetObservable } from '@firebase-with-passkeys/remote-data-get-observable';
 import { sendSignInLinkToEmail } from 'firebase/auth';
 import * as E from 'fp-ts/Either';
 import { constVoid } from 'fp-ts/function';
 import { computed } from 'mobx';
 import { actionCodeSettings } from '../action-code-settings';
+import { RemoteData } from '@firebase-with-passkeys/remote-data-display';
 
 type SendSignInLinkToEmailApi = RemoteData<Error, void> & {
   readonly send: (email: string) => Promise<void>;

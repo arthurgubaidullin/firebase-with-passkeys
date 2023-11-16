@@ -1,8 +1,8 @@
-import * as FR from '@firebase-with-passkeys/remote-data-type';
+import { fold } from '@firebase-with-passkeys/remote-data-display';
 import { pipe } from 'fp-ts/function';
 import { observer } from 'mobx-react-lite';
-import { createCompleteStore } from './complete-store';
 import { useEffect } from 'react';
+import { createCompleteStore } from './complete-store';
 
 const store = createCompleteStore();
 
@@ -12,7 +12,7 @@ export const CompleteSendSignInLinkToEmailForm = observer(() => {
   }, []);
   return pipe(
     store.get(),
-    FR.fold(
+    fold(
       () => <div />,
       () => <div>Fetching…</div>,
       (e) => (

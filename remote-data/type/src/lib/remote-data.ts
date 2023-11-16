@@ -1,5 +1,3 @@
-import { absurd } from 'fp-ts/function';
-
 const INITIAL = 'initial' as const;
 const FETCHING = 'fetching' as const;
 const SUCCESS = 'success' as const;
@@ -56,27 +54,3 @@ export const failure = <E>(error: E): Failure<E> =>
     _tag: FAILURE,
     error,
   });
-
-export const fold =
-  <E, A, B>(
-    onInitial: (remoteData: Initial) => B,
-    onFetching: (remoteData: Fetching) => B,
-    onFailure: (remoteData: Failure<E>) => B,
-    onSuccess: (remoteData: Success<A>) => B
-  ) =>
-  (remoteData: RemoteData<E, A>): B => {
-    if (isInitial(remoteData)) {
-      return onInitial(remoteData);
-    }
-    if (isFetching(remoteData)) {
-      return onFetching(remoteData);
-    }
-    if (isSuccess(remoteData)) {
-      return onSuccess(remoteData);
-    }
-    if (isFailure(remoteData)) {
-      return onFailure(remoteData);
-    }
-    absurd(remoteData);
-    throw new TypeError();
-  };

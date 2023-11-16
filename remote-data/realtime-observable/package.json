@@ -5,7 +5,8 @@
     "tslib": "^2.3.0",
     "@firebase-with-passkeys/remote-data-realtime-fsm": "*",
     "fp-ts": "^2.16.1",
-    "mobx": "^6.10.2"
+    "mobx": "^6.10.2",
+    "@firebase-with-passkeys/remote-data-display": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

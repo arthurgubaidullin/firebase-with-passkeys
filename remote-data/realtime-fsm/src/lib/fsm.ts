@@ -2,14 +2,6 @@ import * as RD from '@firebase-with-passkeys/remote-data-type';
 import * as O from 'fp-ts/Option';
 import { or } from 'fp-ts/Refinement';
 import { pipe } from 'fp-ts/function';
-export {
-  fold,
-  isFailure,
-  isFetching,
-  isInitial,
-  isSuccess,
-} from '@firebase-with-passkeys/remote-data-type';
-export type { RemoteData } from '@firebase-with-passkeys/remote-data-type';
 
 export const initial = RD.initial;
 

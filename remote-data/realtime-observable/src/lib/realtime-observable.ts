@@ -5,19 +5,12 @@ import { action, observable, onBecomeObserved, onBecomeUnobserved } from 'mobx';
 import { Observer } from './observer-type';
 import { ReadonlyObservable } from './readonly-observable-type';
 import { Unsubscribe } from './unsubscribe-type';
-export {
-  fold,
-  isFailure,
-  isFetching,
-  isInitial,
-  isSuccess,
-} from '@firebase-with-passkeys/remote-data-realtime-fsm';
-export type { RemoteData } from '@firebase-with-passkeys/remote-data-realtime-fsm';
+import { RemoteData } from '@firebase-with-passkeys/remote-data-display';
 
 export const createRealtimeObservable = <E, A>(
   subscribe: (observer: Observer<E, A>) => Unsubscribe
-): ReadonlyObservable<FSM.RemoteData<E, A>> => {
-  const box = observable.box<FSM.RemoteData<E, A>>(FSM.initial, {
+): ReadonlyObservable<RemoteData<E, A>> => {
+  const box = observable.box<RemoteData<E, A>>(FSM.initial, {
     deep: false,
   });
 

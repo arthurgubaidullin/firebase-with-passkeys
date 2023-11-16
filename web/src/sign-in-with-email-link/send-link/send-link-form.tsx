@@ -1,9 +1,9 @@
-import * as FR from '@firebase-with-passkeys/remote-data-type';
+import { fold } from '@firebase-with-passkeys/remote-data-display';
 import { pipe } from 'fp-ts/function';
+import { autorun } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { useId } from 'react';
 import { createSendLinkStore } from './send-link-store';
-import { autorun } from 'mobx';
 
 const store = createSendLinkStore();
 
@@ -34,7 +34,7 @@ export const SendSignInLinkToEmailForm = observer(() => {
   );
   return pipe(
     state,
-    FR.fold(
+    fold(
       () => form,
       () => <div>Fetching…</div>,
       (e) => (

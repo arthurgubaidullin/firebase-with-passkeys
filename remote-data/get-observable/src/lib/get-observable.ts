@@ -1,3 +1,4 @@
+import { RemoteData } from '@firebase-with-passkeys/remote-data-display';
 import * as RDG from '@firebase-with-passkeys/remote-data-get';
 import * as E from 'fp-ts/Either';
 import * as O from 'fp-ts/Option';
@@ -6,25 +7,17 @@ import * as TE from 'fp-ts/TaskEither';
 import * as TO from 'fp-ts/TaskOption';
 import { constVoid, pipe } from 'fp-ts/function';
 import { action, computed, observable } from 'mobx';
-export {
-  fold,
-  isFailure,
-  isFetching,
-  isInitial,
-  isSuccess,
-} from '@firebase-with-passkeys/remote-data-get';
-export type { RemoteData } from '@firebase-with-passkeys/remote-data-get';
 
 type ReadonlyObservable<A> = { readonly get: () => A };
 
-type RemoteDataApi<I, E, A> = RDG.RemoteData<E, A> & {
+type RemoteDataApi<I, E, A> = RemoteData<E, A> & {
   readonly fetch: (i: I) => Promise<void>;
 };
 
 export const createGetObservable = <I, E, A>(
   f: (i: I) => TE.TaskEither<E, A>
 ): ReadonlyObservable<RemoteDataApi<I, E, A>> => {
-  const box = observable.box<RDG.RemoteData<E, A>>(RDG.initial, {
+  const box = observable.box<RemoteData<E, A>>(RDG.initial, {
     deep: false,
   });
 
