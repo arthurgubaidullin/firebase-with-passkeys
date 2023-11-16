@@ -1,3 +1,1 @@
-export function remoteData(): string {
-  return 'remote-data';
-}
+export * from '@firebase-with-passkeys/remote-data-display';
