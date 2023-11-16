@@ -14,10 +14,6 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              },
-              {
                 "sourceTag": "slice:remote-data",
                 "onlyDependOnLibsWithTags": ["slice:remote-data"]
               },
