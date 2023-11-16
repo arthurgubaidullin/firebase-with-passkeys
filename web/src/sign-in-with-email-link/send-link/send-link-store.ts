@@ -6,7 +6,7 @@ import * as E from 'fp-ts/Either';
 import { constVoid } from 'fp-ts/function';
 import { computed } from 'mobx';
 import { actionCodeSettings } from '../action-code-settings';
-import { RemoteData } from '@firebase-with-passkeys/remote-data-display';
+import { RemoteData } from '@firebase-with-passkeys/remote-data';
 
 type SendSignInLinkToEmailApi = RemoteData<Error, void> & {
   readonly send: (email: string) => Promise<void>;

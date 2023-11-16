@@ -1,6 +1,6 @@
 import { getAuth } from '@firebase-with-passkeys/firebase-app-auth';
 import { ReadonlyObservable } from '@firebase-with-passkeys/observable-type';
-import { RemoteData } from '@firebase-with-passkeys/remote-data-display';
+import { RemoteData } from '@firebase-with-passkeys/remote-data';
 import { createGetObservable } from '@firebase-with-passkeys/remote-data-get-observable';
 import { signInWithEmailLink } from 'firebase/auth';
 import * as E from 'fp-ts/Either';

@@ -1,4 +1,4 @@
-import { fold } from '@firebase-with-passkeys/remote-data-display';
+import { fold } from '@firebase-with-passkeys/remote-data';
 import { pipe } from 'fp-ts/function';
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
