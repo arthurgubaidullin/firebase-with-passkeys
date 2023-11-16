@@ -187,6 +187,9 @@
         "passkeys/verify-registration-response/use-case/src/index.ts"
       ],
       "@firebase-with-passkeys/remote-data": ["remote-data/api/src/index.ts"],
+      "@firebase-with-passkeys/remote-data-display": [
+        "remote-data/display/src/index.ts"
+      ],
       "@firebase-with-passkeys/remote-data-get": [
         "remote-data/get/src/index.ts"
       ],
