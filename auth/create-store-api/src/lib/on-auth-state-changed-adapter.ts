@@ -2,7 +2,7 @@ import {
   UserStruct,
   fromUserRecord,
 } from '@firebase-with-passkeys/auth-user-struct';
-import { Observer } from '@firebase-with-passkeys/remote-data/realtime-observable';
+import { Observer } from '@firebase-with-passkeys/remote-data-realtime-observable';
 import { FirebaseApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import * as O from 'fp-ts/Option';

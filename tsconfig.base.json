@@ -202,7 +202,7 @@
       "@firebase-with-passkeys/remote-data-type": [
         "remote-data/type/src/index.ts"
       ],
-      "@firebase-with-passkeys/remote-data/realtime-observable": [
+      "@firebase-with-passkeys/remote-data-realtime-observable": [
         "remote-data/realtime-observable/src/index.ts"
       ],
       "@firebase-with-passkeys/uint8-array": [

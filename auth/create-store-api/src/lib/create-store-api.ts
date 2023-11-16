@@ -2,7 +2,7 @@ import { createStore } from '@firebase-with-passkeys/auth-create-store';
 import * as AuthState from '@firebase-with-passkeys/auth-state';
 import { UserStruct } from '@firebase-with-passkeys/auth-user-struct';
 import { ReadonlyObservable } from '@firebase-with-passkeys/observable-type';
-import { createRealtimeObservable } from '@firebase-with-passkeys/remote-data/realtime-observable';
+import { createRealtimeObservable } from '@firebase-with-passkeys/remote-data-realtime-observable';
 import { FirebaseApp } from 'firebase/app';
 import { pipe } from 'fp-ts/function';
 import { action, observable, onBecomeObserved, onBecomeUnobserved } from 'mobx';

@@ -1,5 +1,5 @@
 {
-  "name": "remote-data/realtime-observable",
+  "name": "remote-data-realtime-observable",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "remote-data/realtime-observable/src",
   "projectType": "library",

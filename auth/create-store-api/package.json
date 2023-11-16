@@ -10,7 +10,7 @@
     "mobx": "^6.10.2",
     "@firebase-with-passkeys/auth-create-store": "*",
     "@firebase-with-passkeys/observable-type": "*",
-    "@firebase-with-passkeys/remote-data/realtime-observable": "*",
+    "@firebase-with-passkeys/remote-data-realtime-observable": "*",
     "@firebase-with-passkeys/remote-data-display": "*"
   },
   "type": "commonjs",
