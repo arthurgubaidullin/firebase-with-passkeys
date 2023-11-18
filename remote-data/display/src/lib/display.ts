@@ -1,4 +1,3 @@
-import * as RD from '@firebase-with-passkeys/remote-data-type';
 import { absurd } from 'fp-ts/function';
 
 const INITIAL = 'initial' as const;
@@ -40,22 +39,22 @@ export const isFailure = <E, A>(rd: RemoteData<E, A>): rd is Failure<E> =>
 
 export const fold =
   <E, A, B>(
-    onInitial: (remoteData: RD.Initial) => B,
-    onFetching: (remoteData: RD.Fetching) => B,
-    onFailure: (remoteData: RD.Failure<E>) => B,
-    onSuccess: (remoteData: RD.Success<A>) => B
+    onInitial: (remoteData: Initial) => B,
+    onFetching: (remoteData: Fetching) => B,
+    onFailure: (remoteData: Failure<E>) => B,
+    onSuccess: (remoteData: Success<A>) => B
   ) =>
-  (remoteData: RD.RemoteData<E, A>): B => {
-    if (RD.isInitial(remoteData)) {
+  (remoteData: RemoteData<E, A>): B => {
+    if (isInitial(remoteData)) {
       return onInitial(remoteData);
     }
-    if (RD.isFetching(remoteData)) {
+    if (isFetching(remoteData)) {
       return onFetching(remoteData);
     }
-    if (RD.isSuccess(remoteData)) {
+    if (isSuccess(remoteData)) {
       return onSuccess(remoteData);
     }
-    if (RD.isFailure(remoteData)) {
+    if (isFailure(remoteData)) {
       return onFailure(remoteData);
     }
     absurd(remoteData);
