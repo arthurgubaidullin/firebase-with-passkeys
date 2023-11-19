@@ -1,6 +1,7 @@
 import { GetUserByEmail } from '@firebase-with-passkeys/auth-service-type';
 import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import { GetAuthenticators } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
+import { createChallengeDocument } from '@firebase-with-passkeys/passkeys-challenge-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { setChallenge } from '@firebase-with-passkeys/passkeys-challenge-set-document';
 import { ConfigReader } from '@firebase-with-passkeys/passkeys-config-reader-type';
@@ -71,7 +72,12 @@ export const generateAuthenticationOptions =
       userVerification: 'preferred',
     });
 
-    await setChallenge(P)(u.value.uid, options);
+    const challengeDocument = createChallengeDocument({
+      ...options,
+      username: data.username,
+    });
+
+    await setChallenge(P)(u.value.uid, challengeDocument);
 
     const result = ResponseData.encode(options);
 

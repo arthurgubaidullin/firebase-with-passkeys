@@ -16,7 +16,8 @@
     "@simplewebauthn/typescript-types": "^8.0.0",
     "fp-ts": "^2.16.1",
     "@firebase-with-passkeys/logger-type-server": "*",
-    "@firebase-with-passkeys/passkeys-generate-registration-options-contract": "*"
+    "@firebase-with-passkeys/passkeys-generate-registration-options-contract": "*",
+    "@firebase-with-passkeys/passkeys-challenge-document": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

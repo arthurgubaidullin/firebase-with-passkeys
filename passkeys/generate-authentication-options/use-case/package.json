@@ -15,7 +15,8 @@
     "fp-ts": "^2.16.1",
     "@firebase-with-passkeys/passkeys-generate-authentication-options-contract": "*",
     "@firebase-with-passkeys/passkeys-config-reader-type": "*",
-    "@firebase-with-passkeys/passkeys-get-config": "*"
+    "@firebase-with-passkeys/passkeys-get-config": "*",
+    "@firebase-with-passkeys/passkeys-challenge-document": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

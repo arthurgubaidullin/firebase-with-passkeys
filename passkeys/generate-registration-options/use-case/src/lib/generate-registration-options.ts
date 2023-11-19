@@ -18,6 +18,7 @@ import { pipe } from 'fp-ts/function';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import { ResponseData } from '@firebase-with-passkeys/passkeys-generate-registration-options-contract';
+import { createChallengeDocument } from '@firebase-with-passkeys/passkeys-challenge-document';
 
 export const generateRegistrationOptions =
   (P: GetConfig & GetUser & SetChallenge & GetAuthenticators & LogError) =>
@@ -69,7 +70,12 @@ export const generateRegistrationOptions =
       })),
     });
 
-    await setChallenge(P)(user.value.uid, options);
+    const challengeDocument = createChallengeDocument({
+      ...options,
+      username: user.value.email.value,
+    });
+
+    await setChallenge(P)(user.value.uid, challengeDocument);
 
     return E.right(ResponseData.encode(options));
   };
