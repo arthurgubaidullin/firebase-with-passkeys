@@ -1,4 +1,5 @@
 import * as Contract from '@firebase-with-passkeys/passkeys-generate-authentication-options-contract';
+import { ResponseData } from '@firebase-with-passkeys/passkeys-verify-registration-response-contract';
 import { startAuthentication as _startAuthentication } from '@simplewebauthn/browser';
 import {
   AuthenticationResponseJSON,
@@ -7,16 +8,9 @@ import {
 import * as E from 'fp-ts/Either';
 import * as TE from 'fp-ts/TaskEither';
 import { constVoid, pipe } from 'fp-ts/function';
-import * as t from 'io-ts';
 import { failure } from 'io-ts/PathReporter';
 import { GenerateAuthenticationOptions } from './generate-authentication-options-type';
 import { VerifyAuthenticationResponse } from './verify-authentication-response-type';
-
-const VerifyRegistrationResponseData = t.readonly(
-  t.strict({
-    verified: t.boolean,
-  })
-);
 
 export const startAuthenticationApi =
   (P: GenerateAuthenticationOptions & VerifyAuthenticationResponse) =>
@@ -54,7 +48,7 @@ export const startAuthenticationApi =
 
     const verificationResponseData = pipe(
       rawVerificationResponseData.data,
-      VerifyRegistrationResponseData.decode,
+      ResponseData.decode,
       E.mapLeft(failure),
       E.mapLeft((es) => new Error(es.toString()))
     );
