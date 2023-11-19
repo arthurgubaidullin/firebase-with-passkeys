@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { createLocationStore } from '../location/create-store';
 import { completeSignIn, signIn } from '../location/location';
-import { CompleteSendSignInLinkToEmailForm } from '../sign-in-with-email-link/complete/complete-form';
+import { CompleteSendSignInLinkToEmailPage } from '../sign-in-with-email-link/complete/complete-form-page';
 import { SendSignInLinkToEmailForm } from '../sign-in-with-email-link/send-link/send-link-form';
 import './app.module.css';
 
@@ -13,7 +13,7 @@ export const App = observer(() => {
     return <SendSignInLinkToEmailForm />;
   }
   if (_location === completeSignIn) {
-    return <CompleteSendSignInLinkToEmailForm />;
+    return <CompleteSendSignInLinkToEmailPage />;
   }
 
   return <div>test</div>;
