@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",
-    "firebase-functions": "^4.4.1",
     "@simplewebauthn/typescript-types": "^8.0.0",
     "@firebase-with-passkeys/passkeys-challenge-repository-type": "*",
     "@firebase-with-passkeys/passkeys-authenticator-repository-type": "*",
