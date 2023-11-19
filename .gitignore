@@ -40,7 +40,6 @@ Thumbs.db
 
 .nx/cache
 *-debug.log
-.emulators
 .firebase
 
 *.env
