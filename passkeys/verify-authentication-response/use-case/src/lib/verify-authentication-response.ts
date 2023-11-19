@@ -88,7 +88,7 @@ export const verifyAuthenticationResponse =
 
     const [expectedChallenge, _authenticator] = await Promise.all([
       getChallenge(P)(u.value.uid)(),
-      getAuthenticatorDocument(P)(response.id, response.id)(),
+      getAuthenticatorDocument(P)(u.value.uid, u.value.uid)(),
     ]);
 
     if (E.isLeft(expectedChallenge)) {
