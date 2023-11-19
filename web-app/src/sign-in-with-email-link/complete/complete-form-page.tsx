@@ -2,11 +2,11 @@ import { fold } from '@firebase-with-passkeys/remote-data';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 import { observer } from 'mobx-react-lite';
-import { createCurrentUser } from '../../current-user/current-user-store';
+import { getCurrentUserStore } from '../../current-user/current-user-store';
 import { CompleteSendSignInLinkToEmailForm } from './complete-form';
 import { SaveDeviceForm } from '../../save-device/save-device';
 
-const currentUserStore = createCurrentUser();
+const currentUserStore = getCurrentUserStore();
 
 export const CompleteSendSignInLinkToEmailPage = observer(() => {
   return pipe(
