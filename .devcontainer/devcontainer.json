@@ -26,7 +26,7 @@
   "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "npm install",
+  "postCreateCommand": "mkdir -p ./.firebase/emulators/cache && mkdir -p ~/.cache/firebase/ && ln -f -d -r -s ./.firebase/emulators/cache  ~/.cache/firebase/emulators && sudo chown -R node ./.firebase/emulators/cache && sudo chown -R node ~/.cache/firebase/emulators && npm install",
 
   // Configure tool-specific properties.
   "customizations": {
