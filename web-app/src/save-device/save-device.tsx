@@ -1,11 +1,12 @@
-import { createGetObservable, fold } from '@firebase-with-passkeys/remote-data';
 import { startRegistrationApi } from '@firebase-with-passkeys/passkeys-start-registration-api';
-import { useId } from 'react';
+import { createGetObservable, fold } from '@firebase-with-passkeys/remote-data';
 import { pipe } from 'fp-ts/function';
+import { observer } from 'mobx-react-lite';
+import { useId } from 'react';
 
 const startRegistrationStore = createGetObservable(() => startRegistrationApi);
 
-export const SaveDeviceForm = () => {
+export const SaveDeviceForm = observer(() => {
   const id = useId();
   const process = startRegistrationStore.get();
 
@@ -40,4 +41,4 @@ export const SaveDeviceForm = () => {
       () => <div>Success!!1</div>
     )
   );
-};
+});
