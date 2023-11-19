@@ -5,7 +5,7 @@ import { sendSignInLinkToEmail } from 'firebase/auth';
 import * as E from 'fp-ts/Either';
 import { constVoid } from 'fp-ts/function';
 import { computed } from 'mobx';
-import { actionCodeSettings } from '../action-code-settings';
+import { actionCodeSettings } from './action-code-settings';
 import { RemoteData } from '@firebase-with-passkeys/remote-data';
 
 type SendSignInLinkToEmailApi = RemoteData<Error, void> & {
@@ -14,10 +14,12 @@ type SendSignInLinkToEmailApi = RemoteData<Error, void> & {
 
 type SendSignInLinkToEmailStore = ReadonlyObservable<SendSignInLinkToEmailApi>;
 
-export const createSendLinkStore = (): SendSignInLinkToEmailStore => {
+export const createSendLinkStore = (
+  url: string
+): SendSignInLinkToEmailStore => {
   const box = createGetObservable((email: string) => async () => {
     try {
-      await sendSignInLinkToEmail(getAuth(), email, actionCodeSettings);
+      await sendSignInLinkToEmail(getAuth(), email, actionCodeSettings(url));
     } catch (error) {
       return E.left(E.toError(error));
     }

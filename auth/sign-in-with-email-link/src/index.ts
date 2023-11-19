@@ -1,1 +1,2 @@
-export * from './lib/auth-sign-in-with-email-link';
+export * from './lib/send-link';
+export * from './lib/complete-store';

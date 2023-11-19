@@ -1,8 +1,8 @@
+import { createCompleteStore } from '@firebase-with-passkeys/auth-sign-in-with-email-link';
 import { fold } from '@firebase-with-passkeys/remote-data';
 import { pipe } from 'fp-ts/function';
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
-import { createCompleteStore } from './complete-store';
 
 const store = createCompleteStore();
 

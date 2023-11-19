@@ -2,7 +2,13 @@
   "name": "@firebase-with-passkeys/auth-sign-in-with-email-link",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@firebase-with-passkeys/firebase-app-auth": "*",
+    "@firebase-with-passkeys/observable-type": "*",
+    "@firebase-with-passkeys/remote-data": "*",
+    "firebase": "^10.5.0",
+    "fp-ts": "^2.16.1",
+    "mobx": "^6.10.2"
   },
   "type": "commonjs",
   "main": "./src/index.js",
