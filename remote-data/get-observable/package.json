@@ -4,9 +4,9 @@
   "dependencies": {
     "tslib": "^2.3.0",
     "fp-ts": "^2.16.1",
-    "mobx": "^6.10.2",
     "@firebase-with-passkeys/remote-data-get": "*",
-    "@firebase-with-passkeys/remote-data-display": "*"
+    "@firebase-with-passkeys/remote-data-display": "*",
+    "@firebase-with-passkeys/observable-type": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

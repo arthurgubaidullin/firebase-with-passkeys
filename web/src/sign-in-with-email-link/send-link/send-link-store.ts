@@ -1,6 +1,6 @@
 import { getAuth } from '@firebase-with-passkeys/firebase-app-auth';
 import { ReadonlyObservable } from '@firebase-with-passkeys/observable-type';
-import { createGetObservable } from '@firebase-with-passkeys/remote-data-get-observable';
+import { createGetObservable } from '@firebase-with-passkeys/remote-data';
 import { sendSignInLinkToEmail } from 'firebase/auth';
 import * as E from 'fp-ts/Either';
 import { constVoid } from 'fp-ts/function';

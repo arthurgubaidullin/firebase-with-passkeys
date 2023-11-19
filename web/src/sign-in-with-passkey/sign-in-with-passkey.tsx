@@ -1,4 +1,4 @@
-import { createGetObservable } from '@firebase-with-passkeys/remote-data-get-observable';
+import { createGetObservable } from '@firebase-with-passkeys/remote-data';
 import { startAuthenticationApi } from '@firebase-with-passkeys/passkeys-start-authentication-api';
 import { pipe } from 'fp-ts/function';
 import { observer } from 'mobx-react-lite';
