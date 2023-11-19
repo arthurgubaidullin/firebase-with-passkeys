@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",
-    "@simplewebauthn/typescript-types": "^8.0.0",
     "@firebase-with-passkeys/passkeys-challenge-repository-type": "*",
     "@firebase-with-passkeys/passkeys-authenticator-repository-type": "*",
     "fp-ts": "^2.16.1",
@@ -12,7 +11,8 @@
     "@firebase-with-passkeys/passkeys-https-error-adapter": "*",
     "@firebase-with-passkeys/passkeys-log-unknown-error": "*",
     "@firebase-with-passkeys/passkeys-generate-authentication-options-use-case": "*",
-    "@firebase-with-passkeys/passkeys-config-reader-type": "*"
+    "@firebase-with-passkeys/passkeys-config-reader-type": "*",
+    "@firebase-with-passkeys/passkeys-generate-authentication-options-contract": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
