@@ -11,7 +11,8 @@
     "@firebase-with-passkeys/auth-create-store": "*",
     "@firebase-with-passkeys/observable-type": "*",
     "@firebase-with-passkeys/remote-data-realtime-observable": "*",
-    "@firebase-with-passkeys/remote-data-display": "*"
+    "@firebase-with-passkeys/remote-data-display": "*",
+    "@firebase-with-passkeys/remote-data": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
