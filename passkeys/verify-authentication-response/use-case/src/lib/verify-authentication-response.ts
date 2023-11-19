@@ -1,4 +1,7 @@
-import { GetUser } from '@firebase-with-passkeys/auth-service-type';
+import {
+  GetUser,
+  GetUserByEmail,
+} from '@firebase-with-passkeys/auth-service-type';
 import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import {
   GetAuthenticator,
@@ -13,7 +16,10 @@ import {
 } from '@firebase-with-passkeys/passkeys-challenge-get-document';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { GetConfig } from '@firebase-with-passkeys/passkeys-config-reader-type';
-import { InvalidInput } from '@firebase-with-passkeys/passkeys-event-types';
+import {
+  InvalidInput,
+  UserNotFound,
+} from '@firebase-with-passkeys/passkeys-event-types';
 import {
   AuthenticatorNotFound,
   InvalidAuthenticator,
@@ -29,6 +35,7 @@ import { verifyAuthenticationResponse as _verifyAuthenticationResponse } from '@
 import * as E from 'fp-ts/Either';
 import { TaskEither } from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
+import * as O from 'fp-ts/Option';
 
 export const verifyAuthenticationResponse =
   (
@@ -39,7 +46,8 @@ export const verifyAuthenticationResponse =
       SetChallenge &
       GetChallenge &
       GetAuthenticator &
-      UpdateAuthenticator
+      UpdateAuthenticator &
+      GetUserByEmail
   ) =>
   (
     rawAuthenticationResponseJSON: unknown
@@ -49,7 +57,8 @@ export const verifyAuthenticationResponse =
     | ChallengeNotFound
     | AuthenticatorNotFound
     | InvalidAuthenticator
-    | InvalidInput,
+    | InvalidInput
+    | UserNotFound,
     ResponseData
   > =>
   async () => {
@@ -61,7 +70,13 @@ export const verifyAuthenticationResponse =
     if (E.isLeft(_data)) {
       return _data;
     }
-    const data = _data.right;
+    const { response, username } = _data.right;
+
+    const u = await P.getUserByEmail(username)();
+
+    if (O.isNone(u)) {
+      return E.left(new UserNotFound());
+    }
 
     const _config = pipe(getConfig(P), (a) => a());
     if (E.isLeft(_config)) {
@@ -72,8 +87,8 @@ export const verifyAuthenticationResponse =
     const config = _config.right;
 
     const [expectedChallenge, _authenticator] = await Promise.all([
-      getChallenge(P)(data.id)(),
-      getAuthenticatorDocument(P)(data.id, data.id)(),
+      getChallenge(P)(u.value.uid)(),
+      getAuthenticatorDocument(P)(response.id, response.id)(),
     ]);
 
     if (E.isLeft(expectedChallenge)) {
@@ -88,7 +103,7 @@ export const verifyAuthenticationResponse =
     let verification;
     try {
       verification = await _verifyAuthenticationResponse({
-        response: data,
+        response: response,
         expectedChallenge: expectedChallenge.right.challenge,
         expectedOrigin: config.NX_ORIGIN,
         expectedRPID: config.NX_RP_ID,
@@ -106,8 +121,8 @@ export const verifyAuthenticationResponse =
     } = verification;
 
     await updateAuthenticatorCounter(P)(
-      data.id,
-      data.id,
+      u.value.uid,
+      u.value.uid,
       newCounter,
       updatedAt
     )(authenticator);

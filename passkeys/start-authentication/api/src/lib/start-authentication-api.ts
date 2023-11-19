@@ -11,11 +11,16 @@ import { constVoid, pipe } from 'fp-ts/function';
 import { failure } from 'io-ts/PathReporter';
 import { GenerateAuthenticationOptions } from './generate-authentication-options-type';
 import { VerifyAuthenticationResponse } from './verify-authentication-response-type';
+import { NonEmptyString } from 'io-ts-types';
 
 export const startAuthenticationApi =
   (P: GenerateAuthenticationOptions & VerifyAuthenticationResponse) =>
   (username: string) =>
   async (): Promise<E.Either<Error, void>> => {
+    if (!NonEmptyString.is(username)) {
+      return E.left(new Error('Invalid username.'));
+    }
+
     const resp = await TE.tryCatch(
       async () => await P.generateAuthenticationOptions({ username }),
       E.toError
@@ -42,9 +47,10 @@ export const startAuthenticationApi =
       return E.left(E.toError(error));
     }
 
-    const rawVerificationResponseData = await P.verifyAuthenticationResponse(
-      asseResp
-    );
+    const rawVerificationResponseData = await P.verifyAuthenticationResponse({
+      response: asseResp,
+      username,
+    });
 
     const verificationResponseData = pipe(
       rawVerificationResponseData.data,

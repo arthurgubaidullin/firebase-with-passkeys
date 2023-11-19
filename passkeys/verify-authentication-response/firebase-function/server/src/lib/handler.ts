@@ -1,4 +1,7 @@
-import { GetUser } from '@firebase-with-passkeys/auth-service-type';
+import {
+  GetUser,
+  GetUserByEmail,
+} from '@firebase-with-passkeys/auth-service-type';
 import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import {
   GetAuthenticator,
@@ -24,7 +27,8 @@ export const verifyAuthenticationResponseHandler =
       SetChallenge &
       GetChallenge &
       GetAuthenticator &
-      UpdateAuthenticator
+      UpdateAuthenticator &
+      GetUserByEmail
   ) =>
   async (data: unknown): Promise<unknown> => {
     return pipe(

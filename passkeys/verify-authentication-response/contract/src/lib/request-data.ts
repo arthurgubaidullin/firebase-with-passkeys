@@ -1,6 +1,12 @@
 import { AuthenticationResponseJSON } from '@firebase-with-passkeys/passkeys-types';
-import { TypeOf } from 'io-ts';
+import * as t from 'io-ts';
+import { NonEmptyString } from 'io-ts-types';
 
-export type RequestData = TypeOf<typeof RequestData>;
+export type RequestData = t.TypeOf<typeof RequestData>;
 
-export const RequestData = AuthenticationResponseJSON;
+export const RequestData = t.readonly(
+  t.strict({
+    username: NonEmptyString,
+    response: AuthenticationResponseJSON,
+  })
+);
