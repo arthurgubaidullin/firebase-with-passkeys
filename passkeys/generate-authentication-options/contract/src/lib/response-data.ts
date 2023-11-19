@@ -1,6 +1,9 @@
 import { PublicKeyCredentialRequestOptionsJSON } from '@firebase-with-passkeys/passkeys-types';
-import { PublicKeyCredentialRequestOptionsJSON as _PublicKeyCredentialRequestOptionsJSON } from '@simplewebauthn/typescript-types';
+import * as t from 'io-ts';
+import { JsonFromString } from 'io-ts-types';
 
-export type ResponseData = _PublicKeyCredentialRequestOptionsJSON;
+export type ResponseData = t.OutputOf<typeof ResponseData>;
 
-export const ResponseData = PublicKeyCredentialRequestOptionsJSON;
+export const ResponseData = t.string.pipe(
+  JsonFromString.pipe(PublicKeyCredentialRequestOptionsJSON)
+);
