@@ -8,6 +8,7 @@ import { failure } from 'io-ts/PathReporter';
 import { GenerateAuthenticationOptions } from './generate-authentication-options-type';
 import { VerifyAuthenticationResponse } from './verify-authentication-response-type';
 import * as TE from 'fp-ts/TaskEither';
+import { PublicKeyCredentialRequestOptionsJSON as _PublicKeyCredentialRequestOptionsJSON } from '@simplewebauthn/typescript-types';
 
 const VerifyRegistrationResponseData = t.readonly(
   t.strict({
@@ -36,7 +37,7 @@ export const startAuthenticationApi =
     if (E.isLeft(_data)) {
       return _data;
     }
-    const data = _data.right;
+    const data: _PublicKeyCredentialRequestOptionsJSON = _data.right;
 
     let asseResp: AuthenticationResponseJSON;
     try {
