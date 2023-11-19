@@ -1,0 +1,37 @@
+{
+  "name": "auth-sign-in-with-email-link",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "auth/sign-in-with-email-link/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/auth/sign-in-with-email-link",
+        "main": "auth/sign-in-with-email-link/src/index.ts",
+        "tsConfig": "auth/sign-in-with-email-link/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "auth/sign-in-with-email-link/**/*.ts",
+          "auth/sign-in-with-email-link/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/auth/sign-in-with-email-link"
+      }
+    }
+  },
+  "tags": ["tier:api"]
+}
