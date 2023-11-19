@@ -7,6 +7,7 @@ import * as t from 'io-ts';
 import { failure } from 'io-ts/PathReporter';
 import { GenerateAuthenticationOptions } from './generate-authentication-options-type';
 import { VerifyAuthenticationResponse } from './verify-authentication-response-type';
+import * as TE from 'fp-ts/TaskEither';
 
 const VerifyRegistrationResponseData = t.readonly(
   t.strict({
@@ -18,10 +19,16 @@ export const startAuthenticationApi =
   (P: GenerateAuthenticationOptions & VerifyAuthenticationResponse) =>
   (username: string) =>
   async (): Promise<E.Either<Error, void>> => {
-    const resp = await P.generateAuthenticationOptions({ username });
+    const resp = await TE.tryCatch(
+      async () => await P.generateAuthenticationOptions({ username }),
+      E.toError
+    )();
+    if (E.isLeft(resp)) {
+      return resp;
+    }
 
     const _data = pipe(
-      resp.data,
+      resp.right.data,
       PublicKeyCredentialRequestOptionsJSON.decode,
       E.mapLeft(failure),
       E.mapLeft((es) => new Error(es.toString()))
