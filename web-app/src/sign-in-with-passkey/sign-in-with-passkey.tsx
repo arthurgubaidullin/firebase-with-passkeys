@@ -11,7 +11,7 @@ export const SignInWithPasskey = observer(() => {
 
   const form = (
     <div>
-      <h1>Sign in with a Passkey</h1>
+      <h2>Sign in with a Passkey</h2>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
