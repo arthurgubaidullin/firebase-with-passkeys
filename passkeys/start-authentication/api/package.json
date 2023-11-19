@@ -9,7 +9,8 @@
     "io-ts": "^2.2.20",
     "@firebase-with-passkeys/passkeys-program-client": "*",
     "@firebase-with-passkeys/firebase-app-functions": "*",
-    "@firebase-with-passkeys/passkeys-generate-authentication-options-contract": "*"
+    "@firebase-with-passkeys/passkeys-generate-authentication-options-contract": "*",
+    "@firebase-with-passkeys/passkeys-verify-authentication-response-contract": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
