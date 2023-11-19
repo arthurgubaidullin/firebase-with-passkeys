@@ -11,7 +11,8 @@
     "@firebase-with-passkeys/logger-type-server": "*",
     "@firebase-with-passkeys/passkeys-https-error-adapter": "*",
     "@firebase-with-passkeys/passkeys-log-unknown-error": "*",
-    "@firebase-with-passkeys/passkeys-generate-authentication-options-use-case": "*"
+    "@firebase-with-passkeys/passkeys-generate-authentication-options-use-case": "*",
+    "@firebase-with-passkeys/passkeys-config-reader-type": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

@@ -3,6 +3,7 @@ import { LogError } from '@firebase-with-passkeys/logger-type-server';
 import { GetAuthenticators } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
 import { SetChallenge } from '@firebase-with-passkeys/passkeys-challenge-repository-type';
 import { setChallenge } from '@firebase-with-passkeys/passkeys-challenge-set-document';
+import { ConfigReader } from '@firebase-with-passkeys/passkeys-config-reader-type';
 import {
   InvalidInput,
   UserNotFound,
@@ -12,6 +13,7 @@ import {
   RequestData,
 } from '@firebase-with-passkeys/passkeys-generate-authentication-options-contract';
 import { getAuthenticatorDocuments } from '@firebase-with-passkeys/passkeys-get-authenticator-documents';
+import { getConfig } from '@firebase-with-passkeys/passkeys-get-config';
 import { generateAuthenticationOptions as _generateAuthenticationOptions } from '@simplewebauthn/server';
 import { PublicKeyCredentialDescriptorFuture } from '@simplewebauthn/typescript-types';
 import * as E from 'fp-ts/Either';
@@ -20,8 +22,16 @@ import { TaskEither } from 'fp-ts/TaskEither';
 import { pipe } from 'fp-ts/function';
 
 export const generateAuthenticationOptions =
-  (P: LogError & GetAuthenticators & SetChallenge & GetUserByEmail) =>
-  (rawData: unknown): TaskEither<UserNotFound | InvalidInput, ResponseData> =>
+  (
+    P: LogError &
+      GetAuthenticators &
+      SetChallenge &
+      GetUserByEmail &
+      ConfigReader
+  ) =>
+  (
+    rawData: unknown
+  ): TaskEither<Error | UserNotFound | InvalidInput, ResponseData> =>
   async () => {
     const _data = pipe(
       rawData,
@@ -32,6 +42,14 @@ export const generateAuthenticationOptions =
       return _data;
     }
     const data = _data.right;
+
+    const _config = pipe(getConfig(P), (a) => a());
+
+    if (E.isLeft(_config)) {
+      return _config;
+    }
+
+    const config = _config.right;
 
     const u = await P.getUserByEmail(data.username)();
 
@@ -49,6 +67,7 @@ export const generateAuthenticationOptions =
           transports: authenticator.transports,
         })
       ),
+      rpID: config.NX_RP_ID,
       userVerification: 'preferred',
     });
 

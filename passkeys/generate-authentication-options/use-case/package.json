@@ -13,7 +13,9 @@
     "@simplewebauthn/server": "^8.3.2",
     "@simplewebauthn/typescript-types": "^8.0.0",
     "fp-ts": "^2.16.1",
-    "@firebase-with-passkeys/passkeys-generate-authentication-options-contract": "*"
+    "@firebase-with-passkeys/passkeys-generate-authentication-options-contract": "*",
+    "@firebase-with-passkeys/passkeys-config-reader-type": "*",
+    "@firebase-with-passkeys/passkeys-get-config": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
