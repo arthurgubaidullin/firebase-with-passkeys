@@ -21,6 +21,10 @@ export interface OnBecomeObserved {
   ) => void;
 }
 
+export interface CreateComputedObservable {
+  readonly computed: <T>(f: () => T) => ReadonlyObservable<T>;
+}
+
 export interface OnBecomeUnobserved {
   readonly onBecomeUnobserved: <T>(
     observable: Observable<T>,
