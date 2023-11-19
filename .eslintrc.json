@@ -16,7 +16,7 @@
             "depConstraints": [
               {
                 "sourceTag": "slice:remote-data",
-                "onlyDependOnLibsWithTags": ["slice:remote-data"]
+                "onlyDependOnLibsWithTags": ["slice:remote-data", "tier:lib"]
               },
               {
                 "sourceTag": "tier:lib",
