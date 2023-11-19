@@ -47,10 +47,18 @@ export const startAuthenticationApi =
       return E.left(E.toError(error));
     }
 
-    const rawVerificationResponseData = await P.verifyAuthenticationResponse({
-      response: asseResp,
-      username,
-    });
+    const _rawVerificationResponseData = await TE.tryCatch(
+      async () =>
+        P.verifyAuthenticationResponse({
+          response: asseResp,
+          username,
+        }),
+      E.toError
+    )();
+    if (E.isLeft(_rawVerificationResponseData)) {
+      return _rawVerificationResponseData;
+    }
+    const rawVerificationResponseData = _rawVerificationResponseData.right;
 
     const verificationResponseData = pipe(
       rawVerificationResponseData.data,
