@@ -1,5 +1,5 @@
 import * as Contract from '@firebase-with-passkeys/passkeys-generate-authentication-options-contract';
-import { ResponseData } from '@firebase-with-passkeys/passkeys-verify-registration-response-contract';
+import { ResponseData } from '@firebase-with-passkeys/passkeys-verify-authentication-response-contract';
 import { startAuthentication as _startAuthentication } from '@simplewebauthn/browser';
 import {
   AuthenticationResponseJSON,
