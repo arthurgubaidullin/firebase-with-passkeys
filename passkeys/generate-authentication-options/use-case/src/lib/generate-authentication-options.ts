@@ -9,8 +9,8 @@ import {
   UserNotFound,
 } from '@firebase-with-passkeys/passkeys-event-types';
 import {
-  ResponseData,
   RequestData,
+  ResponseData,
 } from '@firebase-with-passkeys/passkeys-generate-authentication-options-contract';
 import { getAuthenticatorDocuments } from '@firebase-with-passkeys/passkeys-get-authenticator-documents';
 import { getConfig } from '@firebase-with-passkeys/passkeys-get-config';
@@ -73,5 +73,7 @@ export const generateAuthenticationOptions =
 
     await setChallenge(P)(u.value.uid, options);
 
-    return E.right(ResponseData.encode(options));
+    const result = ResponseData.encode(options);
+
+    return E.right(result);
   };

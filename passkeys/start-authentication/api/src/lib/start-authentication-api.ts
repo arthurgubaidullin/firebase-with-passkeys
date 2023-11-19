@@ -1,14 +1,16 @@
-import { PublicKeyCredentialRequestOptionsJSON } from '@firebase-with-passkeys/passkeys-types';
+import * as Contract from '@firebase-with-passkeys/passkeys-generate-authentication-options-contract';
 import { startAuthentication as _startAuthentication } from '@simplewebauthn/browser';
-import { AuthenticationResponseJSON } from '@simplewebauthn/typescript-types';
+import {
+  AuthenticationResponseJSON,
+  PublicKeyCredentialRequestOptionsJSON as _PublicKeyCredentialRequestOptionsJSON,
+} from '@simplewebauthn/typescript-types';
 import * as E from 'fp-ts/Either';
+import * as TE from 'fp-ts/TaskEither';
 import { constVoid, pipe } from 'fp-ts/function';
 import * as t from 'io-ts';
 import { failure } from 'io-ts/PathReporter';
 import { GenerateAuthenticationOptions } from './generate-authentication-options-type';
 import { VerifyAuthenticationResponse } from './verify-authentication-response-type';
-import * as TE from 'fp-ts/TaskEither';
-import { PublicKeyCredentialRequestOptionsJSON as _PublicKeyCredentialRequestOptionsJSON } from '@simplewebauthn/typescript-types';
 
 const VerifyRegistrationResponseData = t.readonly(
   t.strict({
@@ -30,7 +32,7 @@ export const startAuthenticationApi =
 
     const _data = pipe(
       resp.right.data,
-      PublicKeyCredentialRequestOptionsJSON.decode,
+      Contract.ResponseData.decode,
       E.mapLeft(failure),
       E.mapLeft((es) => new Error(es.toString()))
     );

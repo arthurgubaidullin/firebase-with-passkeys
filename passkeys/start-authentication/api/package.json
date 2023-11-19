@@ -3,13 +3,13 @@
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",
-    "@firebase-with-passkeys/passkeys-types": "*",
     "@simplewebauthn/browser": "^8.3.1",
     "@simplewebauthn/typescript-types": "^8.0.0",
     "fp-ts": "^2.16.1",
     "io-ts": "^2.2.20",
     "@firebase-with-passkeys/passkeys-program-client": "*",
-    "@firebase-with-passkeys/firebase-app-functions": "*"
+    "@firebase-with-passkeys/firebase-app-functions": "*",
+    "@firebase-with-passkeys/passkeys-generate-authentication-options-contract": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
