@@ -7,7 +7,7 @@ import { Option } from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 import { onAuthStateChangedAdapter2 } from './on-auth-state-changed-adapter';
 
-export const createAuthStateStoreApi = (
-  firebaseApp: FirebaseApp
-): ReadonlyObservable<RemoteData<Error, Option<UserStruct>>> =>
-  pipe(firebaseApp, onAuthStateChangedAdapter2, createRealtimeObservable);
+export const createAuthStateStoreApi =
+  (firebaseApp: FirebaseApp) =>
+  (): ReadonlyObservable<RemoteData<Error, Option<UserStruct>>> =>
+    pipe(firebaseApp, onAuthStateChangedAdapter2, createRealtimeObservable);
