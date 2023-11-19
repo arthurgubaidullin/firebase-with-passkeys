@@ -34,17 +34,24 @@ export const SendSignInLinkToEmailForm = observer(() => {
       </div>
     </form>
   );
-  return pipe(
-    state,
-    fold(
-      () => form,
-      () => <div>Fetching…</div>,
-      (e) => (
-        <div>
-          Failure: <pre>{e.message}</pre>
-        </div>
-      ),
-      () => <div>Success!!1</div>
-    )
+  return (
+    <div>
+      <h2>Sign in with email link</h2>
+      <div>
+        {pipe(
+          state,
+          fold(
+            () => form,
+            () => <div>Fetching…</div>,
+            (e) => (
+              <div>
+                Failure: <pre>{e.message}</pre>
+              </div>
+            ),
+            () => <div>Success!!1</div>
+          )
+        )}
+      </div>
+    </div>
   );
 });
