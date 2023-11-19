@@ -1,7 +1,7 @@
 {
-  "name": "web",
+  "name": "web-app",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "web/src",
+  "sourceRoot": "web-app/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,7 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/web"
+        "outputPath": "dist/web-app"
       },
       "configurations": {
         "development": {
@@ -24,15 +24,15 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "web:build"
+        "buildTarget": "web-app:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "web:build:development",
+          "buildTarget": "web-app:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "web:build:production",
+          "buildTarget": "web-app:build:production",
           "hmr": false
         }
       }
@@ -41,14 +41,14 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "web:build"
+        "buildTarget": "web-app:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "web:build:development"
+          "buildTarget": "web-app:build:development"
         },
         "production": {
-          "buildTarget": "web:build:production"
+          "buildTarget": "web-app:build:production"
         }
       }
     },
@@ -57,20 +57,20 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../coverage/web"
+        "reportsDirectory": "../coverage/web-app"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["web/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["web-app/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "serve-static": {
-      "executor": "@nx/web:file-server",
+      "executor": "@nx/web-app:file-server",
       "options": {
-        "buildTarget": "web:build"
+        "buildTarget": "web-app:build"
       }
     }
   },
