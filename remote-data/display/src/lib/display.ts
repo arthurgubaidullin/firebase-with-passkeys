@@ -39,23 +39,23 @@ export const isFailure = <E, A>(rd: RemoteData<E, A>): rd is Failure<E> =>
 
 export const fold =
   <E, A, B>(
-    onInitial: (remoteData: Initial) => B,
-    onFetching: (remoteData: Fetching) => B,
-    onFailure: (remoteData: Failure<E>) => B,
-    onSuccess: (remoteData: Success<A>) => B
+    onInitial: () => B,
+    onFetching: () => B,
+    onFailure: (e: E) => B,
+    onSuccess: (a: A) => B
   ) =>
   (remoteData: RemoteData<E, A>): B => {
     if (isInitial(remoteData)) {
-      return onInitial(remoteData);
+      return onInitial();
     }
     if (isFetching(remoteData)) {
-      return onFetching(remoteData);
+      return onFetching();
     }
     if (isSuccess(remoteData)) {
-      return onSuccess(remoteData);
+      return onSuccess(remoteData.data);
     }
     if (isFailure(remoteData)) {
-      return onFailure(remoteData);
+      return onFailure(remoteData.error);
     }
     absurd(remoteData);
     throw new TypeError();

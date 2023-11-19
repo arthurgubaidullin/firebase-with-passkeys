@@ -46,7 +46,7 @@ export const SignInWithPasskey = observer(() => {
       () => <div>Fetching…</div>,
       (e) => (
         <div>
-          Failure: <pre>{e.error.message}</pre>
+          Failure: <pre>{e.message}</pre>
         </div>
       ),
       () => <div>Success!!1</div>
