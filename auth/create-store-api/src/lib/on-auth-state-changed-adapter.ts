@@ -19,16 +19,12 @@ export const onAuthStateChangedAdapter =
 
 export const onAuthStateChangedAdapter2 =
   (firebaseApp: FirebaseApp) =>
-  (observer: Observer<Error, UserStruct>): IO<void> => {
+  (observer: Observer<Error, O.Option<UserStruct>>): IO<void> => {
     const auth = getAuth(firebaseApp);
     return onAuthStateChanged(auth, {
       next: (user): void =>
-        pipe(
-          user,
-          O.fromNullable,
-          O.map(fromUserRecord),
-          O.map((u) => observer.next?.(u)),
-          O.toUndefined
+        pipe(user, O.fromNullable, O.map(fromUserRecord), (u) =>
+          observer.next?.(u)
         ),
       error: (e): void => {
         observer.error?.(e);

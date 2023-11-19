@@ -11,6 +11,7 @@ import {
   onAuthStateChangedAdapter2,
 } from './on-auth-state-changed-adapter';
 import { RemoteData } from '@firebase-with-passkeys/remote-data-display';
+import { Option } from 'fp-ts/Option';
 
 export const createAuthStateStoreApi = (
   firebaseApp: FirebaseApp
@@ -25,5 +26,5 @@ export const createAuthStateStoreApi = (
 
 export const createAuthStateStoreApi2 = (
   firebaseApp: FirebaseApp
-): ReadonlyObservable<RemoteData<Error, UserStruct>> =>
+): ReadonlyObservable<RemoteData<Error, Option<UserStruct>>> =>
   pipe(firebaseApp, onAuthStateChangedAdapter2, createRealtimeObservable);
