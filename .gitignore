@@ -42,6 +42,5 @@ Thumbs.db
 *-debug.log
 .firebase
 
-*.env
 .env
 .env.*
