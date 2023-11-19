@@ -3,12 +3,9 @@
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0",
-    "@firebase-with-passkeys/auth-state": "*",
     "@firebase-with-passkeys/auth-user-struct": "*",
     "firebase": "^10.5.0",
     "fp-ts": "^2.16.1",
-    "mobx": "^6.10.2",
-    "@firebase-with-passkeys/auth-create-store": "*",
     "@firebase-with-passkeys/observable-type": "*",
     "@firebase-with-passkeys/remote-data-realtime-observable": "*",
     "@firebase-with-passkeys/remote-data-display": "*",
