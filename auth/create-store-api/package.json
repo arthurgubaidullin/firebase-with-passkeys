@@ -9,7 +9,8 @@
     "@firebase-with-passkeys/observable-type": "*",
     "@firebase-with-passkeys/remote-data-realtime-observable": "*",
     "@firebase-with-passkeys/remote-data-display": "*",
-    "@firebase-with-passkeys/remote-data": "*"
+    "@firebase-with-passkeys/remote-data": "*",
+    "@firebase-with-passkeys/firebase-app-auth": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
