@@ -7,7 +7,8 @@
     "firebase": "^10.5.0",
     "@firebase-with-passkeys/passkeys-generate-registration-options-firebase-function-client": "*",
     "@firebase-with-passkeys/passkeys-verify-registration-response-firebase-function-client": "*",
-    "@firebase-with-passkeys/passkeys-verify-authentication-response-firebase-function-client": "*"
+    "@firebase-with-passkeys/passkeys-verify-authentication-response-firebase-function-client": "*",
+    "fp-ts": "^2.16.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",
