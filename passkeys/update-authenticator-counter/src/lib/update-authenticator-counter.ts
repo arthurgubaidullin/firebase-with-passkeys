@@ -1,6 +1,7 @@
 import { AuthenticatorDocument } from '@firebase-with-passkeys/passkeys-authenticator-document';
 import { UpdateAuthenticator } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
 import { updateAuthenticatorDocument } from '@firebase-with-passkeys/passkeys-update-authenticator-document';
+import { Option } from 'fp-ts/Option';
 
 export const updateAuthenticatorCounter =
   (P: UpdateAuthenticator) =>
@@ -8,7 +9,7 @@ export const updateAuthenticatorCounter =
     userId: string,
     authenticatorId: string,
     counter: number,
-    updatedAt: number
+    updatedAt: Option<number>
   ) =>
   async (authenticator: AuthenticatorDocument) => {
     const _authenticator = { ...authenticator, counter };
