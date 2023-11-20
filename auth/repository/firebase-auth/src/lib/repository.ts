@@ -18,5 +18,7 @@ export const get = (): AuthRepository => {
         TE.tryCatch(async () => auth.getUserByEmail(email), E.toError),
         TE.map(fromUserRecord)
       ),
+    createCustomToken: (userId) =>
+      pipe(TE.tryCatch(async () => auth.createCustomToken(userId), E.toError)),
   };
 };
