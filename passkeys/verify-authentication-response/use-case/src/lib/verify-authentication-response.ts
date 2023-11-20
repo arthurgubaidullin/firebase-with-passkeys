@@ -122,7 +122,7 @@ export const verifyAuthenticationResponse =
 
     await updateAuthenticatorCounter(P)(
       u.value.uid,
-      u.value.uid,
+      response.id,
       newCounter,
       updatedAt
     )(authenticator);
