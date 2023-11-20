@@ -24,7 +24,13 @@ export const getAuthenticatorRepository = (): AuthenticatorRepository => {
         await _getRef(userId)
           .doc(authenticatorId)
           .update(authenticator, {
-            lastUpdateTime: Timestamp.fromMillis(updateAt),
+            lastUpdateTime: pipe(
+              updateAt,
+              O.fold(
+                () => new Timestamp(0, 0),
+                (updateAt) => Timestamp.fromMillis(updateAt)
+              )
+            ),
           });
       },
     getAuthenticator: async (userId, authenticatorId) => {
@@ -38,14 +44,7 @@ export const getAuthenticatorRepository = (): AuthenticatorRepository => {
         AuthenticatorDocument.decode,
         O.fromEither,
         O.map(
-          (data) =>
-            [
-              data,
-              (snap.updateTime
-                ? snap.updateTime
-                : new Timestamp(0, 0)
-              ).toMillis(),
-            ] as const
+          (data) => [data, O.fromNullable(snap.updateTime?.toMillis())] as const
         )
       );
     },
