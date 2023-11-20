@@ -8,6 +8,7 @@ import { flow, pipe } from 'fp-ts/function';
 import { AuthenticatorNotFound } from './document-not-found';
 import { InvalidAuthenticator } from './invalid-document';
 import { validateDocumentData } from './validate-document-data';
+import { Option } from 'fp-ts/Option';
 
 export const getAuthenticatorDocument =
   (P: GetAuthenticator & LogError) =>
@@ -16,7 +17,7 @@ export const getAuthenticatorDocument =
     authenticatorId: string
   ): TE.TaskEither<
     AuthenticatorNotFound | InvalidAuthenticator | Error,
-    readonly [AuthenticatorDocument, number]
+    readonly [AuthenticatorDocument, Option<number>]
   > =>
     pipe(
       TE.tryCatch(
