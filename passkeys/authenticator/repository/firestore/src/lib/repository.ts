@@ -33,7 +33,7 @@ export const getAuthenticatorRepository = (): AuthenticatorRepository => {
             ),
           });
       },
-    getAuthenticator: async (userId, authenticatorId) => {
+    getAuthenticator: (userId, authenticatorId) => async () => {
       const ref = _getRef(userId).doc(authenticatorId);
       const snap = await ref.get();
       if (!snap.exists) {

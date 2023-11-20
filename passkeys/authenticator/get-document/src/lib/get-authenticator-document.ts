@@ -20,10 +20,7 @@ export const getAuthenticatorDocument =
     readonly [AuthenticatorDocument, Option<number>]
   > =>
     pipe(
-      TE.tryCatch(
-        async () => P.getAuthenticator(userId, authenticatorId),
-        E.toError
-      ),
+      TE.tryCatch(P.getAuthenticator(userId, authenticatorId), E.toError),
       TE.chainW(
         TE.fromOption(
           () =>
