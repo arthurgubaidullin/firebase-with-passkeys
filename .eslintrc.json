@@ -53,6 +53,13 @@
               {
                 "sourceTag": "tier:app",
                 "onlyDependOnLibsWithTags": ["tier:app", "tier:api", "tier:lib"]
+              },
+              {
+                "sourceTag": "*",
+                "bannedExternalImports": [
+                  "firebase-admin",
+                  "firebase-functions"
+                ]
               }
             ]
           }
