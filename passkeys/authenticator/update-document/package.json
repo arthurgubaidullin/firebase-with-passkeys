@@ -5,7 +5,8 @@
     "tslib": "^2.3.0",
     "@firebase-with-passkeys/passkeys-authenticator-document": "*",
     "@firebase-with-passkeys/passkeys-authenticator-repository-type": "*",
-    "io-ts": "^2.2.20"
+    "io-ts": "^2.2.20",
+    "fp-ts": "^2.16.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",
