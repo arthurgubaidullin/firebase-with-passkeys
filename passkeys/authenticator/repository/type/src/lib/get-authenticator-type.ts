@@ -5,5 +5,5 @@ export interface GetAuthenticator {
   readonly getAuthenticator: (
     userId: string,
     authenticatorId: string
-  ) => Promise<O.Option<readonly [AuthenticatorDocument, number]>>;
+  ) => Promise<O.Option<readonly [AuthenticatorDocument, O.Option<number>]>>;
 }
