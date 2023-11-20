@@ -1,5 +1,8 @@
 import { LogError } from '@firebase-with-passkeys/logger-type-server';
-import { AuthenticatorDocument } from '@firebase-with-passkeys/passkeys-authenticator-document';
+import {
+  AuthenticatorDocument,
+  AuthenticatorDocumentVersion,
+} from '@firebase-with-passkeys/passkeys-authenticator-document';
 import { GetAuthenticator } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
 import * as E from 'fp-ts/Either';
 import * as RT from 'fp-ts/ReadonlyTuple';
@@ -17,7 +20,7 @@ export const getAuthenticatorDocument =
     authenticatorId: string
   ): TE.TaskEither<
     AuthenticatorNotFound | InvalidAuthenticator | Error,
-    readonly [AuthenticatorDocument, Option<number>]
+    readonly [AuthenticatorDocument, Option<AuthenticatorDocumentVersion>]
   > =>
     pipe(
       TE.tryCatch(P.getAuthenticator(userId, authenticatorId), E.toError),

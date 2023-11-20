@@ -1,4 +1,9 @@
-import { AuthenticatorDocument } from '@firebase-with-passkeys/passkeys-authenticator-document';
+import {
+  AuthenticatorDocument,
+  createAuthenticatorDocumentVersion,
+  nanosecondsFromAuthenticatorDocumentVersion,
+  secondsFromAuthenticatorDocumentVersion,
+} from '@firebase-with-passkeys/passkeys-authenticator-document';
 import { AuthenticatorRepository } from '@firebase-with-passkeys/passkeys-authenticator-repository-type';
 import { Firestore, Timestamp, getFirestore } from 'firebase-admin/firestore';
 import * as A from 'fp-ts/Array';
@@ -28,7 +33,11 @@ export const getAuthenticatorRepository = (): AuthenticatorRepository => {
               updateAt,
               O.fold(
                 () => new Timestamp(0, 0),
-                (updateAt) => Timestamp.fromMillis(updateAt)
+                (updateAt) =>
+                  new Timestamp(
+                    secondsFromAuthenticatorDocumentVersion(updateAt),
+                    nanosecondsFromAuthenticatorDocumentVersion(updateAt)
+                  )
               )
             ),
           });
@@ -44,7 +53,14 @@ export const getAuthenticatorRepository = (): AuthenticatorRepository => {
         AuthenticatorDocument.decode,
         O.fromEither,
         O.map(
-          (data) => [data, O.fromNullable(snap.updateTime?.toMillis())] as const
+          (data) =>
+            [
+              data,
+              pipe(
+                O.fromNullable(snap.updateTime),
+                O.map((t) => createAuthenticatorDocumentVersion(t))
+              ),
+            ] as const
         )
       );
     },
