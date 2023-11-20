@@ -11,7 +11,8 @@
     "@firebase-with-passkeys/firebase-app-functions": "*",
     "@firebase-with-passkeys/passkeys-generate-authentication-options-contract": "*",
     "@firebase-with-passkeys/passkeys-verify-authentication-response-contract": "*",
-    "io-ts-types": "^0.5.19"
+    "io-ts-types": "^0.5.19",
+    "@firebase-with-passkeys/firebase-app-auth": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",

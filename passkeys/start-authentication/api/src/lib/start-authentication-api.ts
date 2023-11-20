@@ -7,14 +7,19 @@ import {
 } from '@simplewebauthn/typescript-types';
 import * as E from 'fp-ts/Either';
 import * as TE from 'fp-ts/TaskEither';
-import { constVoid, pipe } from 'fp-ts/function';
+import { pipe } from 'fp-ts/function';
+import { NonEmptyString } from 'io-ts-types';
 import { failure } from 'io-ts/PathReporter';
 import { GenerateAuthenticationOptions } from './generate-authentication-options-type';
 import { VerifyAuthenticationResponse } from './verify-authentication-response-type';
-import { NonEmptyString } from 'io-ts-types';
+import { SignInWithCustomToken } from './sign-in-with-custom-token';
 
 export const startAuthenticationApi =
-  (P: GenerateAuthenticationOptions & VerifyAuthenticationResponse) =>
+  (
+    P: GenerateAuthenticationOptions &
+      VerifyAuthenticationResponse &
+      SignInWithCustomToken
+  ) =>
   (username: string) =>
   async (): Promise<E.Either<Error, void>> => {
     if (!NonEmptyString.is(username)) {
@@ -71,8 +76,8 @@ export const startAuthenticationApi =
     }
     const verificationJSON = verificationResponseData.right;
 
-    if (verificationJSON && verificationJSON.verified) {
-      return E.right(constVoid());
+    if (verificationJSON.verified) {
+      return P.signInWithCustomToken(verificationJSON.token)();
     } else {
       return E.left(
         new Error(
