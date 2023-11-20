@@ -9,5 +9,5 @@ export const createAuthenticatorDocument =
     authenticator: OutputOf<typeof AuthenticatorDocument>
   ) => {
     const data = AuthenticatorDocument.encode(authenticator);
-    await P.createAuthenticator(userId, data);
+    await P.createAuthenticator(userId, data.credentialID.toString(), data);
   };
