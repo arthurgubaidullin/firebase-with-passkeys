@@ -1,4 +1,5 @@
 import {
+  CreateCustomToken,
   GetUser,
   GetUserByEmail,
 } from '@firebase-with-passkeys/auth-service-type';
@@ -33,9 +34,9 @@ import {
 } from '@firebase-with-passkeys/passkeys-verify-authentication-response-contract';
 import { verifyAuthenticationResponse as _verifyAuthenticationResponse } from '@simplewebauthn/server';
 import * as E from 'fp-ts/Either';
-import { TaskEither } from 'fp-ts/TaskEither';
-import { pipe } from 'fp-ts/function';
 import * as O from 'fp-ts/Option';
+import { TaskEither, map } from 'fp-ts/TaskEither';
+import { pipe } from 'fp-ts/function';
 
 export const verifyAuthenticationResponse =
   (
@@ -47,7 +48,8 @@ export const verifyAuthenticationResponse =
       GetChallenge &
       GetAuthenticator &
       UpdateAuthenticator &
-      GetUserByEmail
+      GetUserByEmail &
+      CreateCustomToken
   ) =>
   (
     rawAuthenticationResponseJSON: unknown
@@ -126,6 +128,15 @@ export const verifyAuthenticationResponse =
       newCounter,
       updatedAt
     )(authenticator);
+
+    if (verified) {
+      const t = await pipe(
+        P.createCustomToken(u.value.uid),
+        map((token) => ResponseData.encode({ verified, token })),
+        (t) => t()
+      );
+      return t;
+    }
 
     return E.right(ResponseData.encode({ verified }));
   };
