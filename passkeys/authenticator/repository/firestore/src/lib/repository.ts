@@ -14,8 +14,10 @@ export const getAuthenticatorRepository = (): AuthenticatorRepository => {
   const db = getFirestore();
   const _getRef = getRef(db);
   return {
-    createAuthenticator: async (userId, authenticator) => {
-      await _getRef(userId).add(AuthenticatorDocument.encode(authenticator));
+    createAuthenticator: async (userId, authenticatorId, authenticator) => {
+      await _getRef(userId)
+        .doc(authenticatorId)
+        .create(AuthenticatorDocument.encode(authenticator));
     },
     updateAuthenticator:
       (userId, authenticatorId, updateAt) => async (authenticator) => {
