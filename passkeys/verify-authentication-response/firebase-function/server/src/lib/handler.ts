@@ -1,4 +1,5 @@
 import {
+  CreateCustomToken,
   GetUser,
   GetUserByEmail,
 } from '@firebase-with-passkeys/auth-service-type';
@@ -28,7 +29,8 @@ export const verifyAuthenticationResponseHandler =
       GetChallenge &
       GetAuthenticator &
       UpdateAuthenticator &
-      GetUserByEmail
+      GetUserByEmail &
+      CreateCustomToken
   ) =>
   async (data: unknown): Promise<unknown> => {
     return pipe(
