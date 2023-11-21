@@ -18,7 +18,7 @@ interface NotFound {
 
 export type _Location = Home | SignIn | CompleteSignIn | NotFound;
 
-const home: _Location = { _tag: 'Home' };
+export const home: _Location = { _tag: 'Home' };
 
 export const signIn: _Location = { _tag: 'SignIn' };
 
