@@ -1,17 +1,12 @@
 import { createSendLinkStore } from '@firebase-with-passkeys/auth-sign-in-with-email-link';
 import { fold } from '@firebase-with-passkeys/remote-data';
 import { pipe } from 'fp-ts/function';
-import { autorun } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { useId } from 'react';
 
 const URL: string = `${import.meta.env['VITE_HOST'] ?? ''}/sign-in/complete`;
 
 const store = createSendLinkStore(URL);
-
-autorun(() => {
-  console.log(store.get());
-});
 
 export const SendSignInLinkToEmailForm = observer(() => {
   const id = useId();
