@@ -32,14 +32,15 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "EditorConfig.EditorConfig",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "nrwl.angular-console",
-        "ms-azuretools.vscode-docker",
-        "toba.vsfire",
-        "eamodio.gitlens"
-      ]
+		"EditorConfig.EditorConfig",
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"nrwl.angular-console",
+		"ms-azuretools.vscode-docker",
+		"toba.vsfire",
+		"eamodio.gitlens",
+		"bradlc.vscode-tailwindcss"
+	]
     }
   },
 
