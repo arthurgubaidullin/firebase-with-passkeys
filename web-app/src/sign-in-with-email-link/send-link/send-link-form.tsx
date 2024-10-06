@@ -52,7 +52,7 @@ export const SendSignInLinkToEmailForm = observer(() => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Send email link
+                Sign in with Passkey
               </button>
             )}
 
@@ -80,6 +80,49 @@ export const SendSignInLinkToEmailForm = observer(() => {
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                disabled
+              >
+                Failed! Reload page.
+              </button>
+            )}
+          </div>
+
+          <p className="text-center text-sm opacity-75">Or continue with</p>
+
+          <div>
+            {RD.isInitial(state) && (
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-slate-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+              >
+                Sign in with Email link
+              </button>
+            )}
+
+            {RD.isFetching(state) && (
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-slate-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+                disabled
+              >
+                Processing...
+              </button>
+            )}
+
+            {RD.isSuccess(state) && (
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-slate-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+                disabled
+              >
+                Success! Check your inbox.
+              </button>
+            )}
+
+            {RD.isFailure(state) && (
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-slate-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
                 disabled
               >
                 Failed! Reload page.
